@@ -1,0 +1,31 @@
+h1, p {
+    text-align: center;
+}
+img {
+    width: 150px;
+}
+strong {
+    margin-bottom: 20px;
+    // color: red;
+}
+ul {
+                    // border: 1px solid #000;
+    text-align: center;
+    list-style: none;
+    padding: 0;
+    > li {
+        margin: 5px 0;
+        text-align: center;
+        &:nth-child(2) {
+            margin-top: 15px;
+            // border: 1px solid #000;
+        }
+    }
+}
+.formation, .perso, .construction {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}

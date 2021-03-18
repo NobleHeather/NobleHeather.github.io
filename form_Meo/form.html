@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css\form.css" />
+    <title>Quel imaginatif suis-je ?</title>
+</head>
+<body>
+    <div class="wrapper mx-5">
+        <h1 class="text-center">Quel imaginatif suis-je ?</h1>
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <h5 class="alert-heading">Prérequis :</h5>
+            <p>Pour ce QCM, on va utiliser deux mots pour différencier une visualisation similaire au sens de la vue ("visualiser") et celle qui en est différente ("conceptualiser")</p>
+            <p class="text-muted"><strong>Nota : </strong>ne pas hésiter à cocher plusieurs cases si plusieurs réponses vous semblent bonnes</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <section>
+            <h2>Pensée visuelle</h2>
+            <form class="row" action="">
+                <fieldset class="col-12">
+                    <legend class="text-primary"><strong>Question 1 : </strong>Visualisez une étoile rouge</legend>
+                    
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="etoileRien" id="etoileRien" />
+                        <label class="form-check-label" for="etoileRien">
+                            Je la conceptualise, je ne vois rien à proprement parler
+                            <a href="" class="badge badge-primary">> question 7</a>
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="etoileFlou" id="etoileFlou" />
+                        <label class="form-check-label" for="etoileFlou">
+                            J'ai une étoile floue, je la visualise
+                        </label>
+                    </div>
+                    
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="etoileFlouCouleur" id="etoileFlouCouleur" />
+                        <label class="form-check-label" for="etoileFlouCouleur">
+                            J'ai une étoile floue et une couleur plus ou moins prononcée, je la visualise
+                        </label>
+                    </div>
+                    
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="etoileNette" id="etoileNette" />
+                        <label class="form-check-label" for="etoileNette">
+                            J'ai une étoile nette, je la visualise
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="etoileNetteRouge" id="etoileNetteRouge" />
+                        <label class="form-check-label" for="etoileNetteRouge">
+                            J'ai une étoile nette et rouge, je la visualise
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="col-12">
+                    <legend class="text-primary"><strong>Question 2 : </strong>Je visualise cette étoile uniquement quand je ferme les yeux</legend>
+                    
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="etoileOui" id="etoileOui" />
+                        <label class="form-check-label" for="etoileOui">
+                            Oui
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="etoileNon" id="etoileNon" />
+                        <label class="form-check-label" for="etoileNon">
+                            Non
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="col-12">
+                    <legend class="text-primary"><strong>Question 3 : </strong>Toujours la même étoile : pouvez-vous en changer la couleur ?</legend>
+                    
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="couleurOui" id="couleurOui" />
+                        <label class="form-check-label" for="couleurOui">
+                            Oui
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="couleurNon" id="couleurNon" />
+                        <label class="form-check-label" for="couleurNon">
+                            Non
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="couleurFormeOui" id="couleurFormeOui" />
+                        <label class="form-check-label" for="couleurFormeOui">
+                            Oui, mais je n'obtiens pas la couleur désirée et/ou la forme change
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="couleurFormePeutEtre" id="couleurFormePeutEtre" />
+                        <label class="form-check-label" for="couleurFormePeutEtre">
+                            Peut-être, mais je n'obtiens pas la bonne couleur et/ou la forme change
+                        </label>
+                </fieldset>
+
+                <fieldset class="col-12">
+                    <legend class="text-primary"><strong>Question 4 : </strong>Toujours la même étoile : pouvez-vous en changer le nombre de branches</legend>
+                    
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="brancheOui" id="brancheOui" />
+                        <label class="form-check-label" for="brancheOui">
+                            Oui
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="brancheNon" id="brancheNon" />
+                        <label class="form-check-label" for="brancheNon">
+                            Non, elle est forcément celle à laquelle j'ai pensé
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="brancheNouvelle" id="brancheNouvelle" />
+                        <label class="form-check-label" for="brancheNouvelle">
+                            Non, je dois supprimer l'étoile et en penser une nouvelle
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="col-12">
+                    <legend class="text-primary"><strong>Question 5 : </strong>Toujours la même étoile : où est-elle ?</legend>
+                    
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="canalDeux" id="canalDeux" />
+                        <label class="form-check-label" for="canalDeux">
+                            Dans ma tête et devant moi, c'est comme un deuxième canal que Je visualise en même temps
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="superposition" id="superposition" />
+                        <label class="form-check-label" for="superposition">
+                            Dans mon champ de vision, en superposition du réel
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="imprecis" id="imprecis" />
+                        <label class="form-check-label" for="imprecis">
+                            La localisation est imprecise si Je cherche à la localiser
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="tete" id="tete" />
+                        <label class="form-check-label" for="tete">
+                            Dans ma tête
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="col-12">
+                    <legend class="text-primary"><strong>Question 6 : </strong>Toujours la même étoile : durée</legend>
+                    
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="etoileFlash" id="etoileFlash" />
+                        <label class="form-check-label" for="etoileFlash">
+                            J'ai des flashs
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="etoileSeconde" id="etoileSeconde" />
+                        <label class="form-check-label" for="etoileSeconde">
+                            Quelques secondes
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="etoileLongtemps" id="etoileLongtemps" />
+                        <label class="form-check-label" for="etoileLongtemps">
+                            Aussi longtemps que je veux
+                        </label>
+                    </div>
+
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <label class="col-form-lablel" for="estimation">
+                            Estimation personnelle de la durée : 
+                            </label>
+                        </div>
+                        <div class="col-sm">
+                            <input class="form-control form-control-sm" type="number" name="estimation" id="estimation" />
+                        </div>
+                        <div class="col-auto">
+                            <small class="form-text">secondes</small>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="col-12">
+                    <legend class="text-primary"><strong>Question 7 : </strong>Visualisez une pomme : interaction</legend>
+                    
+                    <fieldset class="fieldsetSecondary mx-5">
+                        <legend>Je peux conceptualiser une pomme, pas la visualiser</legend>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="pommeVisualiserOui" id="pommeVisualiserOui" />
+                            <label class="form-check-label" for="pommeVisualiserOui">
+                                Oui
+                                <a href="" class="badge badge-primary">
+                                    > question 8
+                                </a>
+                            </label>
+                        </div>
+                        
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="pommeVisualiserNon" id="pommeVisualiserNon" />
+                            <label class="form-check-label" for="pommeVisualiserNon">
+                                Non
+                            </label>
+                        </div>
+                    </fieldset>
+                    
+                    <fieldset class="fieldsetSecondary mx-5">
+                        <legend>Je peux l'attraper si Je veux</legend>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="pommeAttraperOui" id="pommeAttraperOui" />
+                            <label class="form-check-label" for="pommeAttraperOui">
+                                Oui
+                            </label>
+                        </div>
+                        
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="pommeAttraperNon" id="pommeAttraperNon" />
+                            <label class="form-check-label" for="pommeAttraperNon">
+                                Non
+                            </label>
+                        </div>
+                    </fieldset>
+                    
+                    <fieldset class="fieldsetSecondary mx-5">
+                        <legend>Je peux la faire tourner devant moi</legend>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="pommeTournerOui" id="pommeTournerOui" />
+                            <label class="form-check-label" for="pommeTournerOui">
+                                Oui
+                            </label>
+                        </div>
+                        
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="pommeTournerNon" id="pommeTournerNon" />
+                            <label class="form-check-label" for="pommeTournerNon">
+                                Non
+                            </label>
+                        </div>
+                    </fieldset>
+                    
+                    <fieldset class="fieldsetSecondary mx-5">
+                        <legend>Je peux me déplacer autour</legend>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="pommeDeplacerOui" id="pommeDeplacerOui" />
+                            <label class="form-check-label" for="pommeDeplacerOui">
+                                Oui
+                            </label>
+                        </div>
+                        
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="pommeDeplacerNon" id="pommeDeplacerNon" />
+                            <label class="form-check-label" for="pommeDeplacerNon">
+                                Non
+                            </label>
+                        </div>
+                    </fieldset>
+                </fieldset>
+
+                <fieldset class="col-12">
+                    <legend class="text-primary"><strong>Question 8 : </strong>Toujours la même pomme : intégration à la vision</legend>
+                    
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="pommeHallucination" id="pommeHallucination" />
+                        <label class="form-check-label" for="pommeHallucination">
+                            Je sais qu'elle est irréelle uniquement car Je l'ai demandée, elle pourrait être une hallucination
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="pommeIrreelle" id="pommeIrreelle" />
+                        <label class="form-check-label" for="pommeIrreelle">
+                            Je sais qu'elle est irréelle car elle n'est pas réellement dans mon champ de vision
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="pommeBranche" id="pommeBranche" />
+                        <label class="form-check-label" for="pommeBranche">
+                            Cette pomme possède un petit bout de branche
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="pommeBrancheFeuille" id="pommeBrancheFeuille" />
+                        <label class="form-check-label" for="pommeBrancheFeuille">
+                            Je peux ajouter une feuille à ce petit bout de branche
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="col-12">
+                    <legend class="text-primary"><strong>Question 15 : </strong>Penser au visage d'un (très) proche</legend>
+                    
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <label for="mimique" class="form-label">Je peux lui faire réaliser les principales mimiques de son visage (sourire, froncer les sourcils…)</label>
+                        </div>
+                        <div class="col-auto d-flex flex-row align-items-center">
+                            <small>facile (0) &nbsp;</small>
+                            <input type="range" class="form-range" min="0" max="9" step="1" id="mimique" list="tickmarks" value="1" onChange="get_tickmarks()">
+                            <datalist id="tickmarks">
+                                <option value="1" label="1">
+                                <option value="2" label="2">
+                                <option value="3" label="3">
+                                <option value="4" label="4">
+                                <option value="5" label="5">
+                                <option value="6" label="6">
+                                <option value="7" label="7">
+                                <option value="8" label="8">
+                                <option value="9" label="9">
+                            </datalist>
+                            <small>&nbsp; impossible (9)</small>
+                            <small id="choix">
+                                &nbsp; => Choix :
+                            </small>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <p class="text-danger">ça y est ça me gonfle</p>
+
+            </form>
+
+        </section>
+    </div>
+    
+    
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->    
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+        
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+        
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    
+    <script src="form.js" type="text/javascript"></script>
+</body>
+</html>

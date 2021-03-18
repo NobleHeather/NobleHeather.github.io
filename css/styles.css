@@ -1,0 +1,27 @@
+h1, p {
+  text-align: center; }
+
+img {
+  width: 150px; }
+
+strong {
+  margin-bottom: 20px; }
+
+ul {
+  text-align: center;
+  list-style: none;
+  padding: 0; }
+  ul > li {
+    margin: 5px 0;
+    text-align: center; }
+    ul > li:nth-child(2) {
+      margin-top: 15px; }
+
+.formation, .perso, .construction {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px; }
+
+/*# sourceMappingURL=styles.css.map */
