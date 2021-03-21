@@ -1,3 +1,11 @@
+email
+password
+
+visageReconnaitre
+visageFlou
+visageNi
+visageNet
+
 etoileRien
 etoileFlou
 etoileFlouCouleur

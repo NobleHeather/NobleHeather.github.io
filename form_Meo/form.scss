@@ -19,6 +19,12 @@ $color : (
     "focus" : rgb(247, 93, 4)
 );
 
+h1 {
+    > span {
+        font-size: 0.7em;
+    }
+}
+
 fieldset {
     border: 2px solid map-get($color, primary);
 }
