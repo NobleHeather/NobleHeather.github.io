@@ -29,3 +29,15 @@ ul {
     align-items: center;
     margin-top: 50px;
 }
+.construction .wrapper {
+    // border: 1px solid #000;
+    display: flex;
+    > div {
+        margin: 0 10px;
+        > a img {
+        // border: 1px solid #000;
+        height: 120px;
+        width: auto;
+        }
+    }
+}

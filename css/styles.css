@@ -24,4 +24,12 @@ ul {
   align-items: center;
   margin-top: 50px; }
 
+.construction .wrapper {
+  display: flex; }
+  .construction .wrapper > div {
+    margin: 0 10px; }
+    .construction .wrapper > div > a img {
+      height: 120px;
+      width: auto; }
+
 /*# sourceMappingURL=styles.css.map */
