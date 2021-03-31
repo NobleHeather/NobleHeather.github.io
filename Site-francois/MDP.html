@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="#"> <!--? why-->
+    <!--! script pour l'envoi de mail en cas d'oubli de mdp-->
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+    <title>MDP</title>
+  </head>
+  <body>
+      <!-- <h2 id="titreInterface">Bienvenue dans l'interface, je m'appelle Heather</h2> -->
+      <h2 id="titrePass">Bienvenue sur la page d'accès à l'interface, veuillez entrer votre mot de passe</h2>
+      <section id="MDP">
+        <form id="MotDePasse">
+            <div class="choisir">
+                <label for="enterpass">Mot de passe :</label>
+                <input id="enterpass" type="password" required />
+                <!-- <input id="submitmail" type="submit" value="utiliser cette adresse" /> -->
+            </div>
+            <div class="choisirmail">
+                <label for="entermail">Entrez votre adresse mail (en cas d'oubli de mot de passe) :</label>
+                <input id="entermail" type="email" required />
+                <!--! pas super bien placé ce bouton-->
+                <input id="submit" type="submit" value="C'est bon !" name="submit1"/> 
+            </div>
+            <div class="versReset">
+                <a href="MDP_reset.html">Changer de mot de passe ?</a>
+                <a href="interface.html">Accéder à l'interface</a>
+            </div>
+        </form>
+        <div class="resetMDP">
+            <p><strong>! ATTENTION ! </strong>cette fonctionnalité n'est pas encore en service<strong> ! ATTENTION !</strong></p>
+            <label for="mailpass">Avez-vous oublié votre mot de passe ?</label>
+            <button id="mailpass" disabled>Mot de passe par mail</button>
+        </div>
+        <!------------------------------------------------------------------------->
+        <!-- <form id="reinitialiser">
+            <div class="reinitialiser">
+                <p>Voulez-vous changer de mot de passe ?</p>
+                <label for="ancienpass">Indiquez votre ancien mot de passe :</label>
+                <input id="ancienpass" type="password" value="changer" required/>
+                <label for="nouveaupass">Choisissez votre nouveau mot de passe : </label>
+                <input id="nouveaupass" type="password" value="changer" required/>
+                <!-- ?pourquoi ça s'enclenche automatiquement quand ce bouton est un input ?-->
+                <!-- <input id="submit2" name="submit2" value="Ok !"/> 
+        </div>
+        <div class="resetMDP">
+            <p><strong>! ATTENTION ! </strong>cette fonction n'est pas encore en service<strong> ! ATTENTION !</strong></p>
+            <label for="mailpass">Avez-vous oublié votre mot de passe ?</label>
+            <button id="mailpass">Mot de passe par mail</button>
+        </div> -->
+        <!-- <p id="afficheMail">?</p> -->
+    <!-- </form> -->
+    <!--------------------------------------------------------------------------------->
+        <!-- <p class="personal-greeting"></p> -->
+    </section>
+    <!-- <script src="localStorage.js" defer></script> -->
+    <script src="MDP.js" defer></script>
+  </body>
+</html>

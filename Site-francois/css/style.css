@@ -1,0 +1,98 @@
+body {
+  padding: 0 15px;
+  max-width: 1440px;
+  margin: 0 auto; }
+
+h1 {
+  font-size: 2em;
+  box-shadow: 10px -10px 0px 0px #413FBD;
+  color: #fff; }
+  @media (max-width: 375px) {
+    h1 {
+      font-size: 1.5em; } }
+
+h2 {
+  border-bottom: 3px solid #413fbd;
+  padding-bottom: 5px; }
+
+h3 {
+  font-size: 1.1em; }
+
+.stretched-link {
+  color: #000; }
+  .stretched-link:hover {
+    text-decoration: none;
+    color: #000; }
+
+li:hover {
+  background-color: #DDD; }
+
+section, aside {
+  padding: 15px; }
+
+header {
+  display: flex;
+  justify-content: flex-end; }
+
+.news > .card:nth-child(2), .news .card:nth-child(3) {
+  transition: 300ms; }
+  .news > .card:nth-child(2):hover, .news .card:nth-child(3):hover {
+    background-color: #413fbd; }
+  .news > .card:nth-child(2):hover > .card-body a .card-title, .news .card:nth-child(3):hover > .card-body a .card-title {
+    color: white; }
+.news > .card:nth-child(4):hover > .card-header {
+  background-color: #413fbd;
+  color: white; }
+.news > .card:nth-child(4):hover > .card-footer {
+  background-color: rgba(65, 63, 189, 0.3); }
+.news > .card:nth-child(4):hover > .card-body {
+  background-color: white; }
+
+.bio .texte {
+  margin-top: 30px; }
+  .bio .texte > img {
+    float: left;
+    margin: 0 5px; }
+    .bio .texte > img:nth-child(3), .bio .texte > img:nth-child(7) {
+      float: right; }
+
+#deck1 > div {
+  border: 1px solid #000;
+  width: 50%; }
+  @media (max-width: 767px) {
+    #deck1 > div {
+      width: 100%; } }
+
+.blog .card {
+  max-width: 300px; }
+  .blog .card:hover > .card-header {
+    background-color: #413fbd;
+    color: white; }
+  .blog .card:hover > .card-footer {
+    background-color: rgba(65, 63, 189, 0.3); }
+
+.imgFooter {
+  height: 70px; }
+
+footer {
+  background-color: #DDD;
+  height: 70px; }
+  footer > a svg {
+    width: 20px; }
+
+#forgetname, #publierArticle {
+  outline: none; }
+
+input, textarea {
+  outline: 1px solid #413fbd;
+  border: none; }
+  input:focus, textarea:focus {
+    outline: 1px solid #f75d04;
+    border: none; }
+
+#articleInput {
+  height: 26px; }
+  #articleInput:focus {
+    height: 300px; }
+
+/*# sourceMappingURL=style.css.map */

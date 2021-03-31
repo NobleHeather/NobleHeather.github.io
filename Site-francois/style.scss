@@ -1,0 +1,194 @@
+//! TODO 
+// - Animation titre nouveauté ouverture page et pdt 5s
+// - Js pour remplacer automatiquement les nouveautés
+
+.row {
+    // border: 1px solid red;
+}
+.navbar {
+    // border: 1px solid blue;
+}
+ul {
+    // border: 1px solid #000;
+}
+li {
+    // border: 1px solid green;
+}
+.navbar-brand {
+    // border: 1px solid purple;
+}
+button {
+    // background-color: pink;
+}
+.partie1 {
+    // border: 1px solid orange;
+}
+$color : (
+    "primary" : rgb(65, 63, 189),    
+    "secondary" : #DDD,
+    "dark" : #000,
+    "focus" : rgb(247, 93, 4)
+);
+body {
+    padding: 0 15px;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+h1 {
+    font-size: 2em;
+    box-shadow: 10px -10px 0px 0px #413FBD;
+    color: #fff;
+    @media (max-width : 375px) {
+        font-size: 1.5em;
+    }
+}
+h2 { //keyframe avec bordure qui tourne ?
+                                        // outline: 1px salmon solid;
+    border-bottom: 3px solid map-get($color, primary);
+    padding-bottom: 5px;
+}
+h3 {
+    font-size: 1.1em;
+}
+.stretched-link {
+    color: #000;
+    &:hover {
+    text-decoration: none;
+    color: #000;
+    }
+}
+li:hover {
+    background-color: map-get($color, secondary);
+}
+
+section, aside {
+            // border: 1px solid #000;
+    padding: 15px;
+}
+
+header {
+    // border: 3px solid #000;
+    display: flex;
+    justify-content: flex-end;
+}
+.news {
+    > .card:nth-child(2), .card:nth-child(3) {
+            // border: 1px solid red;
+        transition: 300ms;
+        &:hover {
+        background-color: map-get($color, primary);
+        }
+        &:hover > .card-body a .card-title {
+            color: white;
+        }
+    }
+    > .card:nth-child(4) {
+        // border: 1px solid #000;
+        &:hover > .card-header {
+            background-color: map-get($color, primary);
+            color: white;
+        }
+        &:hover > .card-footer {
+            background-color: transparentize(map-get($color, primary), 0.7);
+        }
+        &:hover > .card-body {
+            background-color: white;
+        }
+    }
+}
+.bio .texte {
+                    // border: 1px solid #000;
+    margin-top: 30px;
+    > img {
+        float: left;
+        margin: 0 5px;
+
+        &:nth-child(3), &:nth-child(7) {
+                // border: 1px solid #000;
+            float: right;
+        }
+    }
+}
+
+#deck1 > div {
+    border: 1px solid #000;
+    width: 50%;
+    @media (max-width : 767px) {
+        width : 100%;
+    }
+}
+.blog .card {
+    max-width: 300px;
+    &:hover > .card-header {
+        background-color: map-get($color, primary);
+        color: white;
+    }
+    &:hover > .card-footer {
+        background-color: transparentize(map-get($color, primary), 0.7);
+    }
+}
+.ailleurs .row {
+    // border: 1px solid #000;
+    
+}
+.imgFooter {
+    // border: 1px solid #000;
+    height: 70px;
+}
+.allo {
+    // border: 1px solid #000;
+}
+footer {
+    // border: 1px solid #000;
+    background-color: map-get($color, secondary);
+    height: 70px;
+    > a svg {
+        // height: 20px;
+        width: 20px;
+    }
+}
+
+// .grid {							
+//         border: 2px solid purple;
+// // grid-gap: 30px;
+// grid-template-rows: 200px;
+// grid-template-columns: 1fr;
+// grid-template-areas: 
+// "1"
+// "2"
+// "3"
+// "4";
+// }
+// .agenda {
+//     grid-area: agenda;
+// }
+// .carousel {
+//     grid-area: carousel;
+// }
+// .news {
+//     grid-area: news;
+// }
+
+
+//// BLOG
+
+//* interface
+
+#forgetname, #publierArticle {
+    outline: none;
+}
+
+input, textarea {
+    outline: 1px solid map-get($color, primary);
+    border: none;
+    &:focus {
+        outline : 1px solid (map-get($color, focus));
+        border: none;
+    }
+}
+#articleInput {
+    height: 26px; //définir autrement
+    &:focus {
+        height: 300px;
+    }
+}

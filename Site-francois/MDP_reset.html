@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="#"> <!--? why-->
+    <!--! pour envoi de mail -->
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+    <title>MDP</title>
+  </head>
+  <body>
+      <!-- <h2 id="titreInterface">Bienvenue dans l'interface, je m'appelle Heather</h2> -->
+    <h2>Réinitialiser votre mot de passe</h2>
+        <form id="reinitialiser">
+            <div class="reinitialiser">
+                <p>Voulez-vous changer de mot de passe ?</p>
+                <label for="ancienpass">Indiquez votre ancien mot de passe :</label>
+                <input id="ancienpass" type="password" value="changer" required/>
+                <label for="nouveaupass">Choisissez votre nouveau mot de passe : </label>
+                <input id="nouveaupass" type="password" value="changer" required/>
+                <!--?pourquoi ça s'enclenche automatiquement quand ce bouton est un input ?-->
+                <input id="submit2" type="submit" name="submit2" value="Ok !"/> 
+            </div>
+        <!-- <p id="afficheMail">?</p> -->
+        </form>
+        <!-- <p class="personal-greeting"></p> -->
+    <!-- <script src="localStorage.js" defer></script> -->
+    <script src="MDP_reset.js" defer></script>
+  </body>
+</html>

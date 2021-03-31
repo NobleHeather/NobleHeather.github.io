@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="#"> <!--? why-->
+    <title>Personal greeting</title>
+  </head>
+  <body>
+      <h2 id="titreInterface">Bienvenue dans l'interface, je m'appelle Heather</h2>
+    <section id="motDePasse">
+        <label for="enterpass">Entrez votre mot de passe : </label>
+        <input id="enterpass" type="text" required />
+        <input id="submitpass" type="submit" value="accéder" />
+    </section>
+    <section class="greetings">
+        <form id="greetings">
+            <div class="remember">
+                <label for="entername">Quel est votre nom ?</label>
+                <input id="entername" type="text" required />
+                <input id="submitname" type="submit" value="choisir" />
+            </div>
+        <div class="forget">
+            <label for="forgetname">Changer de nom d'utilisateur ?</label>
+            <input id="forgetname" type="reset" value="changer" />
+        </div>
+    </form>
+        <p class="personal-greeting"></p>
+    </section>
+    <script src="localStorage.js" defer></script>
+    <script src="MDP.js" defer></script>
+  </body>
+</html>

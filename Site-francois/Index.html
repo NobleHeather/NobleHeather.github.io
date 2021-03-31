@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css\style.css" />
+    <title>Accueil</title>
+    </head>
+    <body>
+        <script> // API facebook
+            window.fbAsyncInit = function() {
+              FB.init({
+                appId            : '747485975959062',
+                autoLogAppEvents : true,
+                xfbml            : true,
+                version          : 'v10.0'
+              });
+            };
+          </script>
+          <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>          
+        <header class="row d-flex justify-content-between mb-5">
+            <h1 class="bg-primary p-2 align-self-start col-">François MARTI-CAVALLE<br />Acteur & Auteur</h1>
+            <nav class="col navbar navbar-expand-lg align-items-end">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport">
+                    <span class="navbar-toggler-icon bg-primary"></span>
+                </button>
+                <div id="navbarSupportedContent" class="collapse navbar-collapse d-flex">
+                    <ul class="navbar-nav nav-justified nav-tabs d-flex w-100">
+                        <li class="nav-item active">
+                        <a class="nav-link" href="index.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                                <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
+                            </svg>
+                            Accueil
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#bio">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+                                    <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
+                                </svg>
+                                Biographie
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-fill" viewBox="0 0 16 16">
+                                    <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                    <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
+                                </svg>
+                                Photos
+                                </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-reels-fill" viewBox="0 0 16 16">
+                                    <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    <path d="M9 6a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                                    <path d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h7z"/>
+                                </svg>
+                                Vidéos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                                </svg>
+                                Blog
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- <div class="alert alert alert-primary alert-dismissible fade show" role="alert">
+            <h5 class="alert-heading">Envoyer un mail ? &nbsp;
+                <a href="mailto:fmarticavalle@gmail.com" class="text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 20 20">
+                        <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+                    </svg>
+                </a>
+            </h5>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>  -->
+        <!-- <div class="jumbotron"></div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos dolores ea consectetur, illo aliquam dolore quo voluptates voluptatem natus. Doloribus repellendus accusantium, earum cupiditate veritatis fuga, adipisci minus ab nostrum ipsum quo quia error corporis consequatur aspernatur qui rem possimus consequuntur molestias sapiente sunt cumque. Aliquam cumque accusamus quod excepturi?
+        </div>        -->
+        <div class="row partie1 mb-5">
+            <div class="col-12 col-lg-8 d-flex flex-column justify-content-between">
+                <section class="carousel slide px-5 py-0" data-ride="carousel" data-interval="3000">
+                    <div id="carouselControls" class="carousel slide" data-ride="carousel" data-interval="3000">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="img\carousel\slide1.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img\carousel\slide2.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img\carousel\slide3.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img\carousel\slide4.jpg" class="d-block w-100" alt="...">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Précédent</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Suivant</span>
+                        </a>
+                    </div>                    
+                </section> 
+                <section class="agenda mt-4 d-flex flex-column align-items-center">
+                    <h2 class="mb-5">Prochaines dates</h2>
+                    <div class="card-deck" id="deck1">
+                        <div class="card shadow border-primary text-center">
+                            <img src="img/theatre.jpg" class="card-img-top" alt="...">
+                            <h3 class="card-title text-primary mt-3">
+                                Spectacle X <span class="badge badge-primary">New</span>
+                            </h3>
+                            <div class="card-body">
+                                <p>
+                                    <strong>Date : </strong>01/01/0001<br />
+                                    <strong>Lieu : </strong>[Théâtre X]
+                                </p>
+                                <p class="card-text"><em>Informations complémentaires :</em> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, minus?</p>
+                            </div>
+                            <div class="card-footer text-right bg-transparent">
+                                <a href="#" class="card-link text-right">Billetterie</a>
+                            </div>
+                        </div>
+                        <div class="card shadow border-primary text-center">
+                            <img src="img/theatre2.jpg" class="card-img-top" alt="...">
+                            <h3 class="card-title text-primary mt-3">
+                                Spectacle Y <span class="badge badge-secondary">Fini</span>
+                            </h3>
+                            <div class="card-body">
+                                <p>
+                                    <strong>Date : </strong>01/01/0001<br />
+                                    <strong>Lieu : </strong>[Théâtre Y]
+                                </p>
+                                <p class="card-text"><em>Informations complémentaires :</em>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, laudantium! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, minus?</p>
+                            </div>
+                            <div class="card-footer text-right bg-transparent">
+                                <a href="#" class="card-link text-right">Billetterie</a>
+                            </div>
+                        </div>
+                    </div>
+                </section> 
+            </div>
+            <aside class="col-12 col-lg-4 news px-5 d-flex flex-column align-items-center justify-content-between">
+                <h2 class="align-self-center">Nouveautés</h2>
+                <div class="card shadow my-3 mx-3 w-100">
+                    <img class="card-img-top" src="img\card3.jpg" alt=”...”>
+                    <div class="card-body px-1 py-2">
+                        <a href="#" class="stretched-link">
+                        <h3 class="card-title text-center my-1">Nouvelles photos !</h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="card shadow my-3 mx-3 w-90">
+                    <div class="card-body p-0 d-flex flex-column align-items-center">
+                    <div class="embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/watch?v=1ABsTHKchLY" allowfullscreen>
+                        </iframe>
+                    </div>
+                    <a href="#" class="stretched-link">
+                    <h3 class="card-title text-center">Vidéo de [tournage x ou y]</h5>
+                    </a>
+                    </div>
+                </div>
+                <div class="card text-center my-3 mx-3">
+                    <div class="card-header">
+                        Article
+                    </div>
+                    <div class="card-body">
+                        <a href="" class="stretched-link">
+                            <h3 class="card-title">Titre</h3>
+                        </a>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus voluptates itaque quod necessitatibus nemo. Dolores ea molestias ullam neque et!</p>
+                    </div>
+                    <div class="card-footer text-muted">
+                        x days ago
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary mt-5">Voir plus</button>
+            </aside>   
+        </div>
+        <div class="row mb-3">
+            <aside class="video col-12 col-lg-4 d-flex flex-column align-items-center justify-content-between">
+                <h2>Derniers tournages</h2>
+                    <div class="embed-responsive-16by9 my-3">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/watch?v=1ABsTHKchLY" allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="embed-responsive-16by9 my-3">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/watch?v=1ABsTHKchLY" allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="embed-responsive-16by9 my-3">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/watch?v=1ABsTHKchLY" allowfullscreen>
+                        </iframe>
+                    </div>
+                    <button type="button" class="btn btn-primary mb-5">Voir plus</button>
+            </aside>
+            <section id="bio" class="bio col-12 col-lg-8 d-flex flex-column">
+                <h2 class="align-self-start">Biographie</h2>
+                <div class="texte">
+                    <img class="d-block w-25" src="img\bio\bio1.jpg" alt="" />
+                    <p>Je suis un premier paragraphe biographique<br />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quo doloribus facilis quae commodi blanditiis? Illum cumque aliquid dolorem nostrum neque quas rerum? Ullam illum quibusdam molestiae odit libero et!<br />
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis quo aperiam doloremque rem repellendus? Dicta aliquid commodi similique maiores at temporibus ratione, autem iure eius omnis minima voluptatibus dolorum quibusdam.
+                    </p>
+                    <img class="d-block w-25" src="img\bio\bio2.jpg" alt="" />
+                    <p>Je suis un second paragraphe biographique<br />
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste dignissimos minus ex, quibusdam pariatur illum laudantium atque, fuga id delectus minima! Blanditiis, nisi! Autem possimus suscipit qui officia, adipisci ducimus optio aliquam non quibusdam modi error saepe cum deleniti?<br />
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, rem doloremque obcaecati repudiandae laborum itaque totam in. Vero, quis dolorem.
+                    </p>
+                    <img class="d-block w-25" src="img\bio\bio3.jpg" alt="" />
+                    <p>Je suis un troisième paragraphe biographique<br />
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste dignissimos minus ex, quibusdam pariatur illum laudantium atque, fuga id delectus minima! Blanditiis, nisi! Autem possimus suscipit qui officia, adipisci ducimus optio aliquam non quibusdam modi error saepe cum deleniti?<br />
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores magnam, voluptatum nobis perferendis voluptates, impedit laborum quia tenetur dolorum omnis, laboriosam quos perspiciatis corrupti. Error ullam vitae dolores beatae, quae earum impedit libero nulla. Dicta praesentium, voluptatem impedit veritatis vero eaque repellendus consequuntur ex aliquid ipsum veniam, soluta recusandae? Quaerat!
+                    </p>
+                    <img class="d-block w-25" src="img\bio\bio4.jpg" alt="" />
+                    <p>Je suis un quatrième paragraphe biographique<br />
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste dignissimos minus ex, quibusdam pariatur illum laudantium atque, fuga id delectus minima! Blanditiis, nisi! Autem possimus suscipit qui officia, adipisci ducimus optio aliquam non quibusdam modi error saepe cum deleniti?<br />
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla voluptatibus animi quod recusandae quia soluta fuga non iste eius maiores cupiditate beatae nisi, adipisci debitis omnis enim voluptatem, ipsa mollitia?
+                    </p>
+                </div>            
+            </section>
+        </div>
+        <section class="blog d-flex flex-column align-items-stretch mb-5 mb-lg-0">
+            <h2 class="align-self-center mb-5">Blog</h2>
+            <div class="card-deck d-flex flex-column flex-md-row align-items-center justify-content-around">
+                <div class="card text-center mb-5">
+                    <div class="card-header">
+                        Billet d'humeur
+                    </div>
+                    <div class="card-body">
+                        <a href="" class="stretched-link">
+                            <h3 class="card-title">Mon avis sur [un truc]</h3>
+                        </a>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus voluptates itaque quod necessitatibus nemo. Dolores ea molestias ullam neque et!</p>
+                    </div>
+                    <div class="card-footer text-muted">
+                        x days ago
+                    </div>
+                </div>
+                <div class="card text-center mb-5">
+                    <div class="card-header">
+                        Article
+                    </div>
+                    <div class="card-body">
+                        <a href="" class="stretched-link">
+                            <h3 class="card-title">Titre</h3>
+                        </a>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus voluptates itaque quod necessitatibus nemo. Dolores ea molestias ullam neque et!</p>
+                    </div>
+                    <div class="card-footer text-muted">
+                        x days ago
+                    </div>
+                </div>
+                <div class="card text-center mb-5">
+                    <div class="card-header">
+                        Annonce !
+                    </div>
+                    <div class="card-body">
+                        <a href="" class="stretched-link">
+                            <h3 class="card-title">Prenez vos agendas</h3>
+                        </a>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus voluptates itaque quod necessitatibus nemo. Dolores ea molestias ullam neque et!</p>
+                    </div>
+                    <div class="card-footer text-muted">
+                        x days ago
+                    </div>
+                </div>   
+                <button type="button" class="btn btn-primary">Voir plus</button>
+            </div>                  
+        </section>
+        <div class="ailleurs">
+            <h2 class="mb-4">Ailleurs sur le web</h2>
+            <div class="row d-flex align-items-center justify-content-between">
+                <div class="col-3 mb-3">
+                    <a href="https://www.bellefaye.com/fr/person/person/74076?backRoute=seo_activity_id_links&backRouteParameters%5Bid%5D=629">
+                        <img class="d-block imgFooter" src="img\bellefaye2.jpg" alt="">
+                    </a>
+                </div>
+                <div class="col-3 mb-3">
+                    <a href="https://blogs.mediapart.fr/le-gros-95/blog">
+                        <img class="d-block imgFooter" src="img\mediapart.png" alt="">
+                    </a>
+                </div>
+                <div class="col-3 mb-3">
+                    <a href="https://www.facebook.com/fmarticavalle">
+                        <img class="d-block imgFooter" src="img\facebook.png" alt="">
+                    </a>
+                </div>
+                <footer class="col-12 col-lg-3 d-flex justify-content-around align-items-center">
+                        <a href="mailto:fmarticavalle@gmail.com" class="nav-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                                <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+                            </svg>
+                            Contact
+                        </a>
+                        <a href="#" class="nav-link">
+                            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="hands-helping" class="svg-inline--fa fa-hands-helping fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                                <path fill="currentColor" d="M488 192H336v56c0 39.7-32.3 72-72 72s-72-32.3-72-72V126.4l-64.9 39C107.8 176.9 96 197.8 96 220.2v47.3l-80 46.2C.7 322.5-4.6 342.1 4.3 357.4l80 138.6c8.8 15.3 28.4 20.5 43.7 11.7L231.4 448H368c35.3 0 64-28.7 64-64h16c17.7 0 32-14.3 32-32v-64h8c13.3 0 24-10.7 24-24v-48c0-13.3-10.7-24-24-24zm147.7-37.4L555.7 16C546.9.7 527.3-4.5 512 4.3L408.6 64H306.4c-12 0-23.7 3.4-33.9 9.7L239 94.6c-9.4 5.8-15 16.1-15 27.1V248c0 22.1 17.9 40 40 40s40-17.9 40-40v-88h184c30.9 0 56 25.1 56 56v28.5l80-46.2c15.3-8.9 20.5-28.4 11.7-43.7z">
+                                </path>
+                            </svg>
+                            Site partenaire
+                        </a>
+                        <!-- <a href="#" class="nav-link">
+                            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="hands-helping" class="svg-inline--fa fa-hands-helping fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                                <path fill="currentColor" d="M488 192H336v56c0 39.7-32.3 72-72 72s-72-32.3-72-72V126.4l-64.9 39C107.8 176.9 96 197.8 96 220.2v47.3l-80 46.2C.7 322.5-4.6 342.1 4.3 357.4l80 138.6c8.8 15.3 28.4 20.5 43.7 11.7L231.4 448H368c35.3 0 64-28.7 64-64h16c17.7 0 32-14.3 32-32v-64h8c13.3 0 24-10.7 24-24v-48c0-13.3-10.7-24-24-24zm147.7-37.4L555.7 16C546.9.7 527.3-4.5 512 4.3L408.6 64H306.4c-12 0-23.7 3.4-33.9 9.7L239 94.6c-9.4 5.8-15 16.1-15 27.1V248c0 22.1 17.9 40 40 40s40-17.9 40-40v-88h184c30.9 0 56 25.1 56 56v28.5l80-46.2c15.3-8.9 20.5-28.4 11.7-43.7z">
+                                </path>
+                            </svg>
+                            Autre site partenaire
+                        </a> -->
+                </footer>
+            </div>
+        </div>
+    <!-- <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top ">
+        <div class="container d-flex align-items-center">
+          <div class="contact-info mr-auto">
+            <ul>
+              <li><i class="icofont-envelope"></i><a href="mailto:contact@example.com">fmarticavalle@gmail.com</a></li>
+              <li><i class="icofont-phone"></i> 06 18 11 19 44</li>
+            </ul>
+          </div>
+          <div class="cta">
+            <a href="#about" class="scrollto">Commencer à lire [supprimer ?]</a>
+          </div>
+        </div>
+      </div> -->
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+        
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+        
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    
+    <script src="scriptCustom.js" type="text/javascript"></script>
+  </body>
+</html>
