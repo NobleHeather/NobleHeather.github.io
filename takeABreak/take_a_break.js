@@ -128,7 +128,7 @@ function texte() {
 }
 //* fait clignoter le favicon
 function fav() {
-    favicon.href = favicon.href == "http://127.0.0.1:5500/go.png" ? "http://127.0.0.1:5500/stop.png" : "http://127.0.0.1:5500/go.png";
+    favicon.href = favicon.href == "https://nobleheather.github.io/takeABreak/go.png" ? "https://nobleheather.github.io/takeABreak/stop.png" : "https://nobleheather.github.io/takeABreak/go.png";
 }
 
 //// affiche alert &|| img &|| play a sound
