@@ -1,0 +1,11 @@
+{
+  "name": "break",
+  "version": "1.0.0",
+  "description": "",
+  "main": "take_a_break.js",
+  "scripts": {
+    "sass": "sass --watch ./take_a_break.scss:./css/style.css"
+  },
+  "author": "NobleHeather",
+  "license": "ISC"
+}

@@ -1,0 +1,125 @@
+// centrer les options de select : https://github.com/fnagel/jquery-ui
+
+
+#imgDiv {
+    // border: 1px solid #000;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    background-color: #fff;
+    // color: rgb(100, 100, 100);
+    & img {
+        object-fit: contain;
+        z-index: 1;
+        width: 50%;
+        @media screen and (max-width: 900px) {
+            width: 100%;
+        }
+    }
+    & #autreBreak {
+        position: absolute;
+        z-index: 2;
+    }
+}
+
+.main {
+    // border: 1px solid #000;
+    width: 100%;
+    margin-top: 40vh; /* poussé de la moitié de hauteur de viewport */
+    transform: translateY(-50%);
+    > #choix:nth-child(2) {
+                        //  border: 1px solid #000;
+        margin-bottom: 20px;
+    }
+}
+
+#timePeriod {
+                        // border: 1px solid orange;
+    width: 400px;
+}
+
+.col {
+                        // border: 1px solid #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+
+    & .notif {
+                                // border: 1px solid green;
+        justify-content: center;
+        align-items: center;
+        > p {
+            // border: 1px solid pink;
+            margin: 0 0 10px 0;
+        }
+    }
+}
+.row {
+        // border: 1px solid blue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &:nth-child(1) {
+                                    // border: 1px solid pink;
+        align-items: start;
+        justify-content: space-around;
+        @media screen and (max-width: 900px) {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+    & .checkbox {
+                            //  border: 1px solid green;
+        justify-content: flex-start;
+    }
+}
+
+button {
+    // https://codepen.io/dev_loop/pen/agqYaN
+    // outline: none;
+    background-color: white;
+    // border: 1px solid rgb(0, 22, 119);
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    & :hover {
+        outline: none;
+        border: none;
+    }
+    & :focus {
+        outline: none;
+        border: none;
+    }
+
+}
+svg {
+                        // border: 1px solid #000;
+    height: 20px;
+    width: 20px;
+    padding: 0 10px;
+}
+select {
+    // width: 60px;
+    font-family: 'FontAwesome', 'Second Font name';
+}
+input[type=text], select {
+    text-align: center;
+    text-align-last: center;
+}
+
+.settings {
+    // border: 1px solid #000;
+    width: 20%;
+    justify-content: start;
+    @media screen and (max-width: 900px) {
+        width: 30%;
+        justify-content: center;   
+    }
+    > select {
+        margin-right: 10px;
+    }
+}

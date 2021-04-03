@@ -24,11 +24,11 @@ ul {
   align-items: center;
   margin-top: 50px; }
 
-.construction .wrapper {
+.wrapper {
   display: flex; }
-  .construction .wrapper > div {
+  .wrapper > div {
     margin: 0 10px; }
-    .construction .wrapper > div > a img {
+    .wrapper > div > a img {
       height: 120px;
       width: auto; }
 
