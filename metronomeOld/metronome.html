@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/6fd9169ed4.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="#">
+    <title>Document</title>
+</head>
+<body class="col">
+    <h1>Métronome contemporain</h1>
+    <div id="projets">
+        <p><em><strong>En cours de réflexion :</strong><br />
+        Accélération et décélération, sauvegarde des valeurs,<br />
+        bouton stop, autres sons,<br />
+        bouton pour effacer valeurs enregistrées...<br />
+        (suggestions bienvenues)</em></p> 
+        <small><strong>Afficher le déroulement du code : </strong>ctrl + maj + i dans chrome, ctrl + maj + c dans firefox &#x2794; onglet console</small>
+    </div>
+    <div class="sound col">
+        <ul class="row">
+            Choisir un son : &nbsp;
+            <li>&#xf569;</li>
+            <li>&#xf017;</li>
+            <li>&#xf45f;</li>
+            <li>&#xf597;</li>
+        </ul>
+    </div>
+    <div class="interface col" id="interface">
+        <label for="cycle">Combien de cycles : "x pulse à y tempo" ?</p>
+        <input type="number" id="cycle" placeholder="NOT WORKING YET"/>
+        <input type="submit" id="submit1" value="Valider">
+    </div>
+    <section id="metronomeSettings">
+        <!-- <div class="cycle row">
+            <label for="tempo1">Tempo :</label>
+            <input type="number" id="tempo1" />
+            <label for="nbPuls1">Nombre de pulsation :</label>
+            <input type="number" id="nbPuls1" />
+        </div> -->
+    </section>
+    <input type="submit" value="Valider" id="submit2"/>
+    <p id="resume"></p>
+    <input type="submit" value="Start" id="submit3"/>
+    
+    <input type="submit" value="Metronome classique" id="submit6"/>
+    <section id="MetClassique">
+        <h2>Métronome classique</h2>
+        <div class="row">
+            <label for="classique">Tempo ?</label>
+            <input type="number" id="classique" />
+            <input type="submit" value="Start" id="submit4"/>
+            <input type="submit" value="Stop" id="submit5"/>
+        </div>
+    </section>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="metronome.js"></script>
+</body>
+</html>

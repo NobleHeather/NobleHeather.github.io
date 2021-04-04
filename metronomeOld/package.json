@@ -1,0 +1,12 @@
+{
+  "name": "metronome",
+  "version": "1.0.0",
+  "description": "",
+  "main": "metronome.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch ./metronome.scss:./css/style.css"
+  },
+  "author": "",
+  "license": "ISC"
+}

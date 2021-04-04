@@ -1,0 +1,269 @@
+body {
+    align-items: center;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.col {
+    // border: 1px solid #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h1 {
+    border-bottom: 2px solid coral;
+    padding: 3px;
+    margin: 0 0 15px 0;
+}
+h2 {
+    text-align: center;
+}
+h3 {
+    font-size: 1em;
+    text-decoration: underline;
+    padding: 0;
+    margin: 0;
+    // border: 1px solid #000;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+p {
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+}
+label, input {
+    margin: 5px;
+}
+input {
+    caret-color: coral;
+    border: coral 1px solid;
+    padding: 2px;
+    width: 40px;
+    &:focus {
+        outline: none;
+    }
+}
+ul {
+    list-style: none;
+    margin: 30px 0;
+    > li {
+        margin-right: 10px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+small {
+    border: 1px solid red;
+    padding: 2px;
+}
+#projets {
+    // border: 1px solid #000;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.sound, .options {
+    font-family: 'FontAwesome', 'Second Font name';
+}
+.options {
+    padding: 0;
+    margin: 30px 0 0 0; 
+    // border: 1px solid green;
+    position: relative;
+    > p { //*cog
+        // border: 1px solid #000;
+        margin: 0;
+        font-size: 1.5em;
+        transition: 1s;
+        &:hover {
+            color: coral;
+            cursor: pointer;
+        }
+    }
+    > ul {
+        border: 1px solid darken(coral, 20%);
+        background-color: white;
+        display: none;
+        position: absolute;
+        top: -12px;
+        left: 20px;
+        margin: 0 0 0 10px;
+        padding: 10px 10px 0px 0;
+        width: 240px;
+        transform: translateX(-100px);
+        > span {
+            // border: 1px solid #000;
+            font-size: .7em;
+            font-weight: bold;
+            padding: 2px 4px;
+            background-color: lighten(coral, 23%);
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            &:hover {
+                background-color: coral;
+                color: white;
+                cursor: pointer;
+            }
+        }
+        > li {
+            // border: 1px solid #000;
+            margin: 0 0px 7px 10px;
+        }
+        > li span:nth-child(2) {
+            border-bottom: 1px solid white;
+        }
+        > li:hover {
+            // font-style: italic;
+        }
+        > li:hover > span:first-child {
+            color: coral;
+            font-style: normal;  
+        }
+        > li:hover > span:nth-child(2) {
+            border-bottom: 1px solid coral;
+        }
+    }
+    > .faq {
+        display: none;
+        border: 1px solid darken(coral, 20%);
+        background-color: #fff;
+        padding: 10px 15px 10px 5px;
+        position: absolute;
+        left: 0;
+        top: 50px;
+        transform: translateX(23%);
+        width: 245px;
+        transform: translateX(calc(-100px + 23%));
+        > span {
+            font-size: .8em;
+            font-weight: bold;
+            padding: 2px 4px;
+            background-color: lighten(coral, 23%);
+            position: absolute;
+            top: 0;
+            right: 0;
+            &:hover {
+                background-color: coral;
+                color: white;
+                cursor: pointer;
+            }
+        }
+        > ul {
+            margin: 15px 0;
+            list-style: square;
+            list-style: tibetan;
+            list-style: georgian;
+            list-style: hebrew;
+            list-style: cambodian;
+        }
+        > p {
+            // border: 1px solid #000;
+            justify-content: center;
+            margin: auto;
+            > a {
+                font-style: normal;
+                font-size: 1.4em;
+                padding: 0 0 0 8px;
+            }
+        }
+        > p a:hover {
+            color: coral;
+        }
+    }
+}
+
+#resumeCycle {
+    > .row {
+        margin-bottom: 20px;
+    }
+}
+
+#metronomeSettings {
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    > .newCycle {
+        // border: 1px solid rgb(224, 17, 17);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        > .row {
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+            // left : -50px;
+            // transform: translateX(-50px);
+            // color: darken(coral, 20%);
+            // > input {
+            //     caret-color: black;
+            //     border: black 1px solid;
+            //     padding: 2px;
+            //     width: 40px;
+            //     &:focus {
+            //         outline: none;
+            // }
+            > button {
+                color: coral;
+                background-color: white;
+                font-size: bold;
+                transform: scale(1.1);
+                &:hover {
+                    background-color: coral;
+                    color: white;
+                    transform: scale(1);
+                    // box-shadow: coral 0 0 15px 2px;
+                }
+            }
+        }
+    }
+}
+
+::placeholder{
+    color: transparentize(coral, .4);
+    font-weight: 700;
+    text-align: center;
+}
+#submit1, #submit2, #submit3, #submit4, #submit5, #submit6, #submit7 { //il  doit y avoir un meilleur moyen
+    background-color: coral;
+    outline: none;
+    border : 1px solid darken(coral, 20%);
+    border-radius: 30px;
+    font-weight: bold;
+    padding: 5px 10px;
+    width: fit-content;
+    &:hover {
+        background-color: darken(coral, 5%);
+        cursor: pointer;
+        box-shadow: inset 2px 2px 2px;
+    }
+}
+#submit6 {
+    margin-top: 30px;
+}
+button, #resume span:first-child {
+    width: fit-content;
+    background-color: coral;
+    outline: none;
+    border : 1px solid darken(coral, 20%);
+    border-radius: 50px;
+    font-weight: bold;
+    padding: 2px 5px;
+    margin: 2px;
+    transition: 200ms;
+    &:hover {
+        background-color: darken(coral, 5%);
+        cursor: pointer;
+        box-shadow: 1px 1px 2px;
+        transform: scale(1.1);
+    }
+}
+

@@ -1,0 +1,91 @@
+body {
+    align-items: center;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.col {
+    display: flex;
+    flex-direction: column;
+}
+h1 {
+    border-bottom: 2px solid coral;
+    padding: 3px;
+    margin: 0 0 15px 0;
+}
+h2 {
+    text-align: center;
+}
+#projets {
+    // border: 1px solid #000;
+    text-align: center;
+    margin-bottom: 20px;
+}
+small {
+    border: 1px solid red;
+    padding: 2px;
+}
+.sound {
+    font-family: 'FontAwesome', 'Second Font name';
+}
+ul {
+    list-style: none;
+    margin: 30px 0;
+    > li {
+        margin-right: 10px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+label, input {
+    margin: 5px;
+}
+input {
+    caret-color: coral;
+    border: coral 1px solid;
+    padding: 2px;
+    &:focus {
+        outline: none;
+    }
+}
+::placeholder{
+    color: transparentize(coral, .4);
+    font-weight: 700;
+    text-align: center;
+}
+#submit1, #submit2, #submit3, #submit4, #submit5, #submit6 { //il  doit y avoir un meilleur moyen
+    background-color: coral;
+    outline: none;
+    border : 1px solid darken(coral, 20%);
+    border-radius: 30px;
+    font-weight: bold;
+    padding: 5px 10px;
+    &:hover {
+        background-color: darken(coral, 5%);
+        cursor: pointer;
+        box-shadow: inset 2px 2px 2px;
+    }
+}
+#submit6 {
+    margin-top: 30px;
+}
+button, #resume span:first-child {
+    background-color: coral;
+    outline: none;
+    border : 1px solid darken(coral, 20%);
+    border-radius: 50px;
+    font-weight: bold;
+    padding: 2px 5px;
+    margin: 2px;
+    transition: 200ms;
+    &:hover {
+        background-color: darken(coral, 5%);
+        cursor: pointer;
+        box-shadow: 1px 1px 2px;
+        transform: scale(1.1);
+    }
+}
+
