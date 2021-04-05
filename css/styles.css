@@ -26,8 +26,14 @@ ul {
 
 .wrapper {
   display: flex; }
+  @media screen and (max-width: 700px) {
+    .wrapper {
+      flex-direction: column; } }
   .wrapper > div {
-    margin: 0 10px; }
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
     .wrapper > div > a img {
       height: 120px;
       width: auto; }
