@@ -1,11 +1,18 @@
-//! PROBLEME : submit 3, le bout d'interval en + n'a pas la bonne durée
+//* PROBLEME : submit 3, le bout d'interval en + n'a pas la bonne durée
 //? calculé sur le tempo d'après ? j'ai pourtant mis i-1 dans le calcul
-    //! UPDATE : maintenant c'est le bordel absolu
 
-//! possible de charger le métronome avant de le lancer ? tjs imprécis au début
+//? possible de charger le métronome avant de le lancer ? tjs imprécis au début
 
-//! Quand on clique sur clear pour changer nb de cycle,
-//! ensuite on ne peut plus ajouter de div faster/slower
+//? Quand on clique sur clear pour changer nb de cycle,
+//? ensuite on ne peut plus ajouter de div faster/slower
+
+//? revoir l'affichage option sur petits écrans
+
+//! UPDATE
+//! 05/04/2021 : les autres sons se décalent encore +
+//! il faut voir la durée du son et en tenir compte dans le calcul
+
+//? faire une fonction pour les couleurs, si on veut changer le design d'un click
 
 // localStorage.clear();
 
@@ -356,7 +363,6 @@ submit1.addEventListener('click', function(e) {
 });
 
 
-
 //* quand on clique sur le 2e submit
 submit2.addEventListener('click', function(e) {
     e.preventDefault();
@@ -512,11 +518,17 @@ function clear() {
         resumeDiv.style.display = "block";
         submit8.style.display = "block";
     });
-
 }
 
-//* Quand on clique sur le 3e bouton
+let state = "playing";
+let cycleTab = [];
+let delayTab = [1000]; //* délai avant début du métronome
+let intervalTab = [];
+let dureeTab = [];
+
+//* Quand on clique sur le 3e bouton VERSION DEUX
 submit3.addEventListener('click', function(e) {
+
     //* on empêche le formulaire de s'actualiser
     e.preventDefault();
 
@@ -524,22 +536,55 @@ submit3.addEventListener('click', function(e) {
     submit3.style.display = "none";
     submit7.style.display = "block";
 
-    let state = "playing";
-    let play;
+    //* On réinitialise state/cycleTab au cas où ça soit pas la 1ère itération
+    state = "playing";
+    cycleTab = [];
 
     //* Le bouton stop permet de stopper le métronome avant la fin de tous les cycles
     submit7.addEventListener('click', function(e) {
         e.preventDefault();
         
-        //* Qui permet de stopper le métronome
-        clearInterval(play);
         state = "stopped all";
+        //* Qui permet de stopper le métronome
+        for (let i = 0; i < retCycle; i++) {
+            
+            console.log(i);
+            console.log(retCycle);
+            // console.log(cycleTab);
+            // console.log(cycleTab[i][1]);
+            if (cycleTab[0] != null) { //* si pas déjà appuyé sur stop
+                console.log(cycleTab);
+                clearInterval(cycleTab[i][1]);
+            }
+            // console.log(cycleTab);
+            // console.log(cycleTab[i][1]);
+
+            if (i = (retCycle)) {
+                console.log(i);
+                console.log(retCycle);
+                console.log("over");
+                cycleTab = [];
+                intervalTab = [];
+                dureeTab = [];
+                delayTab = [1000];
+                // console.log(delayTab);
+            }
+        }
         console.log("btn stop");
         // console.log("stopped all");
 
         //* et de faire réapparaître bouton start
-        submit3.style.display = "block";
+        // submit3.style.display = "block";
+        // submit7.style.display = "none"; 
+        
+        //* on indique à l'usager d'attendre
+        //! sinon ça fait tout bugger !
         submit7.style.display = "none"; 
+        decoInactive();
+        // submit3.setAttribute("value", "WAIT");
+        // submit3.style.backgroundColor = "grey";
+        // submit3.style.cursor = "not-allowed";
+        submit3.style.display = "block";
     });
 
     console.log("Tous les nombres de puls : ", inputsPulsAll);
@@ -547,69 +592,364 @@ submit3.addEventListener('click', function(e) {
     
     //* on tourne dans le for en fonction du nombre de cycle choisi au tout début
     //* On calcul le tempo en ms (interval = 1000/(tempo/60))
-    let delayTab = [0];
-    // console.log("Tous les délais : ", delayTab);
-    // console.log(delayTab[0]);
- 
-    //! pb de chevauchement entre les cycles
     for (let i = 0; i < retCycle; i++) {
         console.log("nombre de cycles : ", retCycle);
         // chiffres pour 6 puls tempo 60
-        let interval = 1000/(inputsTempoAll[i]/60); //1000
-        let duree = interval * inputsPulsAll[i]; //1000 * 6
+        //* calcul de interval = 1000/(inputsTempoAll[i]/60); //1000
+        //* calcul de duree = interval * inputsPulsAll[i]; //1000 * 6
+
+        //* On stock le nom de chaque cycle dans un tableau
+        cycleTab.push([`cycle ${(i+1)}`, i]);
 
         //* delay = delays précédents + duree du tour précédent 
         //!+ une fraction de interval (truc de barbare à recalculer)
-        if (isNaN(inputsTempoAll[(i-1)])) { //* si interval = NaN, on ajoute pas
-            delayTab.push(delayTab[i] + (1000/(inputsTempoAll[i]/60)) * (inputsPulsAll[i])); //NaN au 1er tour
-            // console.log("allo ?");
-        } else { //* si interval != NaN on ajoute un bout
-            delayTab.push(delayTab[i] + (1000/(inputsTempoAll[i]/60)) * (inputsPulsAll[i]) + /*interval*/ 1000/(inputsTempoAll[(i-1)]/60)); //((1000/(inputsTempoAll[(i-1)]/60))*(0.5/8)))
-            // console.log("allo, allo ?");
+        if (inputsTempoAll[(i-1)] == null) { // pour tempo 60
+            // SI ON VEUT FAIRE CA, IMPOSER A USAGER DE COMMENCER PAR x PULS A 60
+            console.log('if');
+            delayTab.push(delayTab[i] + (1000/(inputsTempoAll[i]/60)) * (inputsPulsAll[i]) + ((1000/(60/60))*(0.7/8)));    
+        } else {
+            console.log('else');
+            delayTab.push(delayTab[i] + (1000/(inputsTempoAll[i]/60)) * (inputsPulsAll[i]) + ((1000/(inputsTempoAll[(i-1)]/60))*(0.6/8)));  //* 0.6/8 mieux audio      
         }
-        // delayTab.push(delayTab[i] + (1000/(inputsTempoAll[i]/60)) * (inputsPulsAll[i]) + ((1000/(inputsTempoAll[(i)]/60))*(0.5/8))); //NaN au 1er tour
         console.log("Tous les délais : ", delayTab);
         // console.log(delayTab[i]);
         
-        //* si on n'a pas appuyé sur bouton stop, on rentre dans la boucle
-        
-            //* On retarde l'exécution du cycle suivant de la durée du cycle précédent
-        setTimeout(function() {
-            // chiffres pour 6 puls à 60
-            if (state == "playing") {
-                
-                console.log(`-----cycle${(i+1)}-----`);
-                console.log("state :", state);
-                console.log("délai de", delayTab[i], "ms avant cycle");
-                console.log(inputsPulsAll[i] + " puls à " + inputsTempoAll[i]);
-                // console.log("nb puls : ", inputsPulsAll[i]); //6
-                // console.log("tempo : ", inputsTempoAll[i]); //60
-                console.log("interval entre puls :", interval, "ms"); //1000
-                console.log("pendant", duree, "ms");
-                
-                //* On play un son tous les interval
-                play = setInterval (function() {
-                    son.play();
-                    console.log("I\'m playing : " + inputsPulsAll[i] + " puls à " + inputsTempoAll[i]);
-                }, interval); //1000
-                
-                //* On stop la fonction précédente après duree
-                setTimeout(function(){
-                    clearInterval(play);
-                    console.log('I\'m stopping : ' + inputsPulsAll[i] + " puls à " + inputsTempoAll[i]);
-                }, duree); //6000
+        intervalTab.push(1000/(inputsTempoAll[i]/60));
+        dureeTab.push(1000/(inputsTempoAll[i]/60) * inputsPulsAll[i]);
+        if(i == (retCycle - 1)) {
+            // console.log(i);
+            console.log("Tous les intervals : ", intervalTab);
+            console.log("Toutes les durées : ", dureeTab);
+            console.log("toutes les fonctions play : ", cycleTab);
 
-            //* Si on a appuyé sur bouton stop
-            } else if (state == "stopped all") {
-                console.log("state :", state);
-            } else {
-                console.log("error");
-            }
-
-        }, delayTab[i]); //0
+            playMetronome(); 
+        } 
     }
 });
-//! fin ici
+
+function decoActive() {
+    //* On change le wait en start
+    submit3.setAttribute ("value", "Start");
+    submit3.style.backgroundColor = "coral";
+    submit3.style.border = "1px solid #e93f00"; // darken(coral, 20%)
+    submit3.style.cursor = "pointer";
+}
+
+function decoInactive() {
+    submit3.setAttribute ("value", "WAIT");
+    submit3.style.backgroundColor = "grey";
+    submit3.style.border = "1px solid black";
+    submit3.style.cursor = "not-allowed";
+}
+
+function fini() {
+    //* Quand tout est fini, on remet le bouton start
+    //* Et on réinitialise tout au cas où on veuille relancer direct le métronome
+    state == "stopped all";
+    cycleTab = [];
+    intervalTab = [];
+    dureeTab = [];
+    delayTab = [1000];
+    console.log("FINI");
+
+    submit7.style.display = "none";
+    submit3.style.display = "block";
+}
+
+function lanceCycle(i) {
+    
+    console.log(`-----cycle${(i+1)}-----`);
+    console.log("nom : ", cycleTab[i][0])
+    console.log("state :", state);
+    console.log("délai de", delayTab[i], "ms avant cycle");
+    console.log(inputsPulsAll[i] + " puls à " + inputsTempoAll[i]);
+    console.log("interval entre puls :", intervalTab[i], "ms"); //1000
+    console.log("pendant", dureeTab[i], "ms");
+
+    //* On play un son tous les interval
+    cycleTab[i][1] = setInterval (function() {
+
+        if (state == "playing") {
+            son.play();
+            console.log("I\'m playing = " + cycleTab[i][0] + ' : ' + inputsPulsAll[i] + " puls à " + inputsTempoAll[i]);
+        } else if (state == "stopped all") {
+            //! Si on appuie sur stop une fois le metronome bien lancé
+            //! on tourne a vide ici
+            console.log("state lanceCycle :", state);
+        } else {
+            console.log(error);
+        }
+
+    }, intervalTab[i]); //1000  
+}
+
+function stopCycle(i) {
+    //* On stop la fonction précédente après duree
+    setTimeout(function(){
+
+        if (state == "playing") {
+            clearInterval(cycleTab[i][1]);
+            console.log('I\'m stopping = ' + cycleTab[i][0] + ' : ' + inputsPulsAll[i] + " puls à " + inputsTempoAll[i]); 
+            // console.log(i);
+        } else if (state == "stopped all") {
+            console.log("state stopCycle :", state);
+        } else {
+            console.log(error);
+        }
+
+        if(i == (retCycle -1)) {
+            fini();
+        }
+
+    }, dureeTab[i]); //6000
+}
+
+function playMetronome() {
+    console.log("function play : playing");
+    
+    for (let i = 0; i < retCycle; i++) {
+        
+        console.log(state);
+        setTimeout(function() {
+
+            if (state == "playing") {
+                lanceCycle(i);
+                stopCycle(i);
+            } else if (state == "stopped all") {
+                console.log("state playMetronome :", state);
+                decoActive();
+            } else {
+                console.log("erreur");
+            }
+            
+        }, delayTab[i]);
+
+    }
+}
+
+//! fonction playMetronome VERSION 1
+// function playMetronome2() {
+//     console.log("function play : playing");
+
+//     //! delay(i), play interval(i) pendant durée(i)
+
+//     for (let i = 0; i < retCycle; i++) {
+//         // console.log(i);
+
+//         //* On retarde l'exécution du cycle avec delayTab
+//         setTimeout(function() {
+
+//             //* si on n'a pas appuyé sur bouton stop, on rentre dans la boucle
+//             if (state == "playing") {
+
+//                 console.log(`-----cycle${(i+1)}-----`);
+//                 console.log("nom : ", cycleTab[i][0])
+//                 console.log("state :", state);
+//                 console.log("délai de", delayTab[i], "ms avant cycle");
+//                 console.log(inputsPulsAll[i] + " puls à " + inputsTempoAll[i]);
+//                 console.log("interval entre puls :", intervalTab[i], "ms"); //1000
+//                 console.log("pendant", dureeTab[i], "ms");
+
+//                 //* On play un son tous les interval
+//                 cycleTab[i][1] = setInterval (function() {
+//                     // console.log(cycleTab[i][1]);
+//                     son.play();
+//                     console.log("I\'m playing = " + cycleTab[i][0] + ' : ' + inputsPulsAll[i] + " puls à " + inputsTempoAll[i]);
+//                 }, intervalTab[i]); //1000
+
+//                 //* On stop la fonction précédente après duree
+//                 setTimeout(function(){
+
+//                     if (state == "playing") {
+
+//                         // console.log(cycleTab[i][1]);
+//                         clearInterval(cycleTab[i][1]);
+//                         console.log('I\'m stopping = ' + cycleTab[i][0] + ' : ' + inputsPulsAll[i] + " puls à " + inputsTempoAll[i]);
+                        
+//                         //* Quand tout est fini, on remet le bouton start
+//                         //* Et on réinitialise tout au cas où on veuille relancer direct le métronome
+//                         if(i == (retCycle - 1)) {
+//                             state == "stopped all";
+//                             cycleTab = [];
+//                             intervalTab = [];
+//                             dureeTab = [];
+//                             delayTab = [1000];
+//                             console.log("FINI");
+    
+//                             submit7.style.display = "none";
+//                             submit3.style.display = "block";
+//                         }
+//                     } else if (state == "stopped all") {
+//                         console.log("state =", state);
+//                         //* On change le wait en start
+//                         submit3.setAttribute("value", "Start");
+//                         submit3.style.backgroundColor = "coral";
+//                         submit3.style.cursor = "pointer";
+//                     } else {
+//                         console.log("error stop");
+//                     }
+                
+//                 }, dureeTab[i]); //6000
+                
+//                 //* Si on a appuyé sur bouton stop
+//             } else if (state == "stopped all") {
+//                 console.log("state :", state);
+//                 //* On change le wait en start
+//                 submit3.setAttribute ("value", "Start");
+//                 submit3.style.backgroundColor = "coral";
+//                 submit3.style.cursor = "pointer";
+//             } else {
+//                 console.log("error play");
+//             }
+
+//         }, delayTab[i]);
+//     }
+// }
+//! FIN fonction playMetronome VERSION 1
+
+    // //* On retarde l'exécution du cycle suivant de la durée du cycle précédent
+    // setTimeout(function() {
+    //     // chiffres pour 6 puls à 60
+    //     //* si on n'a pas appuyé sur bouton stop, on rentre dans la boucle
+    //     if (state == "playing") {
+            
+    //         console.log(`-----cycle${(i+1)}-----`);
+    //         console.log("state :", state);
+    //         console.log("délai de", delayTab[i], "ms avant cycle");
+    //         console.log(inputsPulsAll[i] + " puls à " + inputsTempoAll[i]);
+    //         // console.log("nb puls : ", inputsPulsAll[i]); //6
+    //         // console.log("tempo : ", inputsTempoAll[i]); //60
+    //         console.log("interval entre puls :", interval, "ms"); //1000
+    //         console.log("pendant", duree, "ms");
+            
+    //         //* On play un son tous les interval
+    //         play = setInterval (function() {
+    //             son.play();
+    //             console.log("I\'m playing : " + inputsPulsAll[i] + " puls à " + inputsTempoAll[i]);
+    //         }, interval); //1000
+            
+    //         //* On stop la fonction précédente après duree
+    //         setTimeout(function(){
+    //             clearInterval(play);
+    //             console.log('I\'m stopping : ' + inputsPulsAll[i] + " puls à " + inputsTempoAll[i]);
+                
+    //             //* Quand tout est fini, on remet le bouton start
+    //             if(i == (retCycle - 1)) {
+    //                 submit7.style.display = "none";
+    //                 submit3.style.display = "block";
+    //             }
+    //         }, duree); //6000
+
+    //     //* Si on a appuyé sur bouton stop
+    //     } else if (state == "stopped all") {
+    //         console.log("state :", state);
+    //     } else {
+    //         console.log("error");
+    //     }
+
+    // }, delayTab[i]); //0
+
+
+//! 3e bouton VERSION 1
+// //* Quand on clique sur le 3e bouton
+// submit3.addEventListener('click', function(e) {
+//     //* on empêche le formulaire de s'actualiser
+//     e.preventDefault();
+
+//     //* On remplace le bouton start par un bouton stop
+//     submit3.style.display = "none";
+//     submit7.style.display = "block";
+
+//     let state = "playing";
+//     let play;
+
+//     //* Le bouton stop permet de stopper le métronome avant la fin de tous les cycles
+//     submit7.addEventListener('click', function(e) {
+//         e.preventDefault();
+        
+//         //* Qui permet de stopper le métronome
+//         clearInterval(play);
+//         state = "stopped all";
+//         console.log("btn stop");
+//         // console.log("stopped all");
+
+//         //* et de faire réapparaître bouton start
+//         submit3.style.display = "block";
+//         submit7.style.display = "none"; 
+//     });
+
+//     console.log("Tous les nombres de puls : ", inputsPulsAll);
+//     console.log("Tous les tempos : ", inputsTempoAll);
+    
+//     //* on tourne dans le for en fonction du nombre de cycle choisi au tout début
+//     //* On calcul le tempo en ms (interval = 1000/(tempo/60))
+//     let delayTab = [0];
+//     // console.log("Tous les délais : ", delayTab);
+//     // console.log(delayTab[0]);
+ 
+//     //! pb de chevauchement entre les cycles
+//     for (let i = 0; i < retCycle; i++) {
+//         console.log("nombre de cycles : ", retCycle);
+//         // chiffres pour 6 puls tempo 60
+//         let interval = 1000/(inputsTempoAll[i]/60); //1000
+//         let duree = interval * inputsPulsAll[i]; //1000 * 6
+
+//         //* delay = delays précédents + duree du tour précédent 
+//         //!+ une fraction de interval (truc de barbare à recalculer)
+//         // if (isNaN(inputsTempoAll[(i-1)])) { //* si interval = NaN, on ajoute pas
+//         //     delayTab.push(delayTab[i] + (1000/(inputsTempoAll[i]/60)) * (inputsPulsAll[i]) + ((1000/(inputsTempoAll[(i)]/60))*(0.657/8))); //NaN au 1er tour
+//         // } else { //* si interval != NaN on ajoute un bout
+//         //     delayTab.push(delayTab[i] + (1000/(inputsTempoAll[i]/60)) * (inputsPulsAll[i]) + ((1000/(inputsTempoAll[(i)]/60))*(0.657/8)));
+//         // }
+//         delayTab.push(delayTab[i] + (1000/(inputsTempoAll[i]/60)) * (inputsPulsAll[i]) + ((1000/(inputsTempoAll[(i)]/60))*(0.657/8)));        
+//         console.log("Tous les délais : ", delayTab);
+//         // console.log(delayTab[i]);
+        
+//         //* si on n'a pas appuyé sur bouton stop, on rentre dans la boucle
+        
+//             //* On retarde l'exécution du cycle suivant de la durée du cycle précédent
+//         setTimeout(function() {
+//             // chiffres pour 6 puls à 60
+//             if (state == "playing") {
+                
+//                 console.log(`-----cycle${(i+1)}-----`);
+//                 console.log("state :", state);
+//                 console.log("délai de", delayTab[i], "ms avant cycle");
+//                 console.log(inputsPulsAll[i] + " puls à " + inputsTempoAll[i]);
+//                 // console.log("nb puls : ", inputsPulsAll[i]); //6
+//                 // console.log("tempo : ", inputsTempoAll[i]); //60
+//                 console.log("interval entre puls :", interval, "ms"); //1000
+//                 console.log("pendant", duree, "ms");
+                
+//                 //* On play un son tous les interval
+//                 play = setInterval (function() {
+//                     son.play();
+//                     console.log("I\'m playing : " + inputsPulsAll[i] + " puls à " + inputsTempoAll[i]);
+//                 }, interval); //1000
+                
+//                 //* On stop la fonction précédente après duree
+//                 setTimeout(function(){
+//                     clearInterval(play);
+//                     console.log('I\'m stopping : ' + inputsPulsAll[i] + " puls à " + inputsTempoAll[i]);
+                    
+//                     //* Quand tout est fini, on remet le bouton start
+//                     if(i == (retCycle - 1)) {
+//                         submit7.style.display = "none";
+//                         submit3.style.display = "block";
+//                     }
+//                 }, duree); //6000
+
+//             //* Si on a appuyé sur bouton stop
+//             } else if (state == "stopped all") {
+//                 console.log("state :", state);
+//             } else {
+//                 console.log("error");
+//             }
+
+//         }, delayTab[i]); //0
+//     }
+// });
+//! FIN 3e bouton VERSION 1
 
 
 ////? METRONOME CLASSIQUE

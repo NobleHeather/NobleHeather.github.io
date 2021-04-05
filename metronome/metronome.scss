@@ -228,9 +228,10 @@ small {
 }
 
 ::placeholder{
-    color: transparentize(coral, .4);
+    color: transparentize(coral, .2);
     font-weight: 700;
-    text-align: center;
+    // text-align: left;
+    font-size: .7em;
 }
 #submit1, #submit2, #submit3, #submit4, #submit5, #submit6, #submit7 { //il  doit y avoir un meilleur moyen
     background-color: coral;
