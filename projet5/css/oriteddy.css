@@ -1,0 +1,82 @@
+h1 a {
+  text-decoration: none;
+  color: black; }
+  h1 a:hover {
+    text-decoration: none;
+    color: white; }
+
+.SousTitre {
+  font-size: .8em; }
+
+footer {
+  background-color: #DDD; }
+
+.toast {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1; }
+
+#imgNavPeluche > div {
+  padding: 0;
+  margin: 0; }
+  #imgNavPeluche > div img {
+    width: 60px;
+    padding: 0;
+    margin: 15px 0 0 15px; }
+
+.nav-item {
+  cursor: pointer; }
+
+.card-body {
+  position: relative;
+  height: 250px; }
+  .card-body .bio:nth-child(3) {
+    position: absolute;
+    top: 65px;
+    display: none; }
+  .card-body .detail:nth-child(4) {
+    position: absolute;
+    top: 65px;
+    display: none; }
+
+#cardText > svg {
+  width: 20px;
+  margin: 0 5px 0 20px; }
+  #cardText > svg:hover {
+    cursor: pointer; }
+  #cardText > svg:nth-child(2) path {
+    fill: #9b4c14; }
+  #cardText > svg:nth-child(3) {
+    outline: 1px solid #000;
+    outline-offset: 2px; }
+    #cardText > svg:nth-child(3) > path {
+      fill: #df901b; }
+  #cardText > svg:nth-child(4) path {
+    fill: sandybrown; }
+
+.card-footer {
+  position: relative; }
+  .card-footer > a {
+    outline: none;
+    color: black; }
+    .card-footer > a svg {
+      width: 30px;
+      height: 30px;
+      cursor: pointer; }
+      .card-footer > a svg:nth-child(2) {
+        position: absolute;
+        top: 12px;
+        right: 20px;
+        opacity: 0; }
+        .card-footer > a svg:nth-child(2):active {
+          opacity: 1; }
+
+.imgCommande {
+  width: 70px; }
+
+.bin:hover {
+  cursor: pointer; }
+
+/*# sourceMappingURL=oriteddy.css.map */

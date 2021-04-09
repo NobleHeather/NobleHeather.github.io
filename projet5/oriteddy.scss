@@ -1,0 +1,130 @@
+$color : (
+    "primary" : rgb(65, 63, 189),    
+    "secondary" : rgb(206, 18, 174),
+    "dark" : #000,
+    "light" : #DDD,
+    "focus" : rgb(247, 93, 4)
+);
+
+h1 a {
+    text-decoration: none;
+    color: black;
+    &:hover {
+        text-decoration: none;
+        color: white;
+    }
+}
+.SousTitre {
+                            // border: 1px solid #000;
+    font-size: .8em;
+}
+
+footer {
+    background-color: map-get($color, light);
+}
+
+// page produit
+.toast {
+    position: absolute;
+    top: 70%;
+    // transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+#imgNavPeluche {
+    > div {
+        padding: 0;
+        margin: 0;
+        img {
+        width: 60px;
+        padding: 0;
+        margin: 15px 0 0 15px;
+        }
+    }
+}
+.nav-item {
+    cursor : pointer;
+}
+.card-body { 
+    //? je pige rien à cette histoire de z-index. Comment je mets personnaliser par-dessus ?
+    // border: 1px solid #000;
+    position: relative;
+    height: 250px;
+    // z-index: 1;
+    & .personnaliser:nth-child(2) {
+                                        // border: 1px solid #000;
+        // z-index: 2;
+    }
+    & .bio:nth-child(3) {
+                                        // border: 1px solid red;
+        position: absolute;
+        top: 65px;
+        // opacity: 0;
+        // z-index: -1;
+        display: none;
+    }
+    & .detail:nth-child(4) {
+                                        // border: 1px solid blue;
+        position: absolute;
+        top: 65px;
+        // opacity: 0;
+        // z-index: -1;
+        display: none;
+    }
+}
+#cardText {
+    > svg {
+        width: 20px;
+        margin: 0 5px 0 20px;
+        // border: 1px solid #000;
+        &:hover {
+            cursor: pointer;
+        }
+        &:nth-child(2) path {
+            fill: rgb(155, 76, 20);
+        }
+        &:nth-child(3) {
+            outline: 1px solid map-get($color, dark);
+            outline-offset: 2px;
+            > path {
+                fill: rgb(223, 144, 27);
+                // stroke: blue;
+                // stroke-width: 1%;
+            }
+        }
+        &:nth-child(4) path {
+            fill: sandybrown;
+        }
+    }
+}
+.card-footer {
+                            // border: 1px solid #000;
+    position: relative;
+    > a {
+        outline: none; //* sinon cadre moche au chargement de la page
+        color: black;
+        svg { // cart light
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            &:nth-child(2) { // cart dark
+                position: absolute;
+                top: 12px;
+                right: 20px;
+                opacity: 0;
+                &:active {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+// PAGE FORM
+.imgCommande {
+    width: 70px;
+}
+.bin:hover {
+    cursor : pointer;
+}

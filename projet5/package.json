@@ -1,0 +1,12 @@
+{
+  "name": "projet-5",
+  "version": "1.0.0",
+  "description": "Projet 5 OC",
+  "main": "oriteddy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch ./oriteddy.scss:./css/oriteddy.css"
+  },
+  "author": "Alice M-C",
+  "license": "ISC"
+}
