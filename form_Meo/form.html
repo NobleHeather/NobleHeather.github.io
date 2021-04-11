@@ -202,113 +202,117 @@
                             J'ai une étoile nette et rouge, je la visualise
                         </label>
                     </div>
+                    <a href="#hidden" class="btn btn-warning mt-3" data-toggle="collapse">Show more Q</a> 
                 </fieldset>
-
-                <fieldset class="col-12">
-                    <legend class="text-primary"><strong>Question 2 : </strong>Je visualise cette étoile uniquement quand je ferme les yeux</legend>
+                
+                <div class="row collapse" id="hidden">
+                    <fieldset class="col-10 m-auto fieldsetHidden">
+                        <legend class="text-warning"><strong>Question 2 : </strong>Je visualise cette étoile uniquement quand je ferme les yeux</legend>
+                        
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="etoileOui" id="etoileOui" />
+                            <label class="form-check-label" for="etoileOui">
+                                Oui
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="etoileNon" id="etoileNon" />
+                            <label class="form-check-label" for="etoileNon">
+                                Non
+                            </label>
+                        </div>
+                    </fieldset>
+    
+                    <fieldset class="col-10 m-auto fieldsetHidden">
+                        <legend class="text-warning"><strong>Question 3 : </strong>Toujours la même étoile : pouvez-vous en changer la couleur ?</legend>
+                        
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="couleurOui" id="couleurOui" />
+                            <label class="form-check-label" for="couleurOui">
+                                Oui
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="couleurNon" id="couleurNon" />
+                            <label class="form-check-label" for="couleurNon">
+                                Non
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="couleurFormeOui" id="couleurFormeOui" />
+                            <label class="form-check-label" for="couleurFormeOui">
+                                Oui, mais je n'obtiens pas la couleur désirée et/ou la forme change
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="couleurFormePeutEtre" id="couleurFormePeutEtre" />
+                            <label class="form-check-label" for="couleurFormePeutEtre">
+                                Peut-être, mais je n'obtiens pas la bonne couleur et/ou la forme change
+                            </label>
+                    </fieldset>
+    
+                    <fieldset class="col-10 m-auto fieldsetHidden">
+                        <legend class="text-warning"><strong>Question 4 : </strong>Toujours la même étoile : pouvez-vous en changer le nombre de branches</legend>
+                        
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="brancheOui" id="brancheOui" />
+                            <label class="form-check-label" for="brancheOui">
+                                Oui
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="brancheNon" id="brancheNon" />
+                            <label class="form-check-label" for="brancheNon">
+                                Non, elle est forcément celle à laquelle j'ai pensé
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="brancheNouvelle" id="brancheNouvelle" />
+                            <label class="form-check-label" for="brancheNouvelle">
+                                Non, je dois supprimer l'étoile et en penser une nouvelle
+                            </label>
+                        </div>
+                        <a href="#subHidden" class="btn btn-danger mt-3" data-toggle="collapse">More Q ?</a> 
+                    </fieldset>
                     
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="etoileOui" id="etoileOui" />
-                        <label class="form-check-label" for="etoileOui">
-                            Oui
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="etoileNon" id="etoileNon" />
-                        <label class="form-check-label" for="etoileNon">
-                            Non
-                        </label>
-                    </div>
-                </fieldset>
-
-                <fieldset class="col-12">
-                    <legend class="text-primary"><strong>Question 3 : </strong>Toujours la même étoile : pouvez-vous en changer la couleur ?</legend>
-                    
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="couleurOui" id="couleurOui" />
-                        <label class="form-check-label" for="couleurOui">
-                            Oui
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="couleurNon" id="couleurNon" />
-                        <label class="form-check-label" for="couleurNon">
-                            Non
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="couleurFormeOui" id="couleurFormeOui" />
-                        <label class="form-check-label" for="couleurFormeOui">
-                            Oui, mais je n'obtiens pas la couleur désirée et/ou la forme change
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="couleurFormePeutEtre" id="couleurFormePeutEtre" />
-                        <label class="form-check-label" for="couleurFormePeutEtre">
-                            Peut-être, mais je n'obtiens pas la bonne couleur et/ou la forme change
-                        </label>
-                </fieldset>
-
-                <fieldset class="col-12">
-                    <legend class="text-primary"><strong>Question 4 : </strong>Toujours la même étoile : pouvez-vous en changer le nombre de branches</legend>
-                    
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="brancheOui" id="brancheOui" />
-                        <label class="form-check-label" for="brancheOui">
-                            Oui
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="brancheNon" id="brancheNon" />
-                        <label class="form-check-label" for="brancheNon">
-                            Non, elle est forcément celle à laquelle j'ai pensé
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="brancheNouvelle" id="brancheNouvelle" />
-                        <label class="form-check-label" for="brancheNouvelle">
-                            Non, je dois supprimer l'étoile et en penser une nouvelle
-                        </label>
-                    </div>
-                </fieldset>
-
-                <fieldset class="col-12">
-                    <legend class="text-primary"><strong>Question 5 : </strong>Toujours la même étoile : où est-elle ?</legend>
-                    
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="canalDeux" id="canalDeux" />
-                        <label class="form-check-label" for="canalDeux">
-                            Dans ma tête et devant moi, c'est comme un deuxième canal que Je visualise en même temps
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="superposition" id="superposition" />
-                        <label class="form-check-label" for="superposition">
-                            Dans mon champ de vision, en superposition du réel
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="imprecis" id="imprecis" />
-                        <label class="form-check-label" for="imprecis">
-                            La localisation est imprecise si Je cherche à la localiser
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="tete" id="tete" />
-                        <label class="form-check-label" for="tete">
-                            Dans ma tête
-                        </label>
-                    </div>
-                </fieldset>
+                    <fieldset class="col-8 m-auto fieldsetHidden collapse" id="subHidden">
+                        <legend class="text-danger"><strong>Question 5 : </strong>Toujours la même étoile : où est-elle ?</legend>
+                        
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="canalDeux" id="canalDeux" />
+                            <label class="form-check-label" for="canalDeux">
+                                Dans ma tête et devant moi, c'est comme un deuxième canal que Je visualise en même temps
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="superposition" id="superposition" />
+                            <label class="form-check-label" for="superposition">
+                                Dans mon champ de vision, en superposition du réel
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="imprecis" id="imprecis" />
+                            <label class="form-check-label" for="imprecis">
+                                La localisation est imprecise si Je cherche à la localiser
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="tete" id="tete" />
+                            <label class="form-check-label" for="tete">
+                                Dans ma tête
+                            </label>
+                        </div>
+                    </fieldset>
+                </div>
 
                 <fieldset class="col-12">
                     <legend class="text-primary"><strong>Question 6 : </strong>Toujours la même étoile : durée</legend>

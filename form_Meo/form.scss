@@ -16,7 +16,8 @@ $color : (
     "primary" : rgb(65, 63, 189),    
     "secondary" : rgb(21, 224, 157),
     "dark" : #000,
-    "focus" : rgb(247, 93, 4)
+    "focus" : rgb(247, 93, 4),
+    "danger" : red
 );
 
 h1 {
@@ -37,6 +38,12 @@ fieldset {
 }
 .fieldsetSecondary {
     border: 2px solid map-get($color, secondary);
+}
+.fieldsetHidden {
+    border: 2px solid map-get($color, focus);
+}
+.fieldsetSubHidden {
+    border: 2px solid map-get($color, danger);
 }
 #choix {
     // border: 1px solid #000;
