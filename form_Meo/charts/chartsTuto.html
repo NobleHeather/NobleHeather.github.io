@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <link rel="stylesheet" href="charts.css">
+    <title>Test charts</title>
+</head>
+<body>
+    <h1>Tests de graph</h1>
+    <div class="question">
+        <div class="texte">
+            <h3>Question 0.a</h3>
+            <p>Je suis un texte de question 0.a</p>
+            <h3>Question 0.b</h3>
+            <p>Je suis un texte de question 0.b</p>
+            <button>Valider</button>
+        </div>
+        <div class="graph graphDefault" id="zero">
+            <!-- ratio -->
+            <canvas id="monGraph" width="200" height="100"></canvas>
+            <button id="scatter">to scatter</button>
+        </div>
+        <div class="graph graphUnder" id="zeroBis">
+            <canvas id="monGraphBis" width="200" height="100"></canvas>
+            <button id="line">to line + fill</button>
+        </div>
+        <div class="graph graphUnder" id="zeroTer">
+            <canvas id="monGraphTer" width="200" height="100"></canvas>
+            <button id="lineFill">to line</button>
+        </div>
+    </div>
+    <div class="question">
+        <div class="texte">
+            <h3>Question 1.a</h3>
+            <p>Je suis un texte de question 1.a</p>
+            <h3>Question 1.b</h3>
+            <p>Je suis un texte de question 1.b</p>
+            <button>Valider</button>
+        </div>
+        <div class="graph graphDefault" id="un">
+            <canvas id="monGraph1" width="200" height="200"></canvas>
+            <button id="ratio">change ratio</button>
+        </div>
+        <div class="graph graphUnder" id="unBis">
+            <canvas id="monGraph1Bis" width="200" height="120"></canvas>
+            <button id="ratio1">change ratio</button>
+        </div>
+    </div>
+    <div class="question">
+        <div class="texte">
+            <h3>Question 2</h3>
+            <p>Je suis un texte de question 2</p>
+            <button>Valider</button>
+        </div>
+        <div class="graph graphDefault" id="deux">
+            <canvas id="monGraph2" width="100" height="100"></canvas>
+            <button id="doughnut">to doughnut</button>
+        </div>
+        <div class="graph graphUnder" id="deuxBis">
+            <canvas id="monGraph2bis" width="100" height="100"></canvas>
+            <button id="pie">to pie</button>
+        </div>
+    </div>
+    <div class="question">
+        <div class="texte">
+            <h3>Question 3.a</h3>
+            <p>Je suis un texte de question 3.a</p>
+            <h3>Question 3.b</h3>
+            <p>Je suis un texte de question 3.b</p>
+            <h3>Question 3.c</h3>
+            <p>Je suis un texte de question 3.c</p>
+            <button>Valider</button>
+        </div>
+        <div class="graph graphDefault">
+            <canvas id="monGraph3" width="100" height="100"></canvas>
+        </div>
+    </div>
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.2/chart.min.js" integrity="sha512-dnUg2JxjlVoXHVdSMWDYm2Y5xcIrJg1N+juOuRi0yLVkku/g26rwHwysJDAMwahaDfRpr1AxFz43ktuMPr/l1A==" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="charts.js"></script>
+</body>
+</html>

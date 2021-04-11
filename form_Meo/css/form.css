@@ -1,6 +1,9 @@
 h1 > span {
   font-size: 0.7em; }
 
+.preface > p {
+  margin: 0 0 5px 0; }
+
 fieldset {
   border: 2px solid #413fbd; }
 

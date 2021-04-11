@@ -1,0 +1,36 @@
+/* PAGE CHARTSTUTO */
+body {
+    padding: 0 100px;
+    text-align: center;
+}
+.question {
+    border-bottom: 1px solid blue;
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.question .texte {
+    /* border: 1px solid red; */
+    width: 50%;
+    transition: 800ms;
+}
+.question .graph {
+    /* border: 1px solid green; */
+    width: 50%;
+    display: none;
+    opacity: 0;
+    transition: opacity 1100ms;
+}
+.graph {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.graph button {
+    width: fit-content;
+}
+#deuxBis, #zeroBis, #unBis, #zeroTer {
+    display: none;
+}

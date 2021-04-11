@@ -25,6 +25,13 @@ h1 {
     }
 }
 
+.preface {
+    > p {
+        margin: 0 0 5px 0;
+        // padding: 0;
+    }
+}
+
 fieldset {
     border: 2px solid map-get($color, primary);
 }

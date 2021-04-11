@@ -8,5 +8,8 @@
     "sass": "sass --watch ./form.scss:./css/form.css"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chart.js": "^3.1.0"
+  }
 }
