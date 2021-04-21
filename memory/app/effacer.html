@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="icon" href="favicon.png" />
+    <title>Memory</title>
+    </head>
+
+    <body>
+        <div class="wrapper row mx-3 mt-1">
+            <div class="col-3 mb-5 d-flex flex-column align-items-center">
+                <h1 class="text-danger mb-5"><a href="index.html" class="text-decoration-none text-danger">Memory</a></h1>
+                <a href="jouer.html">
+                    <button type="button" class="btn btn-secondary m-3" id="">Jouer</button>
+                </a>
+                <a href="ajouter.html" class="">
+                    <button type="button" class="btn btn-secondary m-3" id="">Ajouter</button>
+                </a>
+                <a href="modifier.html">
+                    <button type="button" class="btn btn-secondary m-3" id="">Modifier</button>
+                </a>
+                <a href="#">
+                    <button type="button" class="btn btn-danger m-3" id="">Effacer</button>
+                </a>
+            </div>
+            <div class="col-9">
+                <form class="mx-5 text-left row g-2">
+                    <h2 class="col-12 mb-5 text-center">Effacer une carte</h2>
+                    <div class="col-12 d-flex align-items-center justify-content-center">
+                        <label for="recherche" class="form-label">Nom de la carte à effacer :</label>
+                        <input type="text" class="form-control w-25 mx-2" id="recherche" aria-describedby="">
+                        <button id="submit1" type="submit" class="btn btn-danger">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="col-12 text-center text-danger mt-4"><strong>Carte effacée !</strong></p>
+                    <div class="row hidden">
+                        <div class="card border-danger mt-1">
+                            <div class="row g-0">
+                                <div class="col-md-7 m-auto">
+                                    <img src="notAllowed.png" class="card-img-top" alt="...">
+                                </div>
+                                <div class="col-md-5 d-flex justify-content-center align-items-center">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Cette carte n'est pas dans la base de données</h5>
+                                        <p class="card-text">Est-ce bien la bonne orthographe ? Avec le bon nombre de majuscule ?</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="submit2" type="submit" class="btn btn-danger mx-auto mt-5">Effacer</button>
+                    </div>
+                </form>
+            </div>
+        
+        <script
+          src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+          integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+          crossorigin="anonymous"
+        ></script>
+            
+        <script
+          src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+          integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+          crossorigin="anonymous"
+        ></script>
+            
+        <script
+          src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+          integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+          crossorigin="anonymous"
+        ></script>
+        
+        <script src="delete.js"></script>
+    </body>
+</html>

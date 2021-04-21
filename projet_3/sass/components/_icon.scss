@@ -1,0 +1,71 @@
+.icon {
+    position: relative;
+    &:nth-child(3),
+    &:nth-child(5),
+    &:nth-child(7),
+    &:nth-child(9) {
+        
+        align-self: flex-end;
+    }
+    > svg {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        right: 50px;
+        bottom: 40px;
+        fill: darken(map-get($color, background), 50%);
+        opacity: 1;
+        @include desktopOnly {
+            right: 30px;
+            bottom: 35px;
+        }
+        @include miniOnly {
+            width: 25px;
+            height: 25px;
+            right : 35px;
+        }
+        &.heartMenu {
+            bottom: -10px;
+            right: 30px;
+            @include miniOnly {
+                right : 5px;
+            }
+        }
+        &:nth-child(2) {
+            position: absolute;
+            right: 52px;
+            bottom: 42px;
+            width: 26px;
+            height: 26px;
+            opacity: 0;
+            transition: 500ms;
+            @include desktopOnly {
+                right: 32px;
+                bottom: 37px;
+            }
+            @include miniOnly {
+                width: 22.5px;
+                height: 22.5px;
+                right : 36.5px;
+            }
+            &.heartMenu {
+                bottom: -8px;
+                right: 32px;
+                @include miniOnly {
+                    right: 6.1px;
+                    width : 22px;
+                    height : 22px;
+                }
+            }
+            &:active > path {
+                fill: map-get($color, secondary);
+                cursor: url(../images/cursor.png), grabbing;
+            }
+            &:hover {
+                opacity: 1;
+                cursor: url(https://ani.cursors-4u.net/symbols/sym-8/sym749.cur),
+                    grab;
+            }
+        }
+    }
+}

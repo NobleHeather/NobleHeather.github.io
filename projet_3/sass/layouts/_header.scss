@@ -1,0 +1,79 @@
+header {
+    padding: 20px 0;
+    grid-column: 1 / span 2;
+    grid-row: 1;
+    @include desktopOnly {
+        margin-bottom: 20px;
+    }
+    > .ligne {
+        /*pour menu*/
+        justify-content: center;
+        width: 350px;
+        position: relative;
+        &:hover > a p { // flèche
+            transform: scale(1.2) rotate(180deg) translateX(60px);
+            @include mobileOnly {
+                transform: scale(1.2) rotate(180deg) translateX(15px);
+            }
+            @include miniOnly {
+                transform: scale(1.2) rotate(180deg) translateX(-10px);
+            }
+        }
+        &:hover > a svg:nth-child(3) { // logo couleur
+            opacity: 1;
+        }
+        &:active > a svg:nth-child(3) { // logo couleur
+            transform: scale(1.3);
+            @include miniOnly {
+                transform: scale(1.1);
+            }
+        }
+        &:active > a svg:nth-child(2) { // logo noir
+            transform: scale(1.3);
+            @include miniOnly {
+                transform: scale(1.1);
+            }
+        }
+        > a svg {
+            height: 120%;
+            width: 120%;
+            @include miniOnly {
+                height: 100%;
+                width: 100%;
+            }
+            position: relative;
+            left: -3%;
+            z-index: -1;
+            &:nth-child(3) {
+                position: absolute;
+                top: 0;
+                left: 9%; // 8.5 pour que ça soit pile dessus ou avec un décalage pour avoir un effet ombre
+                height: 91%;
+                width: 91%;
+                opacity: 0;
+                @include miniOnly {
+                    height: 89%;
+                    width: 89%;
+                    left : 4.5%;
+                }
+            }
+        }
+        > a p {
+            transform: rotate(180deg) translateX(50px);
+            font-size: map-get($size, big);
+            position: absolute;
+            top: 0px;
+            left: 10px;
+            transition: 400ms;
+            margin: 0;
+            @include mobileOnly {
+                font-size: map-get($size, medium);
+                transform: rotate(180deg) translateX(0px);
+            }
+            @include miniOnly {
+                font-size: map-get($size, medium);
+                transform: rotate(180deg) translateX(-25px);
+            }
+        }
+    }
+}

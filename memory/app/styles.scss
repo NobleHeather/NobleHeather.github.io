@@ -1,0 +1,41 @@
+// PAGE ACCUEIL
+
+h1 a span { //! normalement possible avec bootsratp mais .fs-4 not working
+    font-size: 0.6em;
+    position: relative;
+    left : 80px;
+}
+
+// PAGE JOUER
+// $list-group-active-bg: red;
+// $list-group-bg: green;
+
+// PAGE AJOUTER verif form
+input:not(:focus):invalid {
+    // background-color: transparentize(red, .8);
+    border: 2px solid red;
+}
+
+input[value="Oiseau"], input[value="oiseau.jpg"] {
+    font-style: italic;
+    // font-size: 0.8em;
+}
+
+form {
+    > div:nth-child(3) input {
+        font-style: italic;
+        // font-size: 0.8em;
+    }
+    > div small:nth-child(3) {
+        color: red;
+        display: block;
+        text-align: center;
+        // border: 1px solid #000;
+        opacity: 0;
+    }
+}
+
+input::placeholder {
+    font-style: italic;
+    font-size: 1em;
+}

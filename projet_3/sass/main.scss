@@ -1,0 +1,16 @@
+@import "./utils/variables";
+@import "./utils/mixins";
+
+@import "./base/normes";
+
+@import "./components/keyframes";
+@import "./components/spinner";
+@import "./components/icon";
+@import "./components/boutons";
+
+@import "./layouts/header";
+@import "./layouts/footer";
+
+@import "./pages/accueil";
+@import "./pages/menu";
+

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="icon" href="favicon.png" />
+    <title>MemoryPiaf</title>
+    </head>
+
+    <body>
+        <div class="wrapper row mx-3">
+            <div class="col-3 mb-5 d-flex flex-column align-items-center">
+                <h1 class="mb-2"><a href="index.html" class="text-decoration-none text-danger">Remember Me<br /><span class="fs-4"><em>- Dindon & &Eacute;meu</em></span></a></h1>
+                <h1 class="mb-2"><a href="index.html" class="text-decoration-none text-success">Flower-me-not</a></h1>
+                <h1 class="mb-2"><a href="index.html" class="text-decoration-none text-primary">Remember Bee</a></h1>
+                <a href="#">
+                    <button type="button" class="btn btn-danger m-3" id="">Jouer</button>
+                </a>
+                <a href="ajouter.html" class="">
+                    <button type="button" class="btn btn-secondary m-3" id="">Ajouter</button>
+                </a>
+                <a href="modifier.html">
+                    <button type="button" class="btn btn-secondary m-3" id="">Modifier</button>
+                </a>
+                <a href="effacer.html">
+                    <button type="button" class="btn btn-secondary m-3" id="">Effacer</button>
+                </a>
+                <div>
+                    <button type="button" class="btn border-success m-3" id="">Piafs</button>
+                    <button type="button" class="btn border-danger m-3" id="">Herbes</button>
+                    <button type="button" class="btn border-primary m-3" id="">Bugs</button>
+                </div>
+                <div class="border border-secondary p-3 mt-3 text-center">
+                    <p class="ratio">bonnes réponses / Nombre total de Q</p>
+                    <button type="button" class="btn btn-secondary m-2" id="">&#8635;</button>
+                </div>
+            </div>
+            <div class="jouer col-8 mx-auto mt-5">                 
+                <div class="card border-danger">
+                    <div class="row g-0">
+                        <div class="col-md-8 m-auto">
+                            <img src="notAllowed.png" class="card-img-top pl-4" alt="...">
+                        </div>
+                        <div class="col-md-4 mt-1">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Qui suis-je ?</h5>
+                                <button class="btn btn-secondary" data-toggle="collapse" data-target="#indice" >Indice</button>
+                                <p class="card-text collapse" id="indice">Indice, citation...</p>
+                            </div>
+                            <form class="list-group list-group-flush text-left mt-1">
+                                <label class="list-group-item mx-2">
+                                <input class="form-check-input me-1" type="radio" value="">
+                                <em>La réponse D</em>
+                                </label>
+                                <label class="list-group-item mx-2">
+                                <input class="form-check-input me-1" type="radio" value="">
+                                <em>42</em>
+                                </label>
+                                <label class="list-group-item mx-2">
+                                <input class="form-check-input me-1" type="radio" value="">
+                                <em>Stéphanie de Monaco</em>
+                                </label>
+                                <label class="list-group-item mx-2">
+                                <input class="form-check-input me-1" type="radio" value="">
+                                <em>Ce n'est pas la carte que vous recherchez</em>
+                                </label>
+                            </form>
+                            <div class="card-body bg-transparent text-center mt-1">
+                                <a href="#" class="btn btn-danger" type="submit" id="valider">Valider</a>
+                                <a href="#" class="btn btn-secondary ml-3" type="submit" id="suivant"><strong>></strong></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script
+          src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+          integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+          crossorigin="anonymous"
+        ></script>
+            
+        <script
+          src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+          integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+          crossorigin="anonymous"
+        ></script>
+            
+        <script
+          src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+          integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+          crossorigin="anonymous"
+        ></script>
+        
+        <script src="jouer.js"></script>
+    </body>
+</html>

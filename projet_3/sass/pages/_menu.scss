@@ -1,0 +1,174 @@
+#imgMenu {
+    width: 100%;
+    object-fit: cover;
+    max-height: 300px;
+}
+.menu {                                 
+    position: relative;
+    top: -50px;
+    width: calc(100% - 20px);
+    padding: 30px 10px;
+    background-color: map-get($color, background);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    > .ligne {                          
+        width: 95%;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        grid-column: 2;
+        grid-row: 1;
+        @include desktopOnly {
+            justify-content: space-around;
+        }
+        > h1 {
+            font-family: "Shrikhand", Arial, sans-serif;
+            @include miniOnly {
+                font-size: map-get($size, medium);
+            }
+        }
+    }
+    > .sousMenu:nth-child(2) {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    > .sousMenu:nth-child(3) {
+        grid-column: 2;
+        grid-row: 2;
+    }
+    > .sousMenu:nth-child(4) {
+        grid-column: 3;
+        grid-row: 2;
+    }
+    > .bouton:nth-child(5) {
+        grid-column: 2;
+        grid-row: 3;   
+        margin: 20px 0 50px 0; 
+    }
+    @include desktopOnly {
+        display: grid;
+        grid-template-rows: 50px 1fr 100px;
+		grid-template-columns: 1fr 1fr 1fr;
+        align-items: start;
+        grid-gap: 20px;
+    }
+    .bouton {
+        padding: 15px 40px;
+    }
+}
+.sousMenu {                     
+    width: 100%;
+    margin-bottom: 20px;
+    > h2 {
+        text-transform: uppercase;
+        display: inline-block;
+        position: relative;
+        padding-bottom: 5px;
+        margin-bottom: 15px;
+        font-size: map-get($size, small);
+        font-family: map-get($font, thin), Arial, sans-serif;
+        &::after {                          
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 45px;
+            border-bottom: map-get($color, tertiary) solid 3px;
+        }
+    }
+    > ul li {                   
+        width: 95%;
+        background-color: map-get($color, clair);
+        border-radius: 15px;
+        padding: 10px 0 10px 15px;
+        margin-bottom: 15px;
+        @include shadow;
+        position: relative; /* pour le stretch-link*/
+        justify-content: space-between;
+        overflow: hidden;
+        animation: fadein 1.5s forwards;
+        &:nth-child(2) {
+            animation: fadein 1.5s 0.3s both;
+        }
+        &:nth-child(3) {
+            animation: fadein 1.5s 0.6s both;
+        }
+        &:nth-child(4) {
+            animation: fadein 1.5s 0.9s both;
+        }
+        &:hover > .ligne {  /*p*/
+            transform: translateX(-150%);
+        }
+        &:hover > .ligne:nth-child(2) .colonne { /*...*/
+           opacity: 1;
+        }
+        &:hover > .ligne:nth-child(3) {   //checkbox      
+            transform: translateX(0);           
+        }
+        &:hover > .ligne:nth-child(3) > i { //i checkbox
+            transform: rotate(0);
+        }
+        &:hover > .colonne {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            animation: shrink 1200ms forwards;
+            & h3 {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                width: 100%;
+            }
+            & p {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width: 100%;
+            }
+        }
+        > .colonne {            
+            align-items: flex-start;
+            position: relative; /*pour placer animation par rapport à ici*/
+            z-index: -1;
+            width: 80%;  
+            transition: 0s 1000ms;
+            > p {
+                margin: 8px 0 0 0;
+            }
+            
+        }
+        > .ligne {                          
+            cursor : pointer;             
+            transition: 700ms 150ms;  
+            transition-timing-function: cubic-bezier(.53,0,.61,1.05);  
+            width: 20%;
+            position: relative; //*pour que les "..." se cale par rapport à ça
+            > p {    
+                padding: 30px 0 0 25px;
+                margin: 0;
+                background-color: map-get($color, clair);  
+                color: lighten(map-get($color, sombre), 25%); 
+                width: 100%;
+                text-align: left;
+            }
+        }
+        > .ligne:nth-child(3) {                          
+            position: absolute; 
+            right: 0;                
+            width: 30%;
+            height: 70px;
+            margin: -10px 0;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+            background-color: map-get($color, tertiary); 
+            justify-content: center;           
+            transform: translateX(110%);
+            transition: 1400ms;
+            > i {                                   
+                color: map-get($color, clair);
+                margin: 0; 
+                transform: rotate(3turn);    
+                transition: 1600ms;           
+            }
+        }
+    }
+}

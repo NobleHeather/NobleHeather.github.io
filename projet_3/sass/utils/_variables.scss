@@ -1,0 +1,27 @@
+$color : (
+	primary : #9356DC,
+	secondary : #FF79DA,
+    tertiary : #99E2D0,
+    background : #F2F2F2,
+    clair : white,
+    sombre : black
+);
+
+$size : (
+    big : 2em,
+    medium : 1.5em,
+    small : 1.1em
+);
+
+$font : ( 
+    thin : 'Roboto-Thin',
+    medium : 'Roboto-Medium',
+    bold : 'Roboto-Bold'
+);
+
+$breakpoints : (  /*mix-width*/
+    mini : 375px,
+    mobile : 576px,
+    tablet : 768px,
+    desktop : 1025px
+);

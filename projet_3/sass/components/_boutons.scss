@@ -1,0 +1,41 @@
+.bouton {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    font-family: map-get($font, medium);
+    @include miniOnly {
+        font-size: .9em;
+    }
+    color: map-get($color, clair);
+    background: linear-gradient(-5deg, map-get($color, primary), 60%, map-get($color, secondary));
+    border-radius: 100px;
+    padding: 15px 20px;
+    margin: 10px;
+    @include shadow;
+    transition: 300ms;
+    &:active {
+        box-shadow: 0px 5px 10px 2px darken(map-get($color, primary), 20%);
+    }
+    &::after {                          
+        content: "";
+        padding: 10px 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        opacity: 0;
+        border-radius: 100px;
+        transition: 1000ms;
+        background: linear-gradient(-8deg, lighten(map-get($color, secondary), 1%), 50%, lighten(map-get($color, primary), 1%));
+    }
+    &:hover {
+        transform: scale(1.01);
+        cursor: pointer;
+        &::after {
+            opacity: 1;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+body {
+    text-align: center;
+}
+a {
+    color:red;
+    text-decoration: none;
+}
+a:hover {
+    color: rgb(133, 0, 0)
+}
+a:active {
+    font-style: italic;
+}
+p {
+    font-size: 1.2em;
+}

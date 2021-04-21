@@ -1,0 +1,75 @@
+footer {
+    grid-row: 4;
+    grid-column: 1 / span 2;
+    background-color: lighten(map-get($color, sombre), 20%);
+    padding: 20px 0 30px 30px;
+    width: calc(100% - 30px);
+    @include desktopOnly {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: calc(100% - 24px);
+        padding: 10px 0 10px 25px;
+        margin-top: 90px;
+    }
+    &.footerMenu {
+        width: calc(100% - 26px);
+        position: relative;
+        top: -50px;
+        margin-bottom: -50px;
+        @include desktopOnly {
+            margin-top: -20px;
+        }
+    }
+    > svg {
+        height: 50px;
+        width: 100px;
+    }
+    > ul {
+        @include desktopOnly {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 100%;
+        }
+        > li {
+            margin-bottom: 5px;
+            @include desktopOnly {
+                margin: 0 15px;
+                
+            }
+        }
+        > li:nth-child(2) a i {
+            font-size: 0.9em;
+        }
+        > li:nth-child(3) a,
+        li:nth-child(4) a {
+            font-family: map-get($font, thin), Arial, sans-serif;
+        }
+        > li a {
+            color: darken(map-get($color, background), 5%);
+            transition: 300ms;
+            @include desktopOnly {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+            }
+            &:hover {
+                color: map-get($color, primary);
+                font-style: italic;
+            }
+            &:active {
+                color: map-get($color, secondary);
+                font-style: italic;
+            }
+        }
+        > li a i {
+            padding: 0;
+            width: 15px;
+            margin-right: 10px;
+        }
+    }
+}

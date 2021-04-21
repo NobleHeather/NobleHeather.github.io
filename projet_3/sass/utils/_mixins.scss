@@ -1,0 +1,32 @@
+@mixin shadow {
+    box-shadow: 0px 5px 10px 0px darken(map-get($color, background), 15%);
+    transition: 500ms;
+    &:hover {
+        box-shadow: 0px 3px 10px 2px darken(map-get($color, background), 30%);
+    }
+    &:active {
+        box-shadow: 0px 3px 10px 2px map-get($color, secondary);
+    }
+}
+
+@mixin miniOnly {
+    @media screen and (max-width: map-get($breakpoints, mini)) {
+        @content;
+    }
+}
+@mixin mobileOnly {
+    @media screen and (max-width: map-get($breakpoints, mobile)) {
+        @content;
+    }
+}
+@mixin tabletOnly {
+    @media screen and (max-width: map-get($breakpoints, tablet)) {
+        @content;
+    }
+}
+@mixin desktopOnly {
+    @media screen and (min-width: map-get($breakpoints, desktop)) {
+        @content;
+    }
+}
+

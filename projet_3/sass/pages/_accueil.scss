@@ -1,0 +1,160 @@
+.explorer {
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    background-color: map-get($color, background);
+    > .ligne {
+        justify-content: center;
+        width: 100%;
+        background-color: darken(map-get($color, background), 10%);
+        box-shadow: inset 0px 10px 10px -10px darken(map-get($color, background), 50%);
+        > i {
+            // border: 1px solid #000;
+            position: relative;
+            top: -2px;
+            margin-right: 4px;
+        }
+        > p {
+            font-family: map-get($font, medium);
+        }
+    }
+    > .colonne {
+        padding: 45px;
+        @include miniOnly {
+            padding: 45px 25px;
+        }
+        > h1 {
+            text-align: center;
+        }
+        > p {
+            text-align: center;
+        }
+    }
+}
+
+.fonctionnement {
+    grid-column: 2;
+    grid-row: 2;
+    padding: 50px 10px;
+    width: 100%;
+    @include desktopOnly {
+        padding: 0;
+    }
+    > h2 {
+        align-self: flex-start;
+        padding-left: 20px;
+        @include desktopOnly {
+            margin-left: 20px;
+        }
+    }
+    > ol {
+        list-style: none; //list-style pas assez de paramètres
+        width: 80%;
+        @include desktopOnly {
+            width: 100%;
+        }
+        @include miniOnly {
+            width: 95%;
+        }
+        > li {
+            background-color: lighten(map-get($color, background), 2%);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 23px 20px;
+            justify-content: center;
+            @include shadow;
+            position: relative;
+            cursor: pointer;
+            @include desktopOnly {
+                margin: 30px 50px;
+            }
+            &:hover > a span {
+                background-color: map-get($color, secondary);
+            }
+            &:nth-child(3) a i {
+                color: map-get($color, primary);
+            }
+            > a span {
+                border-radius: 50%;
+                background-color: map-get($color, primary);
+                color: map-get($color, clair);
+                padding: 4px 9px 3px 8px;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: -12px;
+                transition: 700ms;
+            }
+            > a i {
+                color: darken(map-get($color, background), 50%);
+            }
+        }
+    }
+}
+
+.restaurant {
+    grid-row: 3;
+    grid-column: 1 / span 2;
+    background: map-get($color, background);
+    padding : 40px 0 50px 0;
+    width: 100%;
+    @include desktopOnly {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        padding: 50px 0 20px 0;
+        position: relative;
+        margin-top: 50px;
+    }
+    > h2 {
+        align-self: flex-start;
+        padding: 0 0 0 20px;
+        @include desktopOnly {
+            padding-left: 0;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+        }
+    }
+    > .box {
+        position: relative;
+        border-radius: 20px;
+        margin: 20px 0;
+        background-color: map-get($color, clair);
+        width: 90%;
+        @include shadow;
+        @include desktopOnly {
+            width: 30%;
+            margin: 15px;
+        }
+        > img {
+            object-fit: cover;
+            max-height: 200px;
+            width: 100%;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            @include desktopOnly {
+                max-height: 130px;
+            }
+        }
+        > span {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: map-get($color, tertiary);
+            padding: 8px 12px;
+            border-radius: 2px;
+            color: darken(map-get($color, tertiary), 35%);
+            font-weight: bold;
+        }
+        > .ligne {
+            padding: 10px 15px;
+            > .colonne a {
+                align-items: flex-start;
+                > p {
+                    margin: 5px 0;
+                }
+            }
+        }
+    }
+}

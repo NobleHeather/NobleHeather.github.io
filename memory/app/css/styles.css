@@ -1,0 +1,24 @@
+h1 a span {
+  font-size: 0.6em;
+  position: relative;
+  left: 80px; }
+
+input:not(:focus):invalid {
+  border: 2px solid red; }
+
+input[value="Oiseau"], input[value="oiseau.jpg"] {
+  font-style: italic; }
+
+form > div:nth-child(3) input {
+  font-style: italic; }
+form > div small:nth-child(3) {
+  color: red;
+  display: block;
+  text-align: center;
+  opacity: 0; }
+
+input::placeholder {
+  font-style: italic;
+  font-size: 1em; }
+
+/*# sourceMappingURL=styles.css.map */

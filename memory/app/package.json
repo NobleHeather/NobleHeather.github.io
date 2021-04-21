@@ -1,0 +1,12 @@
+{
+  "name": "memorypiaf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "custom.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch ./styles.scss:./css/styles.css"
+  },
+  "author": "NH",
+  "license": "ISC"
+}
