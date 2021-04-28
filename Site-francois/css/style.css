@@ -11,6 +11,11 @@ h1 {
     h1 {
       font-size: 1.5em; } }
 
+.blogTitle {
+  color: #000;
+  box-shadow: none;
+  border: 3px solid #413fbd; }
+
 h2 {
   border-bottom: 3px solid #413fbd;
   padding-bottom: 5px; }
@@ -80,7 +85,52 @@ footer {
   footer > a svg {
     width: 20px; }
 
+h2 > .badge {
+  font-size: 0.7em;
+  padding: 7px 15px 0 15px;
+  transition: 300ms; }
+  h2 > .badge--red {
+    padding: 5px 12px 0 12px; }
+  h2 > .badge:hover {
+    cursor: pointer;
+    transform: scale(0.8); }
+
+.heather > p span {
+  text-decoration: underline 2px #413fbd;
+  font-size: 1.1em;
+  font-weight: bold; }
+.heather svg {
+  width: 70px;
+  color: #000; }
+  .heather svg:hover {
+    cursor: pointer;
+    color: #413fbd; }
+  .heather svg:active {
+    color: #f75d04; }
+
+#motDePasse {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  position: relative; }
+  #motDePasse > div {
+    position: absolute;
+    top: 40%; }
+
+#wrapper {
+  display: none; }
+
+#wrapperBlog div p span, .visualisation div p span {
+  text-decoration: underline 2px #413fbd;
+  font-size: 1.1em;
+  font-weight: bold; }
+
 #forgetname, #publierArticle {
+  outline: none; }
+
+#enregistrerArticle {
   outline: none; }
 
 input, textarea {

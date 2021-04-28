@@ -23,6 +23,7 @@ button {
 .partie1 {
     // border: 1px solid orange;
 }
+
 $color : (
     "primary" : rgb(65, 63, 189),    
     "secondary" : #DDD,
@@ -42,6 +43,11 @@ h1 {
         font-size: 1.5em;
     }
 }
+.blogTitle {
+    color: map-get($color, dark);
+    box-shadow: none;
+    border: 3px solid map-get($color, primary)
+}
 h2 { //keyframe avec bordure qui tourne ?
                                         // outline: 1px salmon solid;
     border-bottom: 3px solid map-get($color, primary);
@@ -49,6 +55,8 @@ h2 { //keyframe avec bordure qui tourne ?
 }
 h3 {
     font-size: 1.1em;
+    // color:red;
+
 }
 .stretched-link {
     color: #000;
@@ -148,6 +156,73 @@ footer {
     }
 }
 
+//* INTERFACE
+h2 {
+    > .badge {
+        font-size: 0.7em;
+        padding: 7px 15px 0 15px; 
+        transition: 300ms;
+        &--red {
+            padding: 5px 12px 0 12px;
+        }
+        &:hover {
+            cursor: pointer;
+            transform: scale(0.8);
+        }
+    }
+
+}
+
+.heather {
+    > p span {
+        text-decoration: underline 2px map-get($color, primary);
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+    svg {
+        // max-height: 50px;
+        // min-height: 30px;
+        // border: 1px solid #000;
+        width: 70px;
+        color: map-get($color, dark);
+        &:hover {
+            cursor: pointer;
+            color: map-get($color, primary);
+        }
+        &:active {
+           color: map-get($color, focus);
+        }
+    }
+}
+// .salutations svg, #wrapperInterface svg {
+//     max-height: 50px;
+//     &:active {
+//         color: map-get($color, focus);
+//     }
+// }
+#motDePasse {
+    // border: 1px solid #000;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    // position: absolute;
+    // width: 2000px;
+    height: 500px;
+    position: relative;
+    > div {
+        position: absolute;
+        top: 40%;
+    }
+}
+#wrapper {
+    display: none;
+}
+#wrapperBlog div p span, .visualisation div p span { //* sous-titre dans le corps de input textarea
+    text-decoration: underline 2px map-get($color, primary);
+    font-size: 1.1em;
+    font-weight: bold;
+}
 // .grid {							
 //         border: 2px solid purple;
 // // grid-gap: 30px;
@@ -177,7 +252,9 @@ footer {
 #forgetname, #publierArticle {
     outline: none;
 }
-
+#enregistrerArticle {
+    outline: none;
+}
 input, textarea {
     outline: 1px solid map-get($color, primary);
     border: none;
