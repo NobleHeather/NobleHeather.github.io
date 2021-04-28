@@ -18,7 +18,7 @@ function heatherPassClear() {
     heatherText.innerHTML = 'Cliquez-moi pour avoir de l\'aide';
 }
 
-let name = `, ${localStorage.getItem('name')}` || '';
+let name = `, ${localStorage.getItem('name')}` || ', dear Anonyme';
 console.log(name);
 let heatherTab = [
     `Le serveur dit 401${name}, vous avez dû faire une faute de frappe`,
