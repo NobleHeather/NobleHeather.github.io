@@ -8,7 +8,8 @@ fieldset {
   border: 2px solid #413fbd; }
 
 .fieldsetSecondary {
-  border: 2px solid #15e09d; }
+  border-left: 1px solid #15e09d;
+  border-bottom: 1px solid #15e09d; }
 
 .fieldsetHidden {
   border: 2px solid #f75d04; }

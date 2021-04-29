@@ -37,7 +37,8 @@ fieldset {
     border: 2px solid map-get($color, primary);
 }
 .fieldsetSecondary {
-    border: 2px solid map-get($color, secondary);
+    border-left: 1px solid map-get($color, secondary);
+    border-bottom: 1px solid map-get($color, secondary);
 }
 .fieldsetHidden {
     border: 2px solid map-get($color, focus);
