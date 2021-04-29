@@ -30,19 +30,47 @@
         <div>
             <h2>Introduction</h2>
             <form class="row d-flex align-items-end mt-3">
-                <div class="col-4">
-                    <label for="email" class="form-label">Mail* : </label>
-                    <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                <h3 class="col-12 text-center"><a href="#login" data-toggle="collapse" class="loginBtn btn border border-primary">connexion</a> ou <a href="#logup" data-toggle="collapse" class="logupBtn btn border border-primary">inscription</a> :</h3>
+
+                <!-- <a href="#hidden" class="btn btn-warning mt-3" data-toggle="collapse">Show more Q</a> 
+                </fieldset>
+                
+                <div class="row collapse" id="hidden"> -->
+                <div class="collapse col-12" id="login">
+                    <div class="row d-flex align-items-end border border-primary">
+                        <div class="col-3">
+                            <label for="pseudo" class="form-label">Pseudo : </label>
+                            <input type="text" class="form-control" id="pseudo" placeholder="">
+                        </div>
+                        <div class="col-3">
+                            <label for="password" class="form-label">Mot de passe : </label>
+                            <input type="password" class="form-control" id="password">
+                        </div>
+                        <button class="col-1 btn btn-primary" id="WhoAreYou">Valider</button>
+                        <div class="col-5 text-center">
+                            <p class="m-0 p-0">Avancement : <span>x questions / total</span></p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-4">
-                    <label for="password" class="form-label">Mot de passe : </label>
-                    <input type="text" class="form-control" id="password">
-                </div>
-                <div class="col-4">
-                    <p>Avancement : <br /><span>x questions / total</span></p>
+                <div class="row collapse" id="logup">
+                    <div class="row d-flex align-items-end m-auto border border-primary">
+                        <div class="col-3">
+                            <label for="pseudo" class="form-label">Pseudo : </label>
+                            <input type="text" class="form-control" id="pseudo" placeholder="">
+                        </div>
+                        <div class="col-3">
+                            <label for="email" class="form-label">Mail* : </label>
+                            <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                        </div>
+                        <div class="col-3">
+                            <label for="password" class="form-label">Mot de passe : </label>
+                            <input type="password" class="form-control" id="password">
+                        </div>
+                        <button class="col-2 btn btn-primary" id="WhoAreYou">Valider</button>
+                        <p class="text-muted mt-3 col-12">*pour finir le QCM plus tard ou le corriger ultérieurement. Cette adresse mail pourra également être confiée à un tiers selon votre consentement et uniquement dans le cadre de la recherche scientifique. Elle pourra aussi être utilisée dans le but d'améliorer ce questionnaire (si vous voulez bien répondre, aucun spam ne sera émis)</p>
+                    </div>
                 </div>
             </form>
-            <p class="text-muted mt-3">*pour finir le QCM plus tard ou le corriger ultérieurement. Cette adresse mail pourra également être confiée à un tiers selon votre consentement et uniquement dans le cadre de la recherche scientifique. Elle pourra aussi être utilisée dans le but d'améliorer ce questionnaire (si vous voulez bien répondre, aucun spam ne sera émis)</p>
         </div>
         <div class="row justify-content-center mt-5 mb-5">
             <h3 class="col-12 text-center mb-3">Plan du QCM</h3>
