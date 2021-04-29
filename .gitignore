@@ -1,3 +1,5 @@
 /memory/app/mdp_temp/mdp.js
 /memory/app/images
-form_Meo/backend/node_modules
+/form_Meo/backend/node_modules
+/form_Meo/backend/node_modules/
+# form_Meo\backend\node_modules
