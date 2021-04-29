@@ -1,31 +1,22 @@
 //* QUESTIONS
 
-//* Dans chaque section (ici : représentation visuelle, section 2)
-// $('#representationVisuelle fieldset')
-// console.log($('#representationVisuelle fieldset').length);
+    //* NOMMAGE DES CHAMPS
+// (ça n'a l'air de rien là comme ça mais il m'a fallu autant de temps que si je les avais
+// nommés un par un dans le html donc je suis même pas sûre que ça soit rentable,
+// t'as intérêt à faire un formulaire 2.0 et même un 3.0)
 
-//* Dans la section 1 représentation visuelle
+//! Que va faire ce bout de code quand il n'y aura pas de label juste après input ? (cas des range)
+//* Dans la section 1 représentation visuelle, en fonction du nombre de fieldset
 for (let x = 0; x < $('#representationVisuelle fieldset').length; x++) {
+
     //* On nomme chaque fieldset avec un numéro de question
-    //* NB : c'est une class et pas un id car on a des id "hidden" pour les toggle btn
-    $(`#representationVisuelle fieldset${x}`).addClass('class', `question${x}`);
-    // console.log(x, $(`#representationVisuelle fieldset${x}`).attr());
-    //* On nomme les inputs et les labels en fonction du numéro de question
-    for (let i = 0; i < $(`#representationVisuelle fieldset${x} input`).length; i++) {
-        $(`#question1 input:eq(${i})`).attr('id', `q${i}`);
-        $(`#question1 label:eq(${i})`).attr('for', `q${i}`);
+    //todo NB : c'est une class et pas un id car on a des id "hidden" pour les toggle btn //Du coup j'ai mis les truc toggle dans des div
+    $(`#representationVisuelle fieldset:eq(${x})`).attr('id', `question${x}`);
+
+    //* On nomme les inputs et les labels de ce fieldset en fonction du numéro de question
+    for (let i = 0; i < $(`#question${x} input`).length; i++) {
+        $(`#question${x} input:eq(${i})`).attr('id', `q${x}.${i}`);
+        $(`#question${x} input:eq(${i}) + label`).attr('for', `q${x}.${i}`);
     }
 }
 
-console.log($('#representationVisuelle fieldset:eq(0)'));
-console.log($('#representationVisuelle fieldset:eq(1)'));
-console.log($('#representationVisuelle fieldset:eq(0) input:eq(0)'));
-console.log($('#representationVisuelle fieldset:eq(0) label:eq(0)'));
-
-
-//* Nommer les inputs et labels
-console.log($('fieldset'))
-
-console.log($('#question1 input'));
-// console.log($('#question1 input:eq(1)'));
-// console.log($('#question1 label:eq(1)'));
