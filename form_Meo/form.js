@@ -9,55 +9,27 @@ function get_tickmarks() {
     $("#choix").append(`${val}`);
 }
 
-//* Identification
-    //* Boutons
+//* IDENTIFICATION
 
-$([class=loginBtn])on('click', function() {
+    //* DECO
+
+    //* Quand on clique sur un bouton, ça replie la div de l'autre bouton
+$('.loginBtn').on('click', function() {
     $('#logup').removeClass('show');
 })   
 
-$('logupBtn')on('click', function() {
+$('.logupBtn').on('click', function() {
     $('#login').removeClass('show');
 })   
 
+    //* ACTION : UTILISATEURS
 
-//* get all users
-const fetchFiche = async function() {
-    return await fetch('http://localhost:3000/api/fiche')
-    // return await fetch('https://memory-piafs.herokuapp.com/api/fiche')
-    .then(response => response.json())
-    .then(json => {
-        console.log(json);
-        return json;
-    })
-    .catch((e) => {
-        console.log(e);
-        msgAjout.innerHTML = "<strong>Erreur serveur !</strong> (réessayez ultérieurement<br/> ou plaignez-vous à l'<a href=\"mailto:morgane_felloni@hotmail.fr\" class=\"text-danger text-decoration-underline\"><em>informaticien</em></a>)";
-    })
-}
-//* post 1 user
-const postFiche = async function(arg) {
+    //* login
 
-    fetch('http://localhost:3000/api/fiche', {
-    // fetch('https://memory-piafs.herokuapp.com/api/fiche', {
-        method: "POST",
-        headers : {
-            'Accept' : 'application/json',
-            'Content-type': 'application/json'
-        },
-        body: JSON.stringify(arg)
-    })
-    .then(response => response.json())
-    .then(json => {
-        console.log(json);
-    })
-    .catch((e) => {
-        console.log(e);
-    })
-}
+//* Envoie infos connexion à DB
+const PostLogin = async function(userInfo) {
 
-const PostNewUser = async function(userInfo) {
-    fetch('http://localhost:3000/api/user', {
+    fetch('http://localhost:3000/api/user/login', {
         method: "POST",
         headers : {
             'Accept' : 'application/json',
@@ -74,14 +46,51 @@ const PostNewUser = async function(userInfo) {
     })
 }
 
+//* captation info connexion
+$('#WelcomeBack').on('click', function(e) {
+    e.preventDefault();
+    // $('#email').css('opacity', '0');
+    // console.log($('#email').val());
+    let userInfo = {
+        pseudo : $('#pseudoIn').val(),
+        password : $('#passwordIn').val()
+    }
+    console.log(userInfo);
+    
+    PostLogin(userInfo);
+    
+});
+
+    //* logup
+    
+//* Envoie info inscription à DB
+const PostNewUser = async function(userInfo) {
+    fetch('http://localhost:3000/api/user/logup', {
+        method: "POST",
+        headers : {
+            'Accept' : 'application/json',
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(userInfo)
+    })
+    .then(response => response.json())
+    .then(json => {
+        console.log(json);
+    })
+    .catch((e) => {
+        console.log(e);
+    })
+}
+
+//* captation info inscription
 $('#WhoAreYou').on('click', function(e) {
     e.preventDefault();
     // $('#email').css('opacity', '0');
     // console.log($('#email').val());
     let userInfo = {
-        pseudo : $('#pseudo').val(),
+        pseudo : $('#pseudoUp').val(),
         mail : $('#email').val(),
-        password : $('#password').val()
+        password : $('#passwordUp').val()
     }
     console.log(userInfo);
     

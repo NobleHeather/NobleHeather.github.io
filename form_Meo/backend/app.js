@@ -32,7 +32,7 @@ app.post('/api/article', (req, res, next) => {
 });
 
 //* User POST 1 OK !
-app.post('/api/user', (req, res, next) => {
+app.post('/api/user/logup', (req, res, next) => {
     bcrypt.hash(req.body.mail, 10)
     .then(hash => {
         const mail = hash;
@@ -60,8 +60,8 @@ app.get('/api/article/:id', (req, res, next) => {
   });
 
 //* User get 1 
-//? crypter le pass ici ?
-app.post('/api/pass/checkpass', (req, res, next) => { //? api.get & api/pass/:id
+//? crypter le pass ici ? 
+app.post('/api/user/login', (req, res, next) => { //? api.get & api/pass/:id
     User.findOne({ pseudo: req.body.pseudo })
       .then(user => {
         if (!user) {
