@@ -27,9 +27,15 @@
         <a href="charts/chartsTuto.html">
             lien temp vers charts
         </a>
-        <a href="outilsConception/capture_console_id&for.png">
-            lien temp vers outilsConception : capture d'écran de nommage champs form (getPostQ.js //* )
-        </a>
+        <ul>
+            <a href="outilsConception">
+                lien temp vers outilsConception : 
+            </a>
+            <li>capture d'écran de nommage champs form (getPostQ.js) <em>(parce que j'ai galéré sa mère donc je me vante maintenant)</em></li>
+            <li>structure de data/Q (getPostQ.js)</li>
+            <li>structure de user - inscription (logInUp.js)</li>
+            <li>Affichage datas de Q1 avec 10 réponses</li>
+        </ul>
         <div>
             <h2>Introduction</h2>
             <form class="row d-flex align-items-end mt-3">
@@ -233,7 +239,10 @@
                             J'ai une étoile nette et rouge, je la visualise
                         </label>
                     </div>
-                    <a href="#hidden" class="btn btn-warning mt-3" data-toggle="collapse">Show more Q</a> 
+                    <div class="d-flex justify-content-between">
+                        <button class="btn border border-primary">Valider</button>
+                        <a href="#hidden" class="btn btn-warning" data-toggle="collapse">Show more Q</a> 
+                    </div>
                 </fieldset>
                 
                 <div class="row collapse" id="hidden">
@@ -253,6 +262,7 @@
                                 Non
                             </label>
                         </div>
+                        <button class="btn border border-warning">Valider</button>
                     </fieldset>
     
                     <fieldset class="col-10 m-auto fieldsetHidden">
@@ -284,6 +294,8 @@
                             <label class="form-check-label" for="couleurFormePeutEtre">
                                 Peut-être, mais je n'obtiens pas la bonne couleur et/ou la forme change
                             </label>
+                        </div>
+                        <button class="btn border border-warning">Valider</button>
                     </fieldset>
     
                     <fieldset class="col-10 m-auto fieldsetHidden">
@@ -309,7 +321,10 @@
                                 Non, je dois supprimer l'étoile et en penser une nouvelle
                             </label>
                         </div>
-                        <a href="#subHidden" class="btn btn-danger mt-3" data-toggle="collapse">More Q ?</a> 
+                        <div class="d-flex justify-content-between">
+                            <button class="btn border border-warning">Valider</button>
+                            <a href="#subHidden" class="btn btn-danger" data-toggle="collapse">More Q ?</a> 
+                        </div>
                     </fieldset>
                     <!-- <div class="row collapse" id="hidden">
                         <fieldset class="col-10 m-auto fieldsetHidden"> -->
@@ -344,6 +359,7 @@
                                     Dans ma tête
                                 </label>
                             </div>
+                            <button class="btn border border-danger">Valider</button>
                         </fieldset>
                     </div>
                 </div>
@@ -385,6 +401,7 @@
                             <small class="form-text">secondes</small>
                         </div>
                     </div>
+                    <button class="btn border border-primary">Valider</button>
                 </fieldset>
 
                 <fieldset class="col-12">
@@ -463,6 +480,7 @@
                             </label>
                         </div>
                     </div>
+                    <button class="btn border border-primary">Valider</button>
                 </fieldset>
 
                 <fieldset class="col-12">
@@ -495,6 +513,7 @@
                             Je peux ajouter une feuille à ce petit bout de branche
                         </label>
                     </div>
+                    <button class="btn border border-primary">Valider</button>
                 </fieldset>
 
                 <fieldset class="col-12">
@@ -524,6 +543,7 @@
                             </small>
                         </div>
                     </div> -->
+                    <button class="btn border border-primary">Valider</button>
                 </fieldset>
 
                 <p class="text-danger">ça y est ça me gonfle</p>
@@ -554,7 +574,8 @@
     ></script>
     
     <script src="logInUp.js" type="text/javascript"></script>
-    <script src="getPostQ.js" type="text/javascript"></script>
+    <script src="postQ.js" type="text/javascript"></script>
+    <script src="getData.js" type="text/javascript"></script>
     <script src="deco.js" type="text/javascript"></script>
 </body>
 </html>

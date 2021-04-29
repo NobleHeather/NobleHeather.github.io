@@ -81,8 +81,8 @@ $('#WhoAreYou').on('click', function(e) {
         mail : $('#email').val(),
         password : $('#passwordUp').val()
     }
+
     console.log(userInfo);
     
-    PostNewUser(userInfo);
-    
+    PostNewUser(userInfo);  
 });

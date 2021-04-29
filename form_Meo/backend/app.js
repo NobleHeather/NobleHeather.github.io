@@ -21,17 +21,18 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-app.post('/api/article', (req, res, next) => {
+//* post question ok !
+app.post('/api/question', (req, res, next) => {
     delete req.body._id;
-    const article = new Article({
+    const question = new Question({
       ...req.body
     });
-    article.save()
-      .then(() => res.status(201).json({ message: 'Article enregistré !', article : article}))
+    question.save()
+      .then(() => res.status(201).json({ message: 'Datas enregistrés !', question : question}))
       .catch(error => res.status(400).json({ error }));
 });
 
-//* User POST 1 OK !
+//* User logup OK !
 app.post('/api/user/logup', (req, res, next) => {
     bcrypt.hash(req.body.mail, 10)
     .then(hash => {
@@ -59,8 +60,7 @@ app.get('/api/article/:id', (req, res, next) => {
       .catch(error => res.status(404).json({ error }));
   });
 
-//* User get 1 
-//? crypter le pass ici ? 
+//* User login ok !
 app.post('/api/user/login', (req, res, next) => { //? api.get & api/pass/:id
     User.findOne({ pseudo: req.body.pseudo })
       .then(user => {
@@ -98,9 +98,9 @@ app.delete('/api/article/:id', (req, res, next) => {
 });
 
 // GET
-app.use('/api/article', (req, res, next) => {
-    Article.find()
-        .then(articles => res.status(200).json(articles))
+app.use('/api/question', (req, res, next) => {
+    Question.find()
+        .then(questions => res.status(200).json(questions))
         .catch(error => res.status(400).json({ error }));
 });
 
