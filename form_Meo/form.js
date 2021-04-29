@@ -12,12 +12,12 @@ function get_tickmarks() {
 //* Identification
     //* Boutons
 
-$('.loginBtn')on('click', function() {
-    $('#logup').
+$([class=loginBtn])on('click', function() {
+    $('#logup').removeClass('show');
 })   
 
-$('.logupBtn')on('click', function() {
-
+$('logupBtn')on('click', function() {
+    $('#login').removeClass('show');
 })   
 
 
