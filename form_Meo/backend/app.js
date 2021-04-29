@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const Question = require('./models/question');
 const User = require('./models/user');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://NobleHeather:NHOC2021@cluster0.bfskp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://NobleHeather:<PASS>@cluster0.bfskp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))

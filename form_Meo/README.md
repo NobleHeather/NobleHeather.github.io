@@ -1,3 +1,5 @@
+<!-- !!remettre pass dans mongoose.connect ! -->
+
 Donner des id aux fieldset : ex : question1
 
 Les datas de la questions doivent être reliées aux infos d'identification.
