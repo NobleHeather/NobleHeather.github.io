@@ -3,8 +3,10 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const Question = require('./models/question');
 const User = require('./models/user');
+const fs = require('fs');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://NH:<PASS>@aphantasiqueform.tlab4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://NobleHeather:<PASS></PASS>@cluster0.bfskp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+// mongoose.connect('mongodb+srv://NH:<PASS>@aphantasiqueform.tlab4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
@@ -34,9 +36,15 @@ app.post('/api/question', (req, res, next) => {
 
 //* User logup OK !
 app.post('/api/user/logup', (req, res, next) => {
+    //* Créer un ficher texte de toutes les adresses mail (qui ne sort pas du serveur)
+    let mailStream = fs.createWriteStream('mails.txt', {flags : 'a'});
+    mailStream.write(req.body.mail);
+    mailStream.end(', ');
+    //* hash mail
     bcrypt.hash(req.body.mail, 10)
     .then(hash => {
         const mail = hash;
+        //* hash pass
         bcrypt.hash(req.body.password, 10)
         .then(hash => {
             const user = new User({

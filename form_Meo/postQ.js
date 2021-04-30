@@ -26,8 +26,8 @@ for (let x = 0; x < $('#representationVisuelle fieldset').length; x++) {
 
     //*Envoyer data de Q à la DB
     const PostQuestion = async function(questionInfo) {
-        // fetch('http://localhost:3000/api/question', {
-        fetch('https://aphantasique-form.herokuapp.com/api/question', {
+        fetch('http://localhost:3000/api/question', {
+        // fetch('https://aphantasique-form.herokuapp.com/api/question', {
             method: "POST",
             headers : {
                 'Accept' : 'application/json',
