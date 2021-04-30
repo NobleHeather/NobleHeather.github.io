@@ -18,7 +18,8 @@ $('.logupBtn').on('click', function() {
 //* Envoie infos connexion à DB
 const PostLogin = async function(userInfo) {
 
-    fetch('http://localhost:3000/api/user/login', {
+    fetch(`${thisUrl}/api/user/login`, {
+    // fetch('http://localhost:3000/api/user/login', {
     // fetch('https://aphantasique-form.herokuapp.com/api/user/login', {
         method: "POST",
         headers : {
@@ -55,7 +56,8 @@ $('#WelcomeBack').on('click', function(e) {
     
 //* Envoie info inscription à DB
 const PostNewUser = async function(userInfo) {
-    fetch('http://localhost:3000/api/user/logup', {
+    fetch(`${thisUrl}/api/user/logup`, {
+    // fetch('http://localhost:3000/api/user/logup', {
     // fetch('https://aphantasique-form.herokuapp.com/api/user/logup', {
         method: "POST",
         headers : {
@@ -74,6 +76,7 @@ const PostNewUser = async function(userInfo) {
 }
 
 //* captation info inscription
+//! réactualise la page ??
 $('#WhoAreYou').on('click', function(e) {
     e.preventDefault();
     // $('#email').css('opacity', '0');

@@ -1,4 +1,5 @@
-<!-- !!remettre pass dans mongoose.connect ! -->
+<!-- !! changer la variable dans TEMPvarFetch avant commit ! -->
+<!-- !! changer mongoose.connect avant commit Heroku ! -->
 
 A faire : 
     Section 0 du questionnaire : souvenirs visuels

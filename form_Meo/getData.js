@@ -1,7 +1,8 @@
 //* Afficher les données
 
 const GetData = async function() {
-    return await fetch('http://localhost:3000/api/question')
+    return await fetch(`${thisUrl}/api/question`)
+    // return await fetch('http://localhost:3000/api/question')
     // return await fetch('https://aphantasique-form.herokuapp.com/api/question')
     .then(response => response.json())
     .then(json => {

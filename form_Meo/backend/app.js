@@ -5,7 +5,8 @@ const Question = require('./models/question');
 const User = require('./models/user');
 const fs = require('fs');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://NobleHeather:<PASS></PASS>@cluster0.bfskp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+const PASS = require('./PASS'); //! a supprimer ensuite
+mongoose.connect(`mongodb+srv://NobleHeather:${PASS}@cluster0.bfskp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
 // mongoose.connect('mongodb+srv://NH:<PASS>@aphantasiqueform.tlab4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
