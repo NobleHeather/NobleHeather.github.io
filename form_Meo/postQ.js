@@ -130,11 +130,11 @@ function CreateAvisQuestionInfo(fieldset) {
 
 function CreateRangeQuestionInfo(fieldset) {
 
-    let rangeVal = fieldset.querySelector("input").value;
+   
     let btnValider = fieldset.querySelector("button");
     let btnShowGraph = fieldset.querySelector("a");
 
-    console.log(input);
+    
     console.log(btnValider);
     console.log(btnShowGraph);
     console.log(fieldset);
@@ -147,6 +147,9 @@ function CreateRangeQuestionInfo(fieldset) {
         console.log("BOUTON VALIDER");
         e.preventDefault();
 
+        let rangeVal = fieldset.querySelector("input").value;
+        console.log(rangeVal);
+        
         btnShowGraph.style.opacity = "1";
         // DisableQuestion(rangeVal); //?
 
@@ -183,7 +186,7 @@ Array.from(fieldsets, fieldset => {
 
         CreateAvisQuestionInfo(fieldset);
     //* Sinon on continue
-    } else if ($(`${fieldset} input`).getAttribute('type') == 'range') {
+    } else if (fieldset.querySelector('input').getAttribute('type') == 'range') {
         console.log('range');
         CreateRangeQuestionInfo(fieldset);
     } else {
