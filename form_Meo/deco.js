@@ -1,14 +1,29 @@
-//* Pour range
-
+//* Pour range : affiche la valeur choisie à côté
 function get_tickmarks() {
     // remplacer .replaceWith avec un équivalent de textContent omg - -"
-    $("#choix").replaceWith("<small id='choix'>&nbsp; => Choix : </small>");
+    if (!document.querySelector('.form-range').disabled) {
 
-    // console.log(document.getElementById(""));
-    console.log(document.querySelector('.form-range').value);
+        $("#choix").replaceWith("<small id='choix'>&nbsp; => Choix : </small>");
+    
+        // console.log(document.getElementById(""));
+        console.log(document.querySelector('.form-range').value);
+    
+        let val = document.querySelector('.form-range').value;
+        console.log("choix = " + val);
+        $("#choix").append(`${val}`);
 
-    let val = document.querySelector('.form-range').value;
-    console.log("choix = " + val);
-    $("#choix").append(`${val}`);
+    }
+}
+
+//* Désactive la question
+function DisableQuestion(inputs) {
+
+    console.log('FONCTION DISABLE_QUESTION');
+    
+    Array.from(inputs, item => {
+        item.setAttribute('disabled', 'disabled')
+            // console.log(inputs);
+    });
+
 }
 

@@ -5,8 +5,7 @@
 // nommés un par un dans le html donc je suis même pas sûre que ça soit rentable,
 // t'as intérêt à faire un formulaire 2.0 et même un 3.0)
 
-//! Que va faire ce bout de code quand il n'y aura pas de label juste après input ? (cas des range)
-//* Dans la section 1 représentation visuelle, en fonction du nombre de fieldset
+//* Dans la section 0 souvenirs visuels, en fonction du nombre de fieldset
 for (let x = 0; x < $('#SouvenirsVisuels fieldset').length; x++) {
 
     //* On nomme chaque fieldset avec un numéro de question
@@ -24,45 +23,73 @@ for (let x = 0; x < $('#SouvenirsVisuels fieldset').length; x++) {
 
     //* CAPTAGE DE DATA (question 1, voir si généralisable)
 
-    //*Envoyer data de Q à la DB
-    const PostQuestion = async function(questionInfo) {
-        fetch(`${thisUrl}/api/question`, {
-        // fetch('http://localhost:3000/api/question', {
-        // fetch('https://aphantasique-form.herokuapp.com/api/question', {
-            method: "POST",
-            headers : {
-                'Accept' : 'application/json',
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify(questionInfo)
-        })
-        .then(response => response.json())
-        .then(json => {
-            console.log('Données renvoyées par la DB : ', json);
-        })
-        .catch((e) => {
-            console.log(e);
-        })
-    }
-
-    //* Capturer les values des inputs
-    //! ratio
-
-    
-let fieldsets = document.querySelectorAll('fieldset');
-
-
-//* Désactive la question
-function DisableQuestion(inputs) {
-
-    console.log('FONCTION DISABLE_QUESTION');
-    
-    Array.from(inputs, item => {
-        item.setAttribute('disabled', 'disabled')
-            // console.log(inputs);
-    });
-
+//*Envoyer data de Q à la DB
+const PostForm = async function(formInfo) {
+    console.log('POST_FORM');
+    fetch(`${thisUrl}/api/form`, {
+    // fetch('http://localhost:3000/api/question', {
+    // fetch('https://aphantasique-form.herokuapp.com/api/question', {
+        method: "POST",
+        headers : {
+            'Accept' : 'application/json',
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(formInfo)
+    })
+    .then(response => response.json())
+    .then(json => {
+        console.log('Données renvoyées par la DB : ', json);
+    })
+    .catch((e) => {
+        console.log(e);
+    })
 }
+
+//// Stock les questions sur local storage
+function PostQuestion(questionInfo) {
+    console.log('POST_QUESTION');
+    console.log(questionInfo)
+
+    let questionInfoTab = JSON.parse(localStorage.getItem("questionInfoTab")) || [];
+    //* Si c'est un textarea
+    if (questionInfo.somethingElse) {
+        questionInfoTab.push([questionInfo.section, [`N° ${questionInfo.num} : data : ${questionInfo.somethingElse}`]]);
+        localStorage.setItem("questionInfoTab", JSON.stringify(questionInfoTab));
+
+    } else {
+        questionInfoTab.push([questionInfo.section, [`N° ${questionInfo.num} : data : ${questionInfo.data}`]]);
+        localStorage.setItem("questionInfoTab", JSON.stringify(questionInfoTab));
+    }
+    questionInfoTab = JSON.parse(localStorage.getItem("questionInfoTab"));
+    console.log(questionInfoTab);
+}
+let questionInfoTab = JSON.parse(localStorage.getItem("questionInfoTab")) || [];
+console.log(questionInfoTab);
+
+//*Formate un objet formInfo à envoyer à la DB
+function CreateFormInfo() {
+    console.log('FONCTION CREATE_FORM_INFO');
+    //// On récupère le tableau de toutes les questions sur locat storage
+    let formInfo = JSON.parse(localStorage.getItem("questionInfoTab"));
+    
+    console.log(formInfo);
+
+    
+
+    return formInfo;
+}
+
+$('#ValiderForm').on('click', function(e) {
+    console.log('BOUTON VALIDER_FORM');
+    e.preventDefault();
+
+    let formInfo = CreateFormInfo();
+    PostForm(formInfo);
+
+});
+
+    //* FORMATAGE QUESTIONS
+let fieldsets = document.querySelectorAll('fieldset');
 
 //* Crée un objet à envoyer à DB pour ratio
 function CreateRatioQuestionInfo(fieldset) {
@@ -70,10 +97,10 @@ function CreateRatioQuestionInfo(fieldset) {
     let btnValider = fieldset.querySelector("button");
     let btnShowGraph = fieldset.querySelector("a");
 
-    console.log(inputs);
-    console.log(btnValider);
-    console.log(btnShowGraph);
-    console.log(fieldset);
+    // console.log(inputs);
+    // console.log(btnValider);
+    // console.log(btnShowGraph);
+    // console.log(fieldset);
 
     btnShowGraph.style.opacity = "0";
 
@@ -107,11 +134,12 @@ function CreateRatioQuestionInfo(fieldset) {
     });
 }
 
-//* Quand on clique sur le bouton validerForm, on capte le textarea
+//* Crée un objet à envoyer à DB pour textarea
 function CreateAvisQuestionInfo(fieldset) {
 
-    $('#ValiderForm').on('click', function(e) {
-        e.preventDefault();
+    //* Quand on clique sur le bouton pour l'ensemble du form
+    $(fieldset.querySelector('textarea')).on('change', function() {
+        // e.preventDefault();
 
         let questionInfo = {
             num: JSON.parse($(fieldset).attr("id").charAt(8)), //num de question
@@ -128,6 +156,7 @@ function CreateAvisQuestionInfo(fieldset) {
     
 }
 
+//* Crée un objet à envoyer à DB pour range
 function CreateRangeQuestionInfo(fieldset) {
 
    
@@ -135,9 +164,9 @@ function CreateRangeQuestionInfo(fieldset) {
     let btnShowGraph = fieldset.querySelector("a");
 
     
-    console.log(btnValider);
-    console.log(btnShowGraph);
-    console.log(fieldset);
+    // console.log(btnValider);
+    // console.log(btnShowGraph);
+    // console.log(fieldset);
 
     btnShowGraph.style.opacity = "0";
 
@@ -148,10 +177,11 @@ function CreateRangeQuestionInfo(fieldset) {
         e.preventDefault();
 
         let rangeVal = fieldset.querySelector("input").value;
-        console.log(rangeVal);
-        
+        // console.log(rangeVal);
+
         btnShowGraph.style.opacity = "1";
-        // DisableQuestion(rangeVal); //?
+        //* disable range
+        fieldset.querySelector("input").disabled = true;
 
         // console.log('allo ?');
         let questionInfo = {
@@ -173,9 +203,7 @@ function CreateRangeQuestionInfo(fieldset) {
         fieldset.setAttribute("class", "texte col-6");
     });
 
-
 }
-
 
 //* Capture les éléments dans chaque fieldset
 Array.from(fieldsets, fieldset => {
@@ -199,28 +227,28 @@ Array.from(fieldsets, fieldset => {
 
 
 
-$('#validerQ0').on('click', function(e) {
-    e.preventDefault();
+// $('#validerQ0').on('click', function(e) {
+//     e.preventDefault();
 
-    //input
-    // console.log($(`#question0 input:checked`)); // Oooooh :O
-    // console.log($(`#question0 input:checked`).attr('id'));
-    // console.log($(`#question0 input:checked`).attr('id').charAt(3)); //Aaaah :O
+//     //input
+//     // console.log($(`#question0 input:checked`)); // Oooooh :O
+//     // console.log($(`#question0 input:checked`).attr('id'));
+//     // console.log($(`#question0 input:checked`).attr('id').charAt(3)); //Aaaah :O
 
 
     
-    let questionInfo = {
-        num : 0, //num de question
-        data : [$(`#question0 input:checked`).attr('id').charAt(3)], //réponse user
-        cat: true, //question obligatoire ou non
-        section: 'representation visuelle' //sous-partie du questionnaire
-    }
+//     let questionInfo = {
+//         num : 0, //num de question
+//         data : [$(`#question0 input:checked`).attr('id').charAt(3)], //réponse user
+//         cat: true, //question obligatoire ou non
+//         section: 'representation visuelle' //sous-partie du questionnaire
+//     }
     
-    console.log('Données entrées par l\'utilisateur : ', questionInfo);
+//     console.log('Données entrées par l\'utilisateur : ', questionInfo);
     
-    PostQuestion(questionInfo);
+//     PostQuestion(questionInfo);
 
-    //! DisableQuestion(questionInfo.num)
+//     //! DisableQuestion(questionInfo.num)
     
-});
+// });
     
