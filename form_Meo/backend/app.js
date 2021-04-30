@@ -36,6 +36,8 @@ app.post('/api/question', (req, res, next) => {
       .catch(error => res.status(400).json({ error }));
 });
 
+//* post form
+// const Empty1 = new Schema({ any: [] });
 app.post('/api/form', (req, res, next) => {
     delete req.body._id;
     const form = new Form({

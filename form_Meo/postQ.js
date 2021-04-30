@@ -27,7 +27,7 @@ for (let x = 0; x < $('#SouvenirsVisuels fieldset').length; x++) {
 const PostForm = async function(formInfo) {
     console.log('POST_FORM');
 
-    console.log(formInfo);
+    // console.log(formInfo);
     fetch(`${thisUrl}/api/form`, {
     // fetch('http://localhost:3000/api/question', {
     // fetch('https://aphantasique-form.herokuapp.com/api/question', {
@@ -49,7 +49,7 @@ const PostForm = async function(formInfo) {
 
 //// Stock les questions sur local storage
 function PostQuestion(questionInfo) {
-    console.log('POST_QUESTION');
+    console.log('POST_QUESTION_LOCAL_STORAGE');
     console.log(questionInfo)
 
     let questionInfoTab = JSON.parse(localStorage.getItem("questionInfoTab")) || [];
@@ -63,7 +63,7 @@ function PostQuestion(questionInfo) {
         localStorage.setItem("questionInfoTab", JSON.stringify(questionInfoTab));
     }
     questionInfoTab = JSON.parse(localStorage.getItem("questionInfoTab"));
-    console.log(questionInfoTab);
+    // console.log(questionInfoTab);
 }
 
 
@@ -76,9 +76,9 @@ function CreateFormInfo() {
     console.log(formInfoTab);
 
     const formInfoPropre = formInfoTab.map(item => {
-        console.log(item);
-        console.log(item[1]);
-        console.log(item[1]);
+        // console.log(item);
+        // console.log(item[1]);
+        // console.log(item[1]);
         return item = item[1];
     });
 

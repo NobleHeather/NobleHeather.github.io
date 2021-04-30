@@ -8,6 +8,8 @@ A faire :
 
     Systématiser capture des ranges
 
+    PB : les data de form sont mixtes, mettre le text area tout seul dans un coin ?
+
     NB : quand c'est un button, recharge la page
 
 30/04 compte rendu :
