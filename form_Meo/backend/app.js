@@ -7,8 +7,8 @@ const Form = require('./models/form');
 const fs = require('fs');
 const mongoose = require('mongoose');
 const PASS = require('./PASS'); //! a supprimer ensuite
-mongoose.connect(`mongodb+srv://NobleHeather:${PASS}@cluster0.bfskp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
-// mongoose.connect('mongodb+srv://NH:<PASS>@aphantasiqueform.tlab4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+// mongoose.connect(`mongodb+srv://NobleHeather:${PASS}@cluster0.bfskp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
+// mongoose.connect('mongodb+srv://NH:<pass>@aphantasiqueform.tlab4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
@@ -37,7 +37,6 @@ app.post('/api/question', (req, res, next) => {
 });
 
 //* post form
-// const Empty1 = new Schema({ any: [] });
 app.post('/api/form', (req, res, next) => {
     delete req.body._id;
     const form = new Form({
