@@ -7,12 +7,12 @@
 
 //! Que va faire ce bout de code quand il n'y aura pas de label juste après input ? (cas des range)
 //* Dans la section 1 représentation visuelle, en fonction du nombre de fieldset
-for (let x = 0; x < $('#representationVisuelle fieldset').length; x++) {
+for (let x = 0; x < $('#SouvenirsVisuels fieldset').length; x++) {
 
     //* On nomme chaque fieldset avec un numéro de question
     //todo NB : c'est une class et pas un id car on a des id "hidden" pour les toggle btn //Du coup j'ai mis les truc toggle dans des div
-    $(`#representationVisuelle fieldset:eq(${x})`).attr('id', `question${x}`);
-    $(`#representationVisuelle fieldset:eq(${x}) button`).attr('id', `validerQ${x}`);
+    $(`#SouvenirsVisuels fieldset:eq(${x})`).attr('id', `question${x}`);
+    $(`#SouvenirsVisuels fieldset:eq(${x}) button`).attr('id', `validerQ${x}`);
 
     //* On nomme les inputs et les labels de ce fieldset en fonction du numéro de question
     for (let i = 0; i < $(`#question${x} input`).length; i++) {
@@ -46,6 +46,82 @@ for (let x = 0; x < $('#representationVisuelle fieldset').length; x++) {
     }
 
     //* Capturer les values des inputs
+    //! ratio
+
+    
+let fieldsets = document.querySelectorAll('fieldset');
+
+
+//* Désactive la question
+function DisableQuestion(inputs) {
+
+    console.log('FONCTION DISABLE_QUESTION');
+    
+    Array.from(inputs, item => {
+        item.setAttribute('disabled', 'disabled')
+            // console.log(inputs);
+    });
+
+}
+
+//* Capture les éléments dans chaque fieldset
+Array.from(fieldsets, fieldset => {
+    let inputs = fieldset.querySelectorAll('input');
+    let btnValider = fieldset.querySelector('button');
+    let btnShowGraph = fieldset.querySelector('a');
+
+    console.log(inputs);
+    console.log(btnValider);
+    console.log(btnShowGraph);
+    console.log(fieldset);
+
+    //* Si c'est une partie textarea, on l'exclus
+    if (fieldset.querySelector('legend').getAttribute('id') == 'avis') {
+        console.log('avis');
+    //* Sinon on continue
+    } else {
+
+        btnShowGraph.style.opacity = '0';
+    
+        //* Quand on clique sur valider on montre le btn showGraph
+        //* Et on disable la question + capture les données
+        btnValider.addEventListener('click', function(e) {
+            console.log('BOUTON VALIDER');
+            e.preventDefault();
+            
+            btnShowGraph.style.opacity = '1';
+            DisableQuestion(inputs);
+    
+            // console.log('allo ?');
+            let questionInfo = {
+                num : $(fieldset).attr('id').charAt(8), //num de question
+                data : [$(`${fieldset} input:checked`).attr('id').charAt(3)], //réponse user
+                section: 'Souvenirs Visuels' //sous-partie du questionnaire
+            }
+            
+            console.log('Données entrées par l\'utilisateur : ', questionInfo);
+            
+            PostQuestion(questionInfo);
+            
+        }); 
+    
+        //* Quand on clique sur btn showGraph... montre le graph (wow quelle surprise)
+        btnShowGraph.addEventListener('click', function(e) {
+            console.log('BOUTON SHOW_GRAPH');
+            e.preventDefault();
+            
+            fieldset.setAttribute('class', 'texte col-6');
+        
+        });
+
+    }
+    
+});
+
+
+
+
+
 $('#validerQ0').on('click', function(e) {
     e.preventDefault();
 

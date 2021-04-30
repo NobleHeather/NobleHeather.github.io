@@ -136,67 +136,340 @@
                 <span aria-hidden="true">×</span>
             </button>
         </div>
-        <section>
+        <section id="SouvenirsVisuels">
             <h2>Souvenirs visuels</h2>
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <!--     <h5 class="alert-heading">Prérequis :</h5> -->
+                <p>Dans cette première partie, vous allez prendre connaissance de votre façon de vous représenter mentalement vos souvenirs. La diversité des autres réponses pourrait déjà vous surprendre ! :)</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
             <form>
-                <fieldset class="col-12">
-                    <legend class="text-primary"><strong>Question 0 : </strong>Penser au visage d'un (très) proche</legend>
+                <section class="question row">
+                    <fieldset class="texte col-12">
+                        <legend class="text-primary"><strong>Question 1 : </strong>Penser au visage d'un (très) proche</legend>
+                        
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="visageReconnaitre" id="visageReconnaitre" />
+                            <label class="form-check-label" for="visageReconnaitre">
+                                Je le reconnaitrai mais là je ne peux pas le voir
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="visageFlou" id="visageFlou" />
+                            <label class="form-check-label" for="visageFlou">
+                                Je vois un visage flou
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="visageNi" id="visageNi" />
+                            <label class="form-check-label" for="visageNi">
+                                Je vois un visage ni flou, ni net
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="visageNet" id="visageNet" />
+                            <label class="form-check-label" for="visageNet">
+                                Je vois un visage net
+                            </label>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-primary">Valider</button>
+                            <a href="#graph1" class="btn border-primary" data-toggle="collapse">Voir les réponses des autres utilisateurs</a> 
+                        </div>
+                    </fieldset>
+                    <div class="graph col-6">
+                
+                        <div class="col-10 m-auto collapse in text-white border border-primary" id="graph1">
+                            Ici sera le graph. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio assumenda deleniti possimus mollitia odit fugiat voluptatensectetur, adipisicing elit. Dolores, quod? quia nostrum architecto quibusdam a optio corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium nobis itaque aut! Quisquam, rerum assumenda illum similique impedit nobis recusandae incidunt quibusdam possimus debitis expedita quae deserunt quod quia, sunt accusamus libero nam a quos! Est quisquam sequi ea obcaecati recusandae accusantium tenetur, vero quod sit illum voluptates et placeat?
+                        </div>
+                    </div>
+
+
+                </section>
+
+                <section class="question row">
+                    <fieldset class="texte col-12">
+                        <legend class="text-primary"><strong>Question 1bis : </strong></legend>
+                        
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <label for="mimique" class="form-label">Je peux lui faire réaliser les principales mimiques de son visage (sourire, froncer les sourcils…)</label>
+                            </div>
+                            <div class="col-auto d-flex flex-row align-items-center">
+                                <small>facile (0) &nbsp;</small>
+                                <input type="range" class="form-range" min="0" max="9" step="1" id="mimique" list="tickmarks" value="1" onChange="get_tickmarks()">
+                                <datalist id="tickmarks">
+                                    <option value="1" label="1">
+                                    <option value="2" label="2">
+                                    <option value="3" label="3">
+                                    <option value="4" label="4">
+                                    <option value="5" label="5">
+                                    <option value="6" label="6">
+                                    <option value="7" label="7">
+                                    <option value="8" label="8">
+                                    <option value="9" label="9">
+                                </datalist>
+                                <small>&nbsp; impossible (9)</small>
+                                <small id="choix">
+                                    &nbsp; => Choix :
+                                </small>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-primary">Valider</button>
+                            <a href="#graph1b" class="btn border-primary" data-toggle="collapse">Voir les réponses des autres utilisateurs</a> 
+                        </div>
+                    </fieldset>
+                    <div class="graph col-6">
+                
+                        <div class="col-10 m-auto collapse in text-white border border-primary" id="graph1b">
+                            Ici sera le graph. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio assumenda deleniti possimus mollitia odit fugiat voluptatensectetur, adipisicing elit. Dolores, quod? quia nostrum architecto quibusdam a optio corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium nobis itaque aut! Quisquam, rerum assumenda illum similique impedit nobis recusandae incidunt quibusdam possimus debitis expedita quae deserunt quod quia, sunt accusamus libero nam a quos! Est quisquam sequi ea obcaecati recusandae accusantium tenetur, vero quod sit illum voluptates et placeat?
+                        </div>
+                    </div>
+                </section>
+                
+
+
+                <section class="question row">
+                    <fieldset class="texte col-12">
+                        <legend class="text-primary"><strong>Question 2 : </strong>Je dois aller au panneau d'affichage des trains au départ, dans une gare, en partant de chez moi, assis sur mon lit, et ce parcours possède au moins plusieurs arrêts (de train, de bus…)</legend>
+                        
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" />
+                            <label class="form-check-label" for="">
+                                Je ne visualise pas de trajet comme un film ou comme des images
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" />
+                            <label class="form-check-label" for="">
+                                Je vois une banque d'images les unes derrière les autres, je crois
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" />
+                            <label class="form-check-label" for="">
+                                Je vois une banque d'images les unes derrière les autres, c'est sûr
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" />
+                            <label class="form-check-label" for="">
+                                Je vois une série de vidéos, depuis mes yeux
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" />
+                            <label class="form-check-label" for="">
+                                Je vois une vidéo en accéléré, depuis mes yeux
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" />
+                            <label class="form-check-label" for="">
+                                Je vois une série de vidéos, depuis une vision extérieure à mon corps
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" />
+                            <label class="form-check-label" for="">
+                                Je vois une vidéo en accéléré, depuis une vision extérieure à mon corps
+                            </label>
+                        </div>
+    
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-primary">Valider</button>
+                            <a href="#graph2" class="btn border-primary" data-toggle="collapse">Voir les réponses des autres utilisateurs</a> 
+                        </div>
+
+                    </fieldset>
+
+                    <div class="graph col-6">
+                
+                        <div class="col-10 m-auto collapse in text-white border border-primary" id="graph2">
+                            Ici sera le graph. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio assumenda deleniti possimus mollitia odit fugiat voluptatensectetur, adipisicing elit. Dolores, quod? quia nostrum architecto quibusdam a optio corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium nobis itaque aut! Quisquam, rerum assumenda illum similique impedit nobis recusandae incidunt quibusdam possimus debitis expedita quae deserunt quod quia, sunt accusamus libero nam a quos! Est quisquam sequi ea obcaecati recusandae accusantium tenetur, vero quod sit illum voluptates et placeat?
+                        </div>
+                    </div>
                     
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="visageReconnaitre" id="visageReconnaitre" />
-                        <label class="form-check-label" for="visageReconnaitre">
-                            Je le reconnaitrai mais là je ne peux pas le voir
-                        </label>
-                    </div>
+                </section>
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="visageFlou" id="visageFlou" />
-                        <label class="form-check-label" for="visageFlou">
-                            Je vois un visage flou
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="visageNi" id="visageNi" />
-                        <label class="form-check-label" for="visageNi">
-                            Je vois un visage ni flou, ni net
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="visageNet" id="visageNet" />
-                        <label class="form-check-label" for="visageNet">
-                            Je vois un visage net
-                        </label>
-                    </div>
-
-                    <div class="row align-items-center">
-                        <div class="col-auto">
-                            <label for="mimique" class="form-label">Je peux lui faire réaliser les principales mimiques de son visage (sourire, froncer les sourcils…)</label>
+                <section class="question row">
+                    <fieldset class="texte col-12">
+                        <legend class="text-primary"><strong>Question 3 : </strong>suite de la question 2</legend>
+                        
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" />
+                            <label class="form-check-label" for="">
+                                C'est plutôt flou
+                            </label>
                         </div>
-                        <div class="col-auto d-flex flex-row align-items-center">
-                            <small>facile (0) &nbsp;</small>
-                            <input type="range" class="form-range" min="0" max="9" step="1" id="mimique" list="tickmarks" value="1" onChange="get_tickmarks()">
-                            <datalist id="tickmarks">
-                                <option value="1" label="1">
-                                <option value="2" label="2">
-                                <option value="3" label="3">
-                                <option value="4" label="4">
-                                <option value="5" label="5">
-                                <option value="6" label="6">
-                                <option value="7" label="7">
-                                <option value="8" label="8">
-                                <option value="9" label="9">
-                            </datalist>
-                            <small>&nbsp; impossible (9)</small>
-                            <small id="choix">
-                                &nbsp; => Choix :
-                            </small>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" />
+                            <label class="form-check-label" for="">
+                                C'est plutôt esquissé (comme un dessin au crayon de papier)
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" />
+                            <label class="form-check-label" for="">
+                                C'est plutôt net
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" />
+                            <label class="form-check-label" for="">
+                                Je ne comprends pas cette notion de flou, net, esquissé
+                            </label>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-primary">Valider</button>
+                            <a href="#graph3" class="btn border-primary" data-toggle="collapse">Voir les réponses des autres utilisateurs</a> 
+                        </div>
+
+                    </fieldset>
+
+                    <div class="graph col-6">
+                
+                        <div class="col-10 m-auto collapse in text-white border border-primary" id="graph3">
+                            Ici sera le graph. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio assumenda deleniti possimus mollitia odit fugiat voluptatensectetur, adipisicing elit. Dolores, quod? quia nostrum architecto quibusdam a optio corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium nobis itaque aut! Quisquam, rerum assumenda illum similique impedit nobis recusandae incidunt quibusdam possimus debitis expedita quae deserunt quod quia, sunt accusamus libero nam a quos! Est quisquam sequi ea obcaecati recusandae accusantium tenetur, vero quod sit illum voluptates et placeat?
                         </div>
                     </div>
-        </section>
 
+                </section>
 
+                <section class="question row">
+                    <fieldset class="texte col-12">
+                        <legend class="text-primary"><strong>Question 4 : </strong>Au début de mon voyage intérieur, j'ai vu une carte (routière, métro, train, etc)</legend>
+                        
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" />
+                            <label class="form-check-label" for="">
+                                Non
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" />
+                            <label class="form-check-label" for="">
+                                Oui je crois
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" />
+                            <label class="form-check-label" for="">
+                                Oui, mais je n'ai pas eu le temps de la voir longtemps
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" />
+                            <label class="form-check-label" for="">
+                                Oui, et je l'ai ouverte pour m'y repérer et je pourrais le faire si je veux
+                            </label>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-primary">Valider</button>
+                            <a href="#graph4" class="btn border-primary" data-toggle="collapse">Voir les réponses des autres utilisateurs</a> 
+                        </div>
+
+                    </fieldset>
+
+                    <div class="graph col-6">
+                
+                        <div class="col-10 m-auto collapse in text-white border border-primary" id="graph4">
+                            Ici sera le graph. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio assumenda deleniti possimus mollitia odit fugiat voluptatensectetur, adipisicing elit. Dolores, quod? quia nostrum architecto quibusdam a optio corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium nobis itaque aut! Quisquam, rerum assumenda illum similique impedit nobis recusandae incidunt quibusdam possimus debitis expedita quae deserunt quod quia, sunt accusamus libero nam a quos! Est quisquam sequi ea obcaecati recusandae accusantium tenetur, vero quod sit illum voluptates et placeat?
+                        </div>
+                    </div>
+
+                </section>
+
+                <section class="question row">
+                    <fieldset class="texte col-12">
+                        <legend class="text-primary"><strong>Question 5 : </strong>Retrouvez dans un votre mémoire un souvenir (visuel toujours) dont vous savez qu'il manque des informations <em>(la couleur d'un mur dans une pièce, s'il y a des tableaux, etc)</em></legend>
+                        
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" />
+                            <label class="form-check-label" for="">
+                                J'ai une hyperfocalisation sur les choses qui sont dans la pièce de ce souvenir, impossible de voir autour
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" />
+                            <label class="form-check-label" for="">
+                                Apparemment ma mémoire reconstruit un décor, des zones sont floues
+                            </label>
+                        </div>
+    
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" />
+                            <label class="form-check-label" for="">
+                                Ma mémoire reconstruit un décor, toutes les zones sont nettes, que je sache ou non ce qui est vrai ou faux
+                            </label>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-primary">Valider</button>
+                            <a href="#graph5" class="btn border-primary" data-toggle="collapse">Voir les réponses des autres utilisateurs</a> 
+                        </div>
+
+                    </fieldset>
+
+                    <div class="graph col-6">
+                
+                        <div class="col-10 m-auto collapse in text-white border border-primary" id="graph5">
+                            Ici sera le graph. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio assumenda deleniti possimus mollitia odit fugiat voluptatensectetur, adipisicing elit. Dolores, quod? quia nostrum architecto quibusdam a optio corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium nobis itaque aut! Quisquam, rerum assumenda illum similique impedit nobis recusandae incidunt quibusdam possimus debitis expedita quae deserunt quod quia, sunt accusamus libero nam a quos! Est quisquam sequi ea obcaecati recusandae accusantium tenetur, vero quod sit illum voluptates et placeat?
+                        </div>
+                    </div>
+
+                </section>
+
+                <section class="question row">
+                    <fieldset class="avis col-12">
+                        <legend class="text-primary" id="avis">Donnez votre avis :</legend>
+
+                        <div class="col-md-8 mx-auto">
+                            <div class="form-group">
+                              <textarea id="" class="form-control" style="height: 150px" required ></textarea>
+                              <label class="form-control-placeholder" for="avis">Dans cette séquence, j'ai été gêné(e) et n'ai pas pu répondre, j'explique :</label>
+                            </div>
+                          </div>
+
+                    </fieldset>
+
+                </section>
+                <div class="row mt-3">
+                    <button class="btn btn-warning col-3 m-auto">Envoyer toutes mes réponses</button>
+                    <a href="#representationVisuelle" class="btn btn-primary col-3 m-auto">Continuer le questionnaire</a>
+                    <a href="#Index" class="btn border border-primary col-2 m-auto">Accueil</a>
+                </div>
+                
+            </form>
+        </section> <!--souvenirs visuels-->
+
+<!--! *********************************************************************************************************** -->
+        <div id="fleche">
+            &#9829; partie test &#9829; <br/>
+            &#8595;
+        </div>
 
         <section id="representationVisuelle">
             <h2>Représentation visuelle</h2>
@@ -206,7 +479,7 @@
                     
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="etoileRien" id="etoileRien" />
-                        <label class="form-check-label allo" for="etoileRien">
+                        <label class="form-check-label" for="etoileRien">
                             Je la conceptualise, je ne vois rien à proprement parler
                             <a href="" class="badge badge-primary">> question 7</a>
                         </label>
@@ -326,8 +599,7 @@
                             <a href="#subHidden" class="btn btn-danger" data-toggle="collapse">More Q ?</a> 
                         </div>
                     </fieldset>
-                    <!-- <div class="row collapse" id="hidden">
-                        <fieldset class="col-10 m-auto fieldsetHidden"> -->
+
                     <div class="col-8 m-auto collapse" id="subHidden">
                         <fieldset class="m-auto fieldsetSubHidden">
                             <legend class="text-danger"><strong>Question 5 : </strong>Toujours la même étoile : où est-elle ?</legend>
@@ -567,11 +839,12 @@
       crossorigin="anonymous"
     ></script>
         
-    <script
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous"></script>
+    <!-- <script
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
-    ></script>
+    ></script> -->
     
     <script src="TEMPvarFetch.js" type="text/javascript"></script> <!--! a supprimer ensuite-->
     <script src="logInUp.js" type="text/javascript"></script>

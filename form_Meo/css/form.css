@@ -1,3 +1,11 @@
+#representationVisuelle {
+  margin-top: 500px; }
+
+#fleche {
+  text-align: center;
+  font-size: 3em;
+  margin-top: 200px; }
+
 h1 > span {
   font-size: 0.7em; }
 
@@ -19,5 +27,21 @@ fieldset {
 
 #choix {
   width: 80px; }
+
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem; }
+
+.form-control-placeholder {
+  position: absolute;
+  top: 0;
+  padding: 7px 0 0 13px;
+  transition: all 200ms;
+  opacity: 0.5; }
+
+.form-control:focus + .form-control-placeholder,
+.form-control:valid + .form-control-placeholder {
+  transform: translate3d(0, -130%, 0);
+  opacity: 1; }
 
 /*# sourceMappingURL=form.css.map */

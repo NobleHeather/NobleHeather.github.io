@@ -7,3 +7,4 @@ function get_tickmarks() {
     console.log("choix = " + val);
     $("#choix").append(`${val}`);
 }
+
