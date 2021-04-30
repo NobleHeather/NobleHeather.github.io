@@ -34,6 +34,7 @@ const PostForm = async function(formInfo) {
     // fetch('http://localhost:3000/api/question', {
     // fetch('https://aphantasique-form.herokuapp.com/api/question', {
         method: "POST",
+        mode: 'no-cors',
         headers : {
             'Accept' : 'application/json',
             'Content-type': 'application/json'

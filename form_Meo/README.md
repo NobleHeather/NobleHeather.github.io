@@ -12,6 +12,10 @@ A faire :
 
     NB : quand c'est un button, recharge la page
 
+    Err terminal : DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead
+
+      mode: 'no-cors' ??
+
 30/04 compte rendu :
 
 CHARTS :
