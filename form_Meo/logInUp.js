@@ -29,7 +29,7 @@ const PostLogin = async function(userInfo) {
     })
     .then(response => response.json())
     .then(json => {
-        console.log(json);
+        console.log('Réponse de la DB (connexion): ', json);
     })
     .catch((e) => {
         console.log(e);
@@ -45,7 +45,7 @@ $('#WelcomeBack').on('click', function(e) {
         pseudo : $('#pseudoIn').val(),
         password : $('#passwordIn').val()
     }
-    console.log(userInfo);
+    console.log('Connexion utilisateur déjà inscrit : ', userInfo);
     
     PostLogin(userInfo);
     
@@ -66,7 +66,7 @@ const PostNewUser = async function(userInfo) {
     })
     .then(response => response.json())
     .then(json => {
-        console.log(json);
+        console.log('Réponse de la DB (inscription): ', json);
     })
     .catch((e) => {
         console.log(e);
@@ -84,7 +84,7 @@ $('#WhoAreYou').on('click', function(e) {
         password : $('#passwordUp').val()
     }
 
-    console.log(userInfo);
+    console.log('Inscription utilisateur : ', userInfo);
     
     PostNewUser(userInfo);  
 });

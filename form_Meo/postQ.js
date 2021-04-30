@@ -37,7 +37,7 @@ for (let x = 0; x < $('#representationVisuelle fieldset').length; x++) {
         })
         .then(response => response.json())
         .then(json => {
-            console.log(json);
+            console.log('Données renvoyées par la DB : ', json);
         })
         .catch((e) => {
             console.log(e);
@@ -49,9 +49,9 @@ $('#validerQ0').on('click', function(e) {
     e.preventDefault();
 
     //input
-    console.log($(`#question0 input:checked`)); // Oooooh :O
-    console.log($(`#question0 input:checked`).attr('id'));
-    console.log($(`#question0 input:checked`).attr('id').charAt(3)); //Aaaah :O
+    // console.log($(`#question0 input:checked`)); // Oooooh :O
+    // console.log($(`#question0 input:checked`).attr('id'));
+    // console.log($(`#question0 input:checked`).attr('id').charAt(3)); //Aaaah :O
 
 
     
@@ -62,7 +62,7 @@ $('#validerQ0').on('click', function(e) {
         section: 'representation visuelle' //sous-partie du questionnaire
     }
     
-    console.log(questionInfo);
+    console.log('Données entrées par l\'utilisateur : ', questionInfo);
     
     PostQuestion(questionInfo);
 
