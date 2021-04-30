@@ -26,9 +26,11 @@ for (let x = 0; x < $('#SouvenirsVisuels fieldset').length; x++) {
 //*Envoyer data de Q à la DB
 const PostForm = async function(formInfo) {
     console.log('POST_FORM');
-
+    console.log(thisUrl);
+    
     // console.log(formInfo);
     fetch(`${thisUrl}/api/form`, {
+        
     // fetch('http://localhost:3000/api/question', {
     // fetch('https://aphantasique-form.herokuapp.com/api/question', {
         method: "POST",
