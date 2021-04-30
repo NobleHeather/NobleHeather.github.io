@@ -6,6 +6,8 @@ A faire :
 
     centrer les div charts
 
+    Systématiser capture des ranges
+
     NB : quand c'est un button, recharge la page
 
 30/04 compte rendu :

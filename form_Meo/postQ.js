@@ -64,56 +64,130 @@ function DisableQuestion(inputs) {
 
 }
 
-//* Capture les éléments dans chaque fieldset
-Array.from(fieldsets, fieldset => {
-    let inputs = fieldset.querySelectorAll('input');
-    let btnValider = fieldset.querySelector('button');
-    let btnShowGraph = fieldset.querySelector('a');
+//* Crée un objet à envoyer à DB pour ratio
+function CreateRatioQuestionInfo(fieldset) {
+    let inputs = fieldset.querySelectorAll("input");
+    let btnValider = fieldset.querySelector("button");
+    let btnShowGraph = fieldset.querySelector("a");
 
     console.log(inputs);
     console.log(btnValider);
     console.log(btnShowGraph);
     console.log(fieldset);
 
+    btnShowGraph.style.opacity = "0";
+
+    //* Quand on clique sur valider on montre le btn showGraph
+    //* Et on disable la question + capture les données
+    btnValider.addEventListener("click", function (e) {
+        console.log("BOUTON VALIDER");
+        e.preventDefault();
+
+        btnShowGraph.style.opacity = "1";
+        DisableQuestion(inputs);
+
+        // console.log('allo ?');
+        let questionInfo = {
+            num: JSON.parse($(fieldset).attr("id").charAt(8)), //num de question
+            data: JSON.parse($(`input:checked`).attr("id").charAt(3)), //réponse user
+            section: "Souvenirs Visuels", //sous-partie du questionnaire
+        };
+
+        console.log("Données entrées par l'utilisateur : ", questionInfo);
+
+        PostQuestion(questionInfo);
+    });
+
+    //* Quand on clique sur btn showGraph... montre le graph (wow quelle surprise)
+    btnShowGraph.addEventListener("click", function (e) {
+        console.log("BOUTON SHOW_GRAPH");
+        e.preventDefault();
+
+        fieldset.setAttribute("class", "texte col-6");
+    });
+}
+
+//* Quand on clique sur le bouton validerForm, on capte le textarea
+function CreateAvisQuestionInfo(fieldset) {
+
+    $('#ValiderForm').on('click', function(e) {
+        e.preventDefault();
+
+        let questionInfo = {
+            num: JSON.parse($(fieldset).attr("id").charAt(8)), //num de question
+            data: -1, //réponse user
+            section: "Souvenirs Visuels", //sous-partie du questionnaire
+            somethingElse : $('textarea').val()
+        };
+    
+        console.log("Données entrées par l'utilisateur : ", questionInfo);
+    
+        PostQuestion(questionInfo);
+
+    });
+    
+}
+
+function CreateRangeQuestionInfo(fieldset) {
+
+    let rangeVal = fieldset.querySelector("input").value;
+    let btnValider = fieldset.querySelector("button");
+    let btnShowGraph = fieldset.querySelector("a");
+
+    console.log(input);
+    console.log(btnValider);
+    console.log(btnShowGraph);
+    console.log(fieldset);
+
+    btnShowGraph.style.opacity = "0";
+
+    //* Quand on clique sur valider on montre le btn showGraph
+    //* Et on disable la question + capture les données
+    btnValider.addEventListener("click", function (e) {
+        console.log("BOUTON VALIDER");
+        e.preventDefault();
+
+        btnShowGraph.style.opacity = "1";
+        // DisableQuestion(rangeVal); //?
+
+        // console.log('allo ?');
+        let questionInfo = {
+            num: JSON.parse($(fieldset).attr("id").charAt(8)), //num de question
+            data: rangeVal, //réponse user
+            section: "Souvenirs Visuels", //sous-partie du questionnaire
+        };
+
+        console.log("Données entrées par l'utilisateur : ", questionInfo);
+
+        PostQuestion(questionInfo);
+    });
+
+    //* Quand on clique sur btn showGraph... montre le graph (wow quelle surprise)
+    btnShowGraph.addEventListener("click", function (e) {
+        console.log("BOUTON SHOW_GRAPH");
+        e.preventDefault();
+
+        fieldset.setAttribute("class", "texte col-6");
+    });
+
+
+}
+
+
+//* Capture les éléments dans chaque fieldset
+Array.from(fieldsets, fieldset => {
+    
     //* Si c'est une partie textarea, on l'exclus
     if (fieldset.querySelector('legend').getAttribute('id') == 'avis') {
         console.log('avis');
+
+        CreateAvisQuestionInfo(fieldset);
     //* Sinon on continue
+    } else if ($(`${fieldset} input`).getAttribute('type') == 'range') {
+        console.log('range');
+        CreateRangeQuestionInfo(fieldset);
     } else {
-
-        btnShowGraph.style.opacity = '0';
-    
-        //* Quand on clique sur valider on montre le btn showGraph
-        //* Et on disable la question + capture les données
-        btnValider.addEventListener('click', function(e) {
-            console.log('BOUTON VALIDER');
-            e.preventDefault();
-            
-            btnShowGraph.style.opacity = '1';
-            DisableQuestion(inputs);
-    
-            // console.log('allo ?');
-            let questionInfo = {
-                num : $(fieldset).attr('id').charAt(8), //num de question
-                data : [$(`${fieldset} input:checked`).attr('id').charAt(3)], //réponse user
-                section: 'Souvenirs Visuels' //sous-partie du questionnaire
-            }
-            
-            console.log('Données entrées par l\'utilisateur : ', questionInfo);
-            
-            PostQuestion(questionInfo);
-            
-        }); 
-    
-        //* Quand on clique sur btn showGraph... montre le graph (wow quelle surprise)
-        btnShowGraph.addEventListener('click', function(e) {
-            console.log('BOUTON SHOW_GRAPH');
-            e.preventDefault();
-            
-            fieldset.setAttribute('class', 'texte col-6');
-        
-        });
-
+        CreateRatioQuestionInfo(fieldset);  
     }
     
 });
