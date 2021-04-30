@@ -26,6 +26,8 @@ for (let x = 0; x < $('#SouvenirsVisuels fieldset').length; x++) {
 //*Envoyer data de Q à la DB
 const PostForm = async function(formInfo) {
     console.log('POST_FORM');
+
+    console.log(formInfo);
     fetch(`${thisUrl}/api/form`, {
     // fetch('http://localhost:3000/api/question', {
     // fetch('https://aphantasique-form.herokuapp.com/api/question', {
@@ -53,38 +55,54 @@ function PostQuestion(questionInfo) {
     let questionInfoTab = JSON.parse(localStorage.getItem("questionInfoTab")) || [];
     //* Si c'est un textarea
     if (questionInfo.somethingElse) {
-        questionInfoTab.push([questionInfo.section, [`N° ${questionInfo.num} : data : ${questionInfo.somethingElse}`]]);
+        questionInfoTab.push([questionInfo.section, [questionInfo.num, questionInfo.somethingElse]]);
         localStorage.setItem("questionInfoTab", JSON.stringify(questionInfoTab));
 
     } else {
-        questionInfoTab.push([questionInfo.section, [`N° ${questionInfo.num} : data : ${questionInfo.data}`]]);
+        questionInfoTab.push([questionInfo.section, [questionInfo.num, questionInfo.data]]);
         localStorage.setItem("questionInfoTab", JSON.stringify(questionInfoTab));
     }
     questionInfoTab = JSON.parse(localStorage.getItem("questionInfoTab"));
     console.log(questionInfoTab);
 }
-let questionInfoTab = JSON.parse(localStorage.getItem("questionInfoTab")) || [];
-console.log(questionInfoTab);
+
 
 //*Formate un objet formInfo à envoyer à la DB
 function CreateFormInfo() {
     console.log('FONCTION CREATE_FORM_INFO');
     //// On récupère le tableau de toutes les questions sur locat storage
-    let formInfo = JSON.parse(localStorage.getItem("questionInfoTab"));
+    let formInfoTab = JSON.parse(localStorage.getItem("questionInfoTab"));
     
-    console.log(formInfo);
+    console.log(formInfoTab);
 
-    
+    const formInfoPropre = formInfoTab.map(item => {
+        console.log(item);
+        console.log(item[1]);
+        console.log(item[1]);
+        return item = item[1];
+    });
+
+    let pseudo = "test temp";
+
+    let formInfo = {
+        section : formInfoTab[0][0],
+        Num_Data : formInfoPropre,
+        pseudo : pseudo
+    }
+
+    console.log(formInfo);
 
     return formInfo;
 }
+// CreateFormInfo();
 
 $('#ValiderForm').on('click', function(e) {
     console.log('BOUTON VALIDER_FORM');
     e.preventDefault();
 
-    let formInfo = CreateFormInfo();
-    PostForm(formInfo);
+    // let formInfo = CreateFormInfo();
+    
+    PostForm(CreateFormInfo());
 
 });
 
@@ -177,7 +195,7 @@ function CreateRangeQuestionInfo(fieldset) {
         e.preventDefault();
 
         let rangeVal = fieldset.querySelector("input").value;
-        // console.log(rangeVal);
+        console.log(rangeVal);
 
         btnShowGraph.style.opacity = "1";
         //* disable range
@@ -186,7 +204,7 @@ function CreateRangeQuestionInfo(fieldset) {
         // console.log('allo ?');
         let questionInfo = {
             num: JSON.parse($(fieldset).attr("id").charAt(8)), //num de question
-            data: rangeVal, //réponse user
+            data: JSON.parse(rangeVal), //réponse user
             section: "Souvenirs Visuels", //sous-partie du questionnaire
         };
 

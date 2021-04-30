@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const Question = require('./models/question');
 const User = require('./models/user');
+const Form = require('./models/form');
 const fs = require('fs');
 const mongoose = require('mongoose');
 const PASS = require('./PASS'); //! a supprimer ensuite
@@ -32,6 +33,16 @@ app.post('/api/question', (req, res, next) => {
     });
     question.save()
       .then(() => res.status(201).json({ message: 'Datas enregistrés !', question : question}))
+      .catch(error => res.status(400).json({ error }));
+});
+
+app.post('/api/form', (req, res, next) => {
+    delete req.body._id;
+    const form = new Form({
+      ...req.body
+    });
+    form.save()
+      .then(() => res.status(201).json({ message: 'Form enregistré !', form : form}))
       .catch(error => res.status(400).json({ error }));
 });
 
@@ -109,6 +120,12 @@ app.delete('/api/article/:id', (req, res, next) => {
 // GET
 app.use('/api/question', (req, res, next) => {
     Question.find()
+        .then(questions => res.status(200).json(questions))
+        .catch(error => res.status(400).json({ error }));
+});
+
+app.use('/api/form', (req, res, next) => {
+    Form.find()
         .then(questions => res.status(200).json(questions))
         .catch(error => res.status(400).json({ error }));
 });
