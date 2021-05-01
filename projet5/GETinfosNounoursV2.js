@@ -1,29 +1,38 @@
-////RECUPERER INFOS NOUNOURS SUR BASE DE DONNEES
+//* RECUPERER INFOS NOUNOURS SUR BASE DE DONNEES
 
 //*On déclare réponse en dehors de la requête afin de pouvoir l'utiliser ensuite
 let data;
 
 //*On récupère les infos nounours sur la base de données
 const GetNounours = async function() {
-    try {
-        // let response = await fetch('http://localhost:3000/api/teddies')
-        let response = await fetch('https://projet-oc-5.herokuapp.com/api/teddies')
-        if (response.ok) {
-            /*let*/ data = await response.json()
-            console.log(data)
-        } else {
-            console.error('response : ', response.status)
-        }
-    } catch (e) {
-        console.log(e.stack)
-    }
+    await fetch('https://projet-oc-5.herokuapp.com/api/teddies')
+        // .then((response) => {
+        //     response.json();
+        //     console.log(response);
+        //     // console.log(response.json());
+        //     // if (response.ok) {
+        //     //     let data = await response.json()
+        //     //     console.log(data);
+        //     // }
+        // })
+        .then((response) => response.json())
+        .then((json) => {
+            console.log(json);
+            LogData(json);
+            data = json;
+        })
+            //             console.log(json);
+        .catch((e) => console.error(e.stack))
+        // if (response.ok) {
+        //     let data125 = await response.json()
+        //     console.log(data125);
+        // }
+        
 }
 GetNounours();
 
-//* cette fonction s'exécute après nounours
-async function DoSomething() {
-    console.log(data) //undefined
-    await GetNounours();
+//* On affiche les données pour avoir une idée de ce qu'il y a dedans
+async function LogData(data) {
     console.log(data) //contient infos nounours
 
     console.log(data[0]) //Norbert
@@ -45,11 +54,43 @@ async function DoSomething() {
     console.log(data[0].colors[3])
 
 }
-DoSomething()
+// LogData();
 
 
 
+//! fonctionne
+// const GetNounoursV1 = async function() {
+//     try {
+//         // let response = await fetch('http://localhost:3000/api/teddies')
+//         let response = await fetch('https://projet-oc-5.herokuapp.com/api/teddies')
+//         if (response.ok) {
+//             /*let*/ data = await response.json()
+//             console.log(data)
+//         } else {
+//             console.error('response : ', response.status)
+//         }
+//     } catch (e) {
+//         console.log(e.stack)
+//     }
+// }
+// GetNounoursV1();
+// console.log('allo ?');
 
+//* fonctionne pas
+// const GetNounours = async function() {
+//     // let response = await fetch('http://localhost:3000/api/teddies')
+//     // let response =  await fetch('https://projet-oc-5.herokuapp.com/api/teddies')
+//     return await fetch('https://projet-oc-5.herokuapp.com/api/teddies')
+//         .then((response) => response.json())
+//         .then((json) => {
+//             console.log(json);
+//             if (json.ok) {
+//                 console.log('allo ?');
+//             }
+//             // LogData(json);
+//         })
+//         .catch((e) => console.log(e.stack))
+// }
 
 
 // setTimeout(() => {

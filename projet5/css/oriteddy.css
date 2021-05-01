@@ -1,3 +1,6 @@
+.carousel-control-prev-icon {
+  color: black; }
+
 h1 a {
   text-decoration: none;
   color: black; }
@@ -21,7 +24,8 @@ footer {
 #imgNavPeluche > div {
   padding: 0;
   margin: 0; }
-  #imgNavPeluche > div img {
+  #imgNavPeluche > div > img {
+    cursor: pointer;
     width: 60px;
     padding: 0;
     margin: 15px 0 0 15px; }
@@ -32,6 +36,8 @@ footer {
 .card-body {
   position: relative;
   height: 250px; }
+  .card-body .personnaliser div svg {
+    width: 25px; }
   .card-body .bio:nth-child(3) {
     position: absolute;
     top: 65px;
@@ -76,7 +82,16 @@ footer {
 .imgCommande {
   width: 70px; }
 
+.circle svg {
+  width: 35px; }
+
 .bin:hover {
   cursor: pointer; }
+
+#toastForm {
+  top: 30%; }
+
+input:not(:focus):invalid {
+  background-color: rgba(212, 3, 3, 0.3); }
 
 /*# sourceMappingURL=oriteddy.css.map */

@@ -14,9 +14,8 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
-    <link rel="shortcut icon" href="images/favicon.ico" >
+    <link rel="icon" href="images/favicon.ico" >
     <link rel="icon" type="image/gif" href="images/animated_favicon1.gif" >
-    <link rel="stylesheet" href="css/oriteddy.css" />
     <link rel="stylesheet" href="css/oriteddy.css" />
     <title>Page produit</title>
 </head>
@@ -31,7 +30,7 @@
                     </svg>
                 </span>
             </button>
-            <div id="navbarSupportedContent" class="collapse navbar-collapse d-flex">
+            <div id="navbarSupportedContent" class="collapse navbar-collapse">
                 <ul class="navbar-nav nav-justified nav-tabs d-flex w-100">
                     <li class="nav-item">
                     <a class="nav-link" href="accueil.html">
@@ -61,24 +60,12 @@
             </div>
         </nav>
     </header>
-    <div class="toast" data-autohide="true">
-        <div class="toast-header">
-          <strong class="mr-auto text-primary">Attention !</strong>
-        </div>
-        <div class="toast-body">
-            Vous allez acheter 10 nounours : 9 + 1 gratuit !
-            <div class="mt-2 pt-2 border-top">
-                <button type="button" class="btn btn-primary btn-sm buttonToast" data-dismiss="toast">Ok !</button>
-                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="toast">J'ai changé d'avis</button>
-            </div>
-        </div>
-      </div>
     <div class="row d-flex justify-content-center">
         <!-- <h1>Page produit</h1>
     id, name, price, img, description, colors -->
-        <div class="col-12 d-flex justify-content-center align-items-center mb-3 flex-column flex-sm-row">
+        <div class="col-12 d-flex justify-content-center align-items-center mb-3 flex-column">
             <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#imgNavPeluche" id="autrePeluche">Voir une autre peluche !</button>
-            <div id="imgNavPeluche" class="panel-collapse collapse d-flex flex-column flex-sm-row">
+            <div id="imgNavPeluche" class="panel-collapse collapse">
                 <div class="list-group d-flex flex-column flex-sm-row">
                     <img src="" alt="" class="list-group-item">
                     <img src="" alt="" class="list-group-item">
@@ -110,11 +97,19 @@
                         <div class="d-flex align-items-start mt-5">
                             <p><strong>Choisissez une couleur : &nbsp;</strong></p>
                             <select class="form-select" id="couleurSelect" aria-label="">
-                                <option value="1" selected>c1</option>
+                                <!-- <option value="1" selected>c1</option>
                                 <option value="2">c2</option>
                                 <option value="3">c3</option>
-                                <option value="3">c4</option>
+                                <option value="4">c4</option> -->
                             </select>
+                            <!-- <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle" class="svg-inline--fa fa-circle fa-w-16 ml-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <path fill="#FFF" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z">
+                                </path>
+                            </svg> -->
+                            <svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" class="ml-2">
+                                <circle cx="5" cy="5" r="4" stroke="black" stroke-width="3%" />
+                            </svg>
+                            <small>(visualisation bientôt disponible)</small>
                         </div>
                         <div class="d-flex align-items-start mt-5">
                             <p><strong>Choisissez une quantité : &nbsp;</strong></p>
@@ -137,9 +132,9 @@
                         <p><em>Description : </em>je suis un texte de description de dev web qui manque d'imagination (oui, certes, il y a toujours le lorem)</p>
                     </div>
                 </div>
-                <div class="card-footer text-right bg-transparent" id="footerPeluche">
-                    <!-- <a href="#" class="card-link text-right"> -->
-                        <a href="#popover" data-toggle="popover" data-placement="top" title="Ajouté au panier :" data-content="" data-trigger="hover" id="popover">
+                <div class="card-footer text-right bg-transparent d-flex justify-content-between" id="footerPeluche">
+                    <a href="formulaire_V2.html" class="card-link text-primary">Voir le Panier</a>
+                    <a href="#popover" data-toggle="popover" data-placement="left" title="Ajouté au panier :" data-content="" data-bs-toggle="popover" data-bs-trigger="focus" id="popover">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
                             <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
                             <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
@@ -148,6 +143,18 @@
                             <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z"/>
                         </svg>
                     </a>
+                </div>
+                <div class="toast" data-autohide="true">
+                    <div class="toast-header">
+                      <strong class="mr-auto text-primary">Attention !</strong>
+                    </div>
+                    <div class="toast-body">
+                        Vous allez acheter 10 nounours : 9 + 1 gratuit !
+                        <div class="mt-2 pt-2 border-top">
+                            <button type="button" class="btn btn-primary btn-sm buttonToast" data-dismiss="toast">Ok !</button>
+                            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="toast">J'ai changé d'avis</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -173,6 +180,7 @@
   
   <!-- <script src="GETinfosNounours.js" type="text/javascript"></script> -->
   <script src="GETinfosNounoursV2.js" type="text/javascript"></script>
+  <script src="colors.js" type="text/javascript"></script>
   <script src="panier_V3.js" type="text/javascript"></script>
   <!-- <script src="panier_V2.js" type="text/javascript"></script> -->
 </body>

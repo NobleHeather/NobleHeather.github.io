@@ -3,8 +3,14 @@ $color : (
     "secondary" : rgb(206, 18, 174),
     "dark" : #000,
     "light" : #DDD,
-    "focus" : rgb(247, 93, 4)
+    "focus" : rgb(128, 128, 128),
+    "danger" : rgb(212, 3, 3)
 );
+
+//? Comment modifier la couleur des flèches ?
+.carousel-control-prev-icon {
+    color : black;
+}
 
 h1 a {
     text-decoration: none;
@@ -23,7 +29,7 @@ footer {
     background-color: map-get($color, light);
 }
 
-// page produit
+//* page produit
 .toast {
     position: absolute;
     top: 70%;
@@ -36,10 +42,11 @@ footer {
     > div {
         padding: 0;
         margin: 0;
-        img {
-        width: 60px;
-        padding: 0;
-        margin: 15px 0 0 15px;
+        > img {
+            cursor: pointer;
+            width: 60px;
+            padding: 0;
+            margin: 15px 0 0 15px;
         }
     }
 }
@@ -52,8 +59,12 @@ footer {
     position: relative;
     height: 250px;
     // z-index: 1;
-    & .personnaliser:nth-child(2) {
-                                        // border: 1px solid #000;
+    & .personnaliser div svg{
+                            
+        // border: 5px solid red;
+        width: 25px;
+        // stroke-width: 5px;
+        // stroke: green;
         // z-index: 2;
     }
     & .bio:nth-child(3) {
@@ -121,10 +132,24 @@ footer {
     }
 }
 
-// PAGE FORM
+//* PAGE FORM
 .imgCommande {
     width: 70px;
 }
+.circle svg {
+    // border: 1px solid #000;
+    width: 35px;
+    // height: 10px;
+}
 .bin:hover {
     cursor : pointer;
+}
+#toastForm {
+    top: 30%;
+}
+
+input:not(:focus):invalid {
+   
+    background-color: transparentize(map-get($color, danger), .7);
+    // color: red;
 }

@@ -15,17 +15,22 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/oriteddy.css" />
-    <link rel="icon" href="favicon.ico" />
+    <link rel="shortcut icon" href="images/favicon.ico" >
+    <link rel="icon" type="image/gif" href="images/animated_favicon1.gif" >
     <title>Accueil</title>
     </head>
     <body class="mx-3">
-        <header class="row d-flex justify-content-between mb-5">
-            <h1 class="bg-primary p-2">ORITEDDY<br /><span class="SousTitre">Trouvez le nounours qui vous correspond vraiment !</span></h1>
+        <header class="row d-flex justify-content-between mb-5 ml-3">
+            <h1 class="text-primary">ORITEDDY : adoptez le nounours qui vous ressemble !</h1>
             <nav class="col navbar navbar-expand-lg align-items-end">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport">
-                    <span class="navbar-toggler-icon bg-primary"></span>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+                    <span class="navbar-toggler-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                        </svg>
+                    </span>
                 </button>
-                <div id="navbarSupportedContent" class="collapse navbar-collapse d-flex">
+                <div id="navbarSupportedContent" class="collapse navbar-collapse">
                     <ul class="navbar-nav nav-justified nav-tabs d-flex w-100">
                         <li class="nav-item">
                         <a class="nav-link active" href="accueil.html">
@@ -48,7 +53,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
                                     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                                 </svg>
-                                Panier
+                                Panier <span class="badge rounded-pill bg-primary text-white"></span>
                             </a>
                         </li>
                     </ul>
@@ -62,23 +67,23 @@
                     <div id="carouselControls" class="carousel slide" data-ride="carousel" data-interval="false">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <a href="produit_albert.html">
-                                    <img src="images/AlbertPetit.jpg" class="d-block w-100" alt="...">
+                                <a href="produit.html#5be9c8541c9d440000665243">
+                                    <img src="" class="d-block w-100" alt="...">
                                 </a>
                             </div>
                             <div class="carousel-item">
-                                <a href="">
-                                    <img src="images/ErnestaPetit.jpg" class="d-block w-100" alt="...">
+                                <a href="produit.html#5beaa8bf1c9d440000a57d94">
+                                    <img src="" class="d-block w-100" alt="...">
                                 </a>    
                             </div>
                             <div class="carousel-item">
-                                <a href="">
-                                    <img src="images/KokoroDadKidPetit.jpg" class="d-block w-100" alt="...">
+                                <a href="produit.html#5beaaa8f1c9d440000a57d95">
+                                    <img src="" class="d-block w-100" alt="...">
                                 </a>    
                             </div>
                             <div class="carousel-item">
-                                <a href="">
-                                    <img src="images/kumaPetit.jpg" class="d-block w-100" alt="...">
+                                <a href="produit.html#5beaabe91c9d440000a57d96">
+                                    <img src="" class="d-block w-100" alt="...">
                                 </a>    
                             </div>
                         </div>
@@ -96,14 +101,17 @@
             <section class="news col-4">
                 <div class="boxNews">
                     <h2>Nouveau teddy <span class="badge badge-primary">NEW !</span></h2>
-                    <img src="images/NouveauPetit.jpg" alt="" />
-                    <p>Solitaire, n'attend que vous</p>
-                    <p>Ecrivez-nous pour suggérer des noms, gagnant recevra un exemplaire</p>
+                    <a href="produit.html#5beaacd41c9d440000a57d97" class="text-dark text-decoration-none">
+                        <img src="" class="d-block w-100" alt="" />
+                        <p>Notre nouveau nounours est impatient de faire votre connaissance et vous guette déjà par la fenêtre !</p>
+                        <p>Vous avez été nombreux à nous écrire pour suggérer un nom, notre tirage au sort a désigné Nicolas, 9 ans, comme son parrain !</p>
+                        <p>Découvrez le nom qu'il a choisi en cliquant ici !</p>
+                    </a>
                 </div>
             </section>
         </div>
         <footer class="col-12 mt-3">
-            <a href="mailto:fmarticavalle@gmail.com" class="nav-link">
+            <a href="mailto:oriteddy@gmail.com" class="nav-link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
                     <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
                 </svg>
@@ -132,5 +140,7 @@
           crossorigin="anonymous"
         ></script>
         
+        <script src="GETinfosNounoursV2.js"></script>
+        <script src="affichage.js"></script>
     </body>
 </html>
