@@ -1,9 +1,9 @@
 //* Afficher les données
 
 const GetData = async function() {
-    return await fetch(`${thisUrl}/api/form`)
     // return await fetch('http://localhost:3000/api/question')
-    // return await fetch('https://aphantasique-form.herokuapp.com/api/question')
+    // return await fetch(`${thisUrl}/api/form`)
+    return await fetch('https://aphantasique-form.herokuapp.com/api/question')
     .then(response => response.json())
     .then(json => {
         console.log('Données en vrac (Form 0): ', json);

@@ -7,8 +7,8 @@ const Form = require('./models/form');
 const fs = require('fs');
 const mongoose = require('mongoose');
 const PASS = require('./PASS'); //! a supprimer ensuite
-mongoose.connect(`mongodb+srv://NobleHeather:${PASS}@cluster0.bfskp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
-// mongoose.connect('mongodb+srv://NH:aphantform@aphantasiqueform.tlab4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+// mongoose.connect(`mongodb+srv://NobleHeather:${PASS}@cluster0.bfskp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
+// mongoose.connect('mongodb+srv://NH:@aphantasiqueform.tlab4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
@@ -17,8 +17,8 @@ mongoose.connect(`mongodb+srv://NobleHeather:${PASS}@cluster0.bfskp.mongodb.net/
 const app = express();
 
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Origin', '*', 'https://aphantasique-form.herokuapp.com', 'http://127.0.0.1:5500');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization, X-Auth-Token');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
 });

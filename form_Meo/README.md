@@ -6,6 +6,10 @@ A faire :
 
     centrer les div charts
 
+    faire un bouton déconnexion
+
+    laisser les réponses cochées qd on disable Q
+
     Systématiser capture des ranges
 
     PB : les data de form sont mixtes, mettre le text area tout seul dans un coin ?
@@ -17,6 +21,12 @@ A faire :
       mode: 'no-cors' ??
 
       favicon (heather ?)
+
+CAS PREVUS ET TESTES : 
+
+inscription : ??? -> renvoie sur login si true
+login : err pseudo, err pass, actualisation en plein milieu (si err wifi ou onglet fermé par err)
+le local storage garde 1h le login ensuite il faut se reconnecter
 
 30/04 compte rendu :
 

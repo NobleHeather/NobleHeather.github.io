@@ -150,11 +150,10 @@ function verifInfo(e) {
 //* Envoie infos connexion à DB
 const PostLogin = async function(userInfo) {
 
-    // fetch(`${thisUrl}/api/user/login`, {
-    fetch('http://localhost:3000/api/user/login', {
-    // fetch('https://aphantasique-form.herokuapp.com/api/user/login', {
+    // fetch('http://localhost:3000/api/user/login', {
+        // fetch(`${thisUrl}/api/user/login`, {
+        fetch('https://aphantasique-form.herokuapp.com/api/user/login', {
         method: "POST",
-        // mode: 'no-cors',
         headers : {
             'Accept' : 'application/json',
             'Content-type': 'application/json'
@@ -193,11 +192,10 @@ $('#WelcomeBack').on('click', function(e) {
     
 //* Envoie info inscription à DB
 const PostNewUser = async function(userInfo) {
-    // fetch(`${thisUrl}/api/user/logup`, {
-    fetch('http://localhost:3000/api/user/logup', {
-    // fetch('https://aphantasique-form.herokuapp.com/api/user/logup', {
+    // fetch('http://localhost:3000/api/user/logup', {
+        // fetch(`${thisUrl}/api/user/logup`, {
+        fetch('https://aphantasique-form.herokuapp.com/api/user/logup', {
         method: "POST",
-        // mode: 'no-cors',
         headers : {
             'Accept' : 'application/json',
             'Content-type': 'application/json'
