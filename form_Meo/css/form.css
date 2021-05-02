@@ -33,7 +33,20 @@
 
 .wrapper {
   position: relative;
-  top: 100px; }
+  top: 100px;
+  padding-bottom: 50px; }
+  .wrapper > #SouvenirsVisuels {
+    position: relative; }
+    .wrapper > #SouvenirsVisuels > #transparent {
+      position: absolute;
+      padding: 0 60px;
+      background-color: white;
+      top: -15px;
+      bottom: 0;
+      left: -30px;
+      right: -30px;
+      opacity: 0.5;
+      z-index: 1; }
 
 h1 > span {
   font-size: 0.7em; }

@@ -2,6 +2,14 @@
 
     //* DECO
 
+//* Par défaut, on cache le questionnaire
+let transparent = document.getElementById('transparent');
+
+// var styleElem = document.head.appendChild(document.createElement("style"));
+// questionnaire.innerHTML = ""
+// styleElem.innerHTML = "#SouvenirsVisuels:before {opacity: 0;}";
+
+// questionnaire.style.display = 'none';
     //* Quand on clique sur un bouton, ça replie la div de l'autre bouton
 $('.loginBtn').on('click', function() {
     $('#logup').removeClass('show');
@@ -12,10 +20,9 @@ $('.logupBtn').on('click', function() {
 })   
 
     //* ACTION : UTILISATEURS
-    // localStorage.setItem("pseudo", JSON.stringify(''));
-let pseudo = JSON.parse(localStorage.getItem("pseudo"))
-console.log(pseudo);
-// localStorage.removeItem('progression');
+// localStorage.clear();
+// let pseudo = JSON.parse(localStorage.getItem("pseudo")) || '';
+// console.log('pseudo', pseudo);
 //* Update affichage progression
 function UpdateProgression(progression) {
 
@@ -42,28 +49,50 @@ function UpdateProgression(progression) {
 
 function SayHello(pseudo) {
 
-    //* Si la fonction a été lancée sans argument (au chargement de la page)
-    //* Si pas de pseudo enregistré, pseudo = ''
-    if (!pseudo) {
+    console.log(pseudo);
+    
+    //* Si fonction lancée sans arg
+    if (pseudo == undefined) {
         let pseudo = JSON.parse(localStorage.getItem("pseudo"));
-        console.log(pseudo);
-    }
-
-    //* Si la fonction a été lancée avec arg ou que pseudo dans local storage :
-    //* On affiche pseudo et progression
-    if (pseudo) {
+        console.log('pseudo : ', pseudo);  
+        //* Si il y a pas de pseudo dans local storage (1ère connexion)
+        if (!pseudo) {
+            console.log('pseudo null');
+        //* S'il y a un pseudo dans local storage (reconnexion)
+        } else {
+        
+            console.log('allo');
+            let persoDiv = document.querySelector('.perso');
+            persoDiv.style.opacity = '1';
+    
+            let persoParaf = persoDiv.querySelectorAll('p');
+            persoParaf[0].textContent = `Bienvenue, ${pseudo}`;
+            // persoParaf[1].textContent = `Votre progression : ${'110'}%`;
+    
+            UpdateProgression();
+            DisableAnsweredQuestions();
+            transparent.style.display = 'none';   
+        }
+    //* Si fonction lancée avec argument   
+    } else {
+        console.log('allo');
         let persoDiv = document.querySelector('.perso');
         persoDiv.style.opacity = '1';
-    
+
         let persoParaf = persoDiv.querySelectorAll('p');
         persoParaf[0].textContent = `Bienvenue, ${pseudo}`;
         // persoParaf[1].textContent = `Votre progression : ${'110'}%`;
-    
+
         UpdateProgression();
-    }  
+        DisableAnsweredQuestions();
+        transparent.style.display = 'none';   
+    }
+        
 
 }
-SayHello(pseudo);
+// localStorage.setItem("pseudo", JSON.stringify(''));
+// localStorage.removeItem('pseudo');
+SayHello();
 
 ////Save User in local storage
 function LocalStoreUser(id, pseudo) {
@@ -77,8 +106,43 @@ function LocalStoreUser(id, pseudo) {
         localStorage.setItem("pseudo", JSON.stringify(''));
     }, 60000)
 
+    //* On affiche questionnaire une fois que l'utilisateur est identifié
+    transparent.style.display = 'none';
     //* Salutation personnalisées
     SayHello(pseudo);
+}
+
+let msgErr = document.getElementById('msgErr');
+msgErr.style.display = 'none';
+
+//* Au retour de la base de données, on fait un feedback utilisateur
+function verifInfo(e) {
+    // console.log(e);
+    console.log('VERIF INFO');
+    if (e.error == 'Utilisateur non trouvé !') {
+        console.log('IF');
+        msgErr.style.display = 'block';
+        msgErr.innerHTML = 'Erreur :<br/>Pas d\'utilisateur à ce nom';
+        // $(msgErr).addClass('border border-danger');
+        return false;
+        
+    } else if (e.error == 'Mot de passe incorrect !') {
+        msgErr.style.display = 'block';
+        msgErr.innerHTML = 'Erreur :<br/>Mot de pass incorrect';
+        // $(msgErr).addClass('border border-danger');
+        return false;
+
+    // } else if (err 500) { //server
+    //* Si tout est ok on vide les champs, on cache la div et on enchaîne
+    } else {
+        console.log('else');
+        msgErr.style.display = 'none';
+        msgErr.innerHTML = '';
+        $('#pseudoIn').val('')
+        $('#passwordIn').val('');
+        $('#login').removeClass('show');
+        return true;
+    }
 }
 
     //* login
@@ -100,6 +164,7 @@ const PostLogin = async function(userInfo) {
     .then(response => response.json())
     .then(json => {
         console.log('Réponse de la DB (connexion): ', json);
+        verifInfo(json);
         LocalStoreUser(json.userId, json.pseudo);
     })
     .catch((e) => {
@@ -118,6 +183,8 @@ $('#WelcomeBack').on('click', function(e) {
     }
     console.log('Connexion utilisateur déjà inscrit : ', userInfo);
     
+    // verifInfo(userInfo);
+    // $('#login').removeClass('show');
     PostLogin(userInfo);
     
 });
@@ -145,6 +212,7 @@ const PostNewUser = async function(userInfo) {
     })
     .catch((e) => {
         console.log(e);
+        verifInfo(e);
     })
 }
 
@@ -162,5 +230,6 @@ $('#WhoAreYou').on('click', function(e) {
 
     console.log('Inscription utilisateur : ', userInfo);
     
+    // $('#logup').removeClass('show');
     PostNewUser(userInfo);  
 });

@@ -6,20 +6,24 @@
 // t'as intérêt à faire un formulaire 2.0 et même un 3.0)
 
 //* Dans la section 0 souvenirs visuels, en fonction du nombre de fieldset
-for (let x = 0; x < $('#SouvenirsVisuels fieldset').length; x++) {
+function NameQuestion() {
 
-    //* On nomme chaque fieldset avec un numéro de question
-    //todo NB : c'est une class et pas un id car on a des id "hidden" pour les toggle btn //Du coup j'ai mis les truc toggle dans des div
-    $(`#SouvenirsVisuels fieldset:eq(${x})`).attr('id', `question${x}`);
-    $(`#SouvenirsVisuels fieldset:eq(${x}) button`).attr('id', `validerQ${x}`);
-
-    //* On nomme les inputs et les labels de ce fieldset en fonction du numéro de question
-    for (let i = 0; i < $(`#question${x} input`).length; i++) {
-        $(`#question${x} input:eq(${i})`).attr('id', `q${x}.${i}`);
-        $(`#question${x} input:eq(${i})`).attr('name', `q${x}`);
-        $(`#question${x} input:eq(${i}) + label`).attr('for', `q${x}.${i}`);
+    for (let x = 0; x < $('#SouvenirsVisuels fieldset').length; x++) {
+    
+        //* On nomme chaque fieldset avec un numéro de question
+        //todo NB : c'est une class et pas un id car on a des id "hidden" pour les toggle btn //Du coup j'ai mis les truc toggle dans des div
+        $(`#SouvenirsVisuels fieldset:eq(${x})`).attr('id', `question${x}`);
+        $(`#SouvenirsVisuels fieldset:eq(${x}) button`).attr('id', `validerQ${x}`);
+    
+        //* On nomme les inputs et les labels de ce fieldset en fonction du numéro de question
+        for (let i = 0; i < $(`#question${x} input`).length; i++) {
+            $(`#question${x} input:eq(${i})`).attr('id', `q${x}.${i}`);
+            $(`#question${x} input:eq(${i})`).attr('name', `q${x}`);
+            $(`#question${x} input:eq(${i}) + label`).attr('for', `q${x}.${i}`);
+        }
     }
 }
+NameQuestion();
 
     //* CAPTAGE DE DATA (question 1, voir si généralisable)
 
@@ -77,7 +81,9 @@ function PostQuestion(questionInfo) {
 
     //// Stock le num de Q sur localStorage
     let disableTab = JSON.parse(localStorage.getItem("disableTab")) || [];
-    // disableTab.push()
+    disableTab.push(questionInfo.num);
+    localStorage.setItem("disableTab", JSON.stringify(disableTab));
+    
 }
 
 
@@ -242,12 +248,12 @@ Array.from(fieldsets, fieldset => {
     
     //* Si c'est une partie textarea, on l'exclus
     if (fieldset.querySelector('legend').getAttribute('id') == 'avis') {
-        console.log('avis');
+        // console.log('avis');
 
         CreateAvisQuestionInfo(fieldset);
     //* Sinon on continue
     } else if (fieldset.querySelector('input').getAttribute('type') == 'range') {
-        console.log('range');
+        // console.log('range');
         CreateRangeQuestionInfo(fieldset);
     } else {
         CreateRatioQuestionInfo(fieldset);  

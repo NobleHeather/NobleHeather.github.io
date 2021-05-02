@@ -27,3 +27,25 @@ function DisableQuestion(inputs) {
 
 }
 
+// localStorage.removeItem('disableTab');
+async function DisableAnsweredQuestions() {
+    // setTimeout(function() {
+        await NameQuestion();
+
+        let disableTab = JSON.parse(localStorage.getItem("disableTab")) || [];
+    
+        console.log(disableTab);
+    
+        Array.from(disableTab, Q => {
+            console.log(Q)
+            console.log(document.querySelector(`#question4`));
+            console.log(document.querySelector(`#question${Q}`));
+            let inputs = document.querySelectorAll(`#question${Q} input`)
+            console.log(inputs);
+            DisableQuestion(inputs);
+        })
+    // }, 1000);
+
+}
+// DisableAnsweredQuestions();
+

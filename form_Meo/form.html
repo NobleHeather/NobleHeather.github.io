@@ -24,7 +24,7 @@
             </div>
         </div>
     </div>
-    <div class="wrapper">
+    <div class="wrapper mb-5">
         <h1 class="text-center mb-5">Quelle est votre forme de représentation mentale ?<br />
             <span>(conceptualiseur, hypervisualiseur, ébaucheur, architecte, acteur…)</span>
         </h1>
@@ -33,7 +33,7 @@
             <p>Mais qu'est ce que c'est que la représentation mentale ? Ce n'est ni plus, ni moins, que notre simulateur interieur, une troisième facette de notre conscience, bien distincte de l'intelligence et de la mémoire. Et comme pour ces deux dernière, c'est une palette très large qui existe.</p>
             <p>Par ce questionnaire, je vous offre le fruit de mes recherches personnelles afin de mieux comprendre ce que c'est,  comment vous fonctionnez et surtout : comment les autres font autrement ! :)</p>
         </div>
-        <a href="charts/chartsTuto.html">
+        <!-- <a href="charts/chartsTuto.html">
             lien temp vers charts
         </a>
         <ul>
@@ -44,53 +44,8 @@
             <li>structure de data/Q (getPostQ.js)</li>
             <li>structure de user - inscription (logInUp.js)</li>
             <li>Affichage datas de Q1 avec 10 réponses</li>
-        </ul>
-        <div>
-            <h2>Introduction</h2>
-            <form class="row d-flex align-items-end mt-3">
-                <h3 class="col-12 text-center"><a href="#login" data-toggle="collapse" class="loginBtn btn border border-primary">connexion</a> ou <a href="#logup" data-toggle="collapse" class="logupBtn btn border border-primary">inscription</a></h3>
-
-                <!-- <a href="#hidden" class="btn btn-warning mt-3" data-toggle="collapse">Show more Q</a> 
-                </fieldset>
-                
-                <div class="row collapse" id="hidden"> -->
-                <div class="collapse col-12" id="login">
-                    <div class="row pt-1 pb-3 d-flex align-items-end justify-content-center border border-primary">
-                        <div class="col-3">
-                            <label for="pseudoIn" class="form-label">Pseudo : </label>
-                            <input type="text" class="form-control" id="pseudoIn" placeholder="">
-                        </div>
-                        <div class="col-3">
-                            <label for="passwordIn" class="form-label">Mot de passe : </label>
-                            <input type="password" class="form-control" id="passwordIn">
-                        </div>
-                        <button class="col-2 btn btn-primary" id="WelcomeBack">Valider</button>
-                        <!-- <div class="col-5 text-center"> -->
-                            <!-- <p class="m-0 p-0">Avancement : <span>x questions / total</span></p> -->
-                        <!-- </div> -->
-                    </div>
-                </div>
-                <div class="row collapse" id="logup">
-                    <div class="row pt-1 d-flex align-items-end justify-content-center border border-primary">
-                        <div class="col-3">
-                            <label for="pseudoUp" class="form-label">Pseudo : </label>
-                            <input type="text" class="form-control" id="pseudoUp" placeholder="">
-                        </div>
-                        <div class="col-3">
-                            <label for="email" class="form-label">Mail* : </label>
-                            <input type="email" class="form-control" id="email" placeholder="name@example.com">
-                        </div>
-                        <div class="col-3">
-                            <label for="passwordUp" class="form-label">Mot de passe : </label>
-                            <input type="password" class="form-control" id="passwordUp">
-                        </div>
-                        <button class="col-2 btn btn-primary" id="WhoAreYou">Valider</button>
-                        <p class="text-muted mt-3 col-12">*pour finir le QCM plus tard ou le corriger ultérieurement. Cette adresse mail pourra également être confiée à un tiers selon votre consentement et uniquement dans le cadre de la recherche scientifique. Elle pourra aussi être utilisée dans le but d'améliorer ce questionnaire (si vous voulez bien répondre, aucun spam ne sera émis)</p>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="row justify-content-center mt-5 mb-5">
+        </ul> -->
+        <div class="row justify-content-center mt-5 mb-5" id="plan">
             <h3 class="col-12 text-center mb-3">Plan du QCM</h3>
             <ul class="list-group col-6">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -137,15 +92,67 @@
                 </li>
             </ul>
         </div>
-        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+
+        <div id="prerequis" class="alert alert-primary alert-dismissible fade show mt-1" role="alert">
             <h5 class="alert-heading">Prérequis :</h5>
             <p>Pour ce QCM, on va utiliser deux mots pour différencier une visualisation similaire au sens de la vue ("visualiser") et celle qui en est différente ("conceptualiser")</p>
             <p class="text-muted"><strong>Nota : </strong>ne pas hésiter à cocher plusieurs cases si plusieurs réponses vous semblent bonnes</p>
+            <hr>
+            <p class="text-danger text-center" id="msgConnexion">Merci de bien vouloir vous <strong>connecter</strong> pour accéder au questionnaire</p>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">×</span>
             </button>
         </div>
+
+        <!-- <div> -->
+            <!-- <h2>Introduction</h2> -->
+            <form class="row d-flex align-items-end mt-3 mb-4">
+                <h3 class="col-12 text-center"><a href="#login" data-toggle="collapse" class="loginBtn btn border border-primary">connexion</a> ou <a href="#logup" data-toggle="collapse" class="logupBtn btn border border-primary">inscription</a></h3>
+
+                <!-- <a href="#hidden" class="btn btn-warning mt-3" data-toggle="collapse">Show more Q</a> 
+                </fieldset>
+                
+                <div class="row collapse" id="hidden"> -->
+                <div class="collapse col-12" id="login">
+                    <div class="row pt-1 pb-3 d-flex align-items-end justify-content-center border border-primary">
+                        <div class="col-3 text-center align-items-center border border-danger" id="msgErr"></div>
+                        <div class="col-3">
+                            <label for="pseudoIn" class="form-label">Pseudo : </label>
+                            <input type="text" class="form-control" id="pseudoIn" placeholder="">
+                        </div>
+                        <div class="col-3">
+                            <label for="passwordIn" class="form-label">Mot de passe : </label>
+                            <input type="password" class="form-control" id="passwordIn">
+                        </div>
+                        <button class="col-2 btn btn-primary" id="WelcomeBack">Valider</button>
+                        <!-- <div class="col-5 text-center"> -->
+                            <!-- <p class="m-0 p-0">Avancement : <span>x questions / total</span></p> -->
+                        <!-- </div> -->
+                    </div>
+                </div>
+                <div class="row collapse" id="logup">
+                    <div class="row pt-1 d-flex align-items-end justify-content-center border border-primary">
+                        <div class="col-3">
+                            <label for="pseudoUp" class="form-label">Pseudo : </label>
+                            <input type="text" class="form-control" id="pseudoUp" placeholder="">
+                        </div>
+                        <div class="col-3">
+                            <label for="email" class="form-label">Mail* : </label>
+                            <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                        </div>
+                        <div class="col-3">
+                            <label for="passwordUp" class="form-label">Mot de passe : </label>
+                            <input type="password" class="form-control" id="passwordUp">
+                        </div>
+                        <button class="col-2 btn btn-primary" id="WhoAreYou">Valider</button>
+                        <p class="text-muted mt-3 col-12">*pour finir le QCM plus tard ou le corriger ultérieurement. Cette adresse mail pourra également être confiée à un tiers selon votre consentement et uniquement dans le cadre de la recherche scientifique. Elle pourra aussi être utilisée dans le but d'améliorer ce questionnaire (si vous voulez bien répondre, aucun spam ne sera émis)</p>
+                    </div>
+                </div>
+            </form>
+        <!-- </div> -->
+        
         <section id="SouvenirsVisuels">
+            <div id="transparent"></div>
             <h2>Souvenirs visuels</h2>
             <div class="alert alert-primary alert-dismissible fade show" role="alert">
                 <!--     <h5 class="alert-heading">Prérequis :</h5> -->
@@ -466,9 +473,9 @@
 
                 </section>
                 <div class="row mt-3">
-                    <button class="btn btn-warning col-3 m-auto" id="ValiderForm">Envoyer toutes mes réponses</button>
-                    <a href="#representationVisuelle" class="btn btn-primary col-3 m-auto">Continuer le questionnaire</a>
-                    <a href="#Index" class="btn border border-primary col-2 m-auto">Accueil</a>
+                    <button class="btn btn-warning col-3 m-auto" id="ValiderForm">Valider la première partie et continuer</button>
+                    <!-- <a href="#representationVisuelle" class="btn btn-primary col-3 m-auto">Continuer le questionnaire</a> -->
+                    <a href="#plan" class="btn border border-primary col-2 m-auto">Accueil</a>
                 </div>
                 
             </form>
@@ -858,9 +865,9 @@
     ></script> -->
     
     <script src="TEMPvarFetch.js" type="text/javascript"></script> <!--! a supprimer ensuite-->
-    <script src="logInUp.js" type="text/javascript"></script>
     <script src="postQ.js" type="text/javascript"></script>
-    <script src="getData.js" type="text/javascript"></script>
     <script src="deco.js" type="text/javascript"></script>
+    <script src="logInUp.js" type="text/javascript"></script>
+    <script src="getData.js" type="text/javascript"></script>
 </body>
 </html>
