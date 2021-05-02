@@ -127,9 +127,9 @@ Article.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
     .catch(error => res.status(400).json({ error }));
 });
 
-app.delete('/api/article/:id', (req, res, next) => {
-    Article.deleteOne({ _id: req.params.id })
-      .then(() => res.status(200).json({ message: 'Article supprimé !'}))
+app.delete('/api/form/:id', (req, res, next) => {
+    Form.deleteOne({ _id: req.params.id })
+      .then(() => res.status(200).json({ message: 'Form supprimé !'}))
       .catch(error => res.status(400).json({ error }));
 });
 

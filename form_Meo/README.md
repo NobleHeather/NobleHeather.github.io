@@ -3,7 +3,13 @@
 <!-- ?ça marche pas : est-ce le bon compte heroku ? les bonnes adresses fetch ? la bonne base de donnée ? -->
 
 A faire : 
+
+    dans get data : la première case du 1er tableau est toujours écrasé par une suite de 0 ??? Quand ça part à la base de donnée et dans la réponse, les données sont exactes
+
     Section 0 du questionnaire : souvenirs visuels
+
+    Empêcher le form de s'envoyer 2 fois quand on reclick sur le bouton
+    Empêcher le form de s'envoyer si tout n'est pas répondu
 
     si on appuie sur entrée ça capte pas les inputs du form connexion
     ajouter genre & age dans form

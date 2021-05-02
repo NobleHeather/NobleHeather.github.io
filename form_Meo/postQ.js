@@ -1,5 +1,5 @@
 //* QUESTIONS
-
+// localStorage.clear();
     //* NOMMAGE DES CHAMPS
 // (ça n'a l'air de rien là comme ça mais il m'a fallu autant de temps que si je les avais
 // nommés un par un dans le html donc je suis même pas sûre que ça soit rentable,
@@ -17,7 +17,7 @@ function NameQuestion() {
     
         //* On nomme les inputs et les labels de ce fieldset en fonction du numéro de question
         for (let i = 0; i < $(`#question${x} input`).length; i++) {
-            $(`#question${x} input:eq(${i})`).attr('id', `q${x}.${i}`);
+            $(`#question${x} input:eq(${i})`).attr('id', `q${x}_${i}`);
             $(`#question${x} input:eq(${i})`).attr('name', `q${x}`);
             $(`#question${x} input:eq(${i}) + label`).attr('for', `q${x}.${i}`);
         }
@@ -61,11 +61,11 @@ function PostQuestion(questionInfo) {
     let questionInfoTab = JSON.parse(localStorage.getItem("questionInfoTab")) || [];
     //* Si c'est un textarea
     if (questionInfo.somethingElse) {
-        questionInfoTab.push([questionInfo.section, [questionInfo.num, questionInfo.somethingElse]]);
+        questionInfoTab.push([questionInfo.section, {num : questionInfo.num, data : questionInfo.somethingElse}]);
         localStorage.setItem("questionInfoTab", JSON.stringify(questionInfoTab));
 
     } else {
-        questionInfoTab.push([questionInfo.section, [questionInfo.num, questionInfo.data]]);
+        questionInfoTab.push([questionInfo.section, {num : questionInfo.num, data : questionInfo.data}]);
         localStorage.setItem("questionInfoTab", JSON.stringify(questionInfoTab));
     }
     questionInfoTab = JSON.parse(localStorage.getItem("questionInfoTab"));
@@ -148,19 +148,27 @@ function CreateRatioQuestionInfo(fieldset) {
         console.log("BOUTON VALIDER");
         e.preventDefault();
 
+        // console.log(inputs);
+        // console.log(btnValider);
+        // console.log(btnShowGraph);
+        // console.log(fieldset);
+
         btnShowGraph.style.opacity = "1";
-        DisableQuestion(inputs);
+        console.log( fieldset.querySelector('input:checked').getAttribute('id').charAt(3) );
+
+        console.log(JSON.parse($(fieldset).attr("id").charAt(8)));
+        // console.log($(`input:checked`).attr("id").charAt(3));
 
         // console.log('allo ?');
         let questionInfo = {
             num: JSON.parse($(fieldset).attr("id").charAt(8)), //num de question
-            data: JSON.parse($(`input:checked`).attr("id").charAt(3)), //réponse user
+            data: JSON.parse(fieldset.querySelector('input:checked').getAttribute('id').charAt(3)), //réponse user
             section: "Souvenirs Visuels", //sous-partie du questionnaire
         };
 
         console.log("Données entrées par l'utilisateur : ", questionInfo);
-
         PostQuestion(questionInfo);
+        DisableQuestion(inputs);
     });
 
     //* Quand on clique sur btn showGraph... montre le graph (wow quelle surprise)
@@ -248,15 +256,16 @@ Array.from(fieldsets, fieldset => {
     
     //* Si c'est une partie textarea, on l'exclus
     if (fieldset.querySelector('legend').getAttribute('id') == 'avis') {
-        // console.log('avis');
+        console.log('avis');
 
         CreateAvisQuestionInfo(fieldset);
     //* Sinon on continue
     } else if (fieldset.querySelector('input').getAttribute('type') == 'range') {
-        // console.log('range');
+        console.log('range');
         CreateRangeQuestionInfo(fieldset);
     } else {
         CreateRatioQuestionInfo(fieldset);  
+        console.log('ratio');
     }
     
 });
