@@ -1,10 +1,19 @@
 <!-- !! changer la variable dans TEMPvarFetch avant commit ! -->
 <!-- !! changer mongoose.connect avant commit Heroku ! -->
+<!-- ?ça marche pas : est-ce le bon compte heroku ? les bonnes adresses fetch ? la bonne base de donnée ? -->
 
 A faire : 
     Section 0 du questionnaire : souvenirs visuels
 
+    si on appuie sur entrée ça capte pas les inputs du form connexion
+    ajouter genre & age dans form
     centrer les div charts
+
+    TRANSITIONS : barre de progression, apparition charts
+
+    filtrer fichier mail pour doublons
+
+    function writeMail backend reload the page (et donc on perd le salut personnalisé)
 
     faire un bouton déconnexion
 

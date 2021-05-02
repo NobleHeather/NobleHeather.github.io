@@ -53,7 +53,7 @@ function SayHello(pseudo) {
     
     //* Si fonction lancée sans arg
     if (pseudo == undefined) {
-        let pseudo = JSON.parse(localStorage.getItem("pseudo"));
+        let pseudo = JSON.parse(localStorage.getItem("pseudo")) || '';
         console.log('pseudo : ', pseudo);  
         //* Si il y a pas de pseudo dans local storage (1ère connexion)
         if (!pseudo) {
@@ -87,16 +87,18 @@ function SayHello(pseudo) {
         DisableAnsweredQuestions();
         transparent.style.display = 'none';   
     }
-        
-
 }
-// localStorage.setItem("pseudo", JSON.stringify(''));
-// localStorage.removeItem('pseudo');
-SayHello();
+
+// localStorage.clear();
+if (JSON.parse(localStorage.getItem("pseudo"))) {
+    console.log('allo ?');
+    SayHello();
+}
 
 ////Save User in local storage
-function LocalStoreUser(id, pseudo) {
+function LocalStoreUser(pseudo) {
 
+    console.log(pseudo);
     //// On enregistre l'id de l'utilisateur
     // localStorage.setItem("id", JSON.stringify(id));
     localStorage.setItem("pseudo", JSON.stringify(pseudo));
@@ -151,8 +153,8 @@ function verifInfo(e) {
 const PostLogin = async function(userInfo) {
 
     // fetch('http://localhost:3000/api/user/login', {
-        // fetch(`${thisUrl}/api/user/login`, {
-        fetch('https://aphantasique-form.herokuapp.com/api/user/login', {
+        fetch(`${thisUrl}/api/user/login`, {
+        // fetch('https://aphantasique-form.herokuapp.com/api/user/login', {
         method: "POST",
         headers : {
             'Accept' : 'application/json',
@@ -164,7 +166,7 @@ const PostLogin = async function(userInfo) {
     .then(json => {
         console.log('Réponse de la DB (connexion): ', json);
         verifInfo(json);
-        LocalStoreUser(json.userId, json.pseudo);
+        LocalStoreUser(json.pseudo);
     })
     .catch((e) => {
         console.log(e);
@@ -192,9 +194,11 @@ $('#WelcomeBack').on('click', function(e) {
     
 //* Envoie info inscription à DB
 const PostNewUser = async function(userInfo) {
-    // fetch('http://localhost:3000/api/user/logup', {
+    console.log('allo ??');
+
+    fetch('http://localhost:3000/api/user/logup', {
         // fetch(`${thisUrl}/api/user/logup`, {
-        fetch('https://aphantasique-form.herokuapp.com/api/user/logup', {
+        // fetch('https://aphantasique-form.herokuapp.com/api/user/logup', {
         method: "POST",
         headers : {
             'Accept' : 'application/json',
@@ -205,14 +209,23 @@ const PostNewUser = async function(userInfo) {
     .then(response => response.json())
     .then(json => {
         console.log('Réponse de la DB (inscription): ', json);
-        //* On renvoie sur fonction login pour connexion automatique après inscription
-        PostLogin(json.user);
+        LocalStoreUser(json.pseudo); 
+        // if (response.ok) {
+        //     console.log('allo ?');
+            //* On renvoie sur fonction login pour connexion automatique après inscription
+            PostLogin({password : userInfo.password, pseudo : userInfo.pseudo});
+        // }
     })
     .catch((e) => {
         console.log(e);
-        verifInfo(e);
     })
-}
+} 
+// let userInfo = {
+//     pseudo : 'Test2',
+//     password : 'Test2',
+//     mail : 'Test2'
+// }
+// PostNewUser(userInfo);
 
 //* captation info inscription
 //! réactualise la page ??

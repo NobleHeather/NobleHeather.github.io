@@ -5,8 +5,8 @@ const userSchema = mongoose.Schema({
     pseudo: {type: String, required: true, unique: true},
     mail: {type: String, required: true, unique: true},
     password: { type: String, required: true },
-    genre: { type: Number, required: true},
-    age: {type: Number, required: true}
+    genre: { type: Number, required: false},
+    age: {type: Number, required: false},
 });
 
 userSchema.plugin(uniqueValidator);

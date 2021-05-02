@@ -34,8 +34,8 @@ const PostForm = async function(formInfo) {
     
     // console.log(formInfo);
     // fetch('http://localhost:3000/api/question', {
-        // fetch(`${thisUrl}/api/form`, {
-        fetch('https://aphantasique-form.herokuapp.com/api/question', {
+        fetch(`${thisUrl}/api/form`, {
+        // fetch('https://aphantasique-form.herokuapp.com/api/question', {
         
         method: "POST",
         headers : {
@@ -119,7 +119,8 @@ $('#ValiderForm').on('click', function(e) {
     console.log('BOUTON VALIDER_FORM');
     e.preventDefault();
 
-    // let formInfo = CreateFormInfo();
+    // btn btn-warning col-3 m-auto
+    $('#ValiderForm').attr('class', 'btn btn-secondary col-3 m-auto')
     
     PostForm(CreateFormInfo());
 
