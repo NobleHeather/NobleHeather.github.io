@@ -13,7 +13,7 @@ A faire :
 
     filtrer fichier mail pour doublons
 
-    function writeMail backend reload the page (et donc on perd le salut personnalisé)
+    <!-- function writeMail backend reload the page (et donc on perd le salut personnalisé) -->
 
     faire un bouton déconnexion
 
@@ -21,9 +21,9 @@ A faire :
 
     Systématiser capture des ranges
 
-    PB : les data de form sont mixtes, mettre le text area tout seul dans un coin ?
+    PB model backend form: les data de form sont mixtes, mettre le text area tout seul dans un coin ?
 
-    NB : quand c'est un button, recharge la page
+    <!-- NB : quand c'est un button, recharge la page NON c'était cette saloperie de fichier mail -->
 
     Err terminal : DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead
 
@@ -33,7 +33,7 @@ A faire :
 
 CAS PREVUS ET TESTES : 
 
-inscription : ??? -> renvoie sur login si true
+inscription : ??? -> renvoie sur login si ok
 login : err pseudo, err pass, actualisation en plein milieu (si err wifi ou onglet fermé par err)
 le local storage garde 1h le login ensuite il faut se reconnecter
 
