@@ -16,6 +16,8 @@ A faire :
 
       mode: 'no-cors' ??
 
+      favicon (heather ?)
+
 30/04 compte rendu :
 
 CHARTS :

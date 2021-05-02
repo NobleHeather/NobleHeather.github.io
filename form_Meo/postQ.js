@@ -67,6 +67,17 @@ function PostQuestion(questionInfo) {
     }
     questionInfoTab = JSON.parse(localStorage.getItem("questionInfoTab"));
     // console.log(questionInfoTab);
+
+    //* Update la progression
+    let progression = JSON.parse(localStorage.getItem("progression")) || 0;
+    progression += 1
+    localStorage.setItem("progression", JSON.stringify(progression));
+    console.log(progression);
+    UpdateProgression(progression);
+
+    //// Stock le num de Q sur localStorage
+    let disableTab = JSON.parse(localStorage.getItem("disableTab")) || [];
+    // disableTab.push()
 }
 
 

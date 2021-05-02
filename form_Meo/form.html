@@ -14,8 +14,17 @@
     <link rel="stylesheet" href="css\form.css" />
     <title>Quel imaginatif suis-je ?</title>
 </head>
-<body>
-    <div class="wrapper mx-5">
+<body class="mx-5"> 
+    <!-- <div class="wrapper mx-5"> -->
+    <div class="perso p-3 mb-5 d-flex align-items-center justify-content-around">
+        <p><strong>Bienvenue, X</strong></p>
+        <p>Votre progression : X%</p>
+        <div class="box">
+            <div id="barre">
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
         <h1 class="text-center mb-5">Quelle est votre forme de représentation mentale ?<br />
             <span>(conceptualiseur, hypervisualiseur, ébaucheur, architecte, acteur…)</span>
         </h1>
@@ -39,14 +48,14 @@
         <div>
             <h2>Introduction</h2>
             <form class="row d-flex align-items-end mt-3">
-                <h3 class="col-12 text-center"><a href="#login" data-toggle="collapse" class="loginBtn btn border border-primary">connexion</a> ou <a href="#logup" data-toggle="collapse" class="logupBtn btn border border-primary">inscription</a> :</h3>
+                <h3 class="col-12 text-center"><a href="#login" data-toggle="collapse" class="loginBtn btn border border-primary">connexion</a> ou <a href="#logup" data-toggle="collapse" class="logupBtn btn border border-primary">inscription</a></h3>
 
                 <!-- <a href="#hidden" class="btn btn-warning mt-3" data-toggle="collapse">Show more Q</a> 
                 </fieldset>
                 
                 <div class="row collapse" id="hidden"> -->
                 <div class="collapse col-12" id="login">
-                    <div class="row d-flex align-items-end border border-primary">
+                    <div class="row pt-1 pb-3 d-flex align-items-end justify-content-center border border-primary">
                         <div class="col-3">
                             <label for="pseudoIn" class="form-label">Pseudo : </label>
                             <input type="text" class="form-control" id="pseudoIn" placeholder="">
@@ -55,14 +64,14 @@
                             <label for="passwordIn" class="form-label">Mot de passe : </label>
                             <input type="password" class="form-control" id="passwordIn">
                         </div>
-                        <button class="col-1 btn btn-primary" id="WelcomeBack">Valider</button>
-                        <div class="col-5 text-center">
-                            <p class="m-0 p-0">Avancement : <span>x questions / total</span></p>
-                        </div>
+                        <button class="col-2 btn btn-primary" id="WelcomeBack">Valider</button>
+                        <!-- <div class="col-5 text-center"> -->
+                            <!-- <p class="m-0 p-0">Avancement : <span>x questions / total</span></p> -->
+                        <!-- </div> -->
                     </div>
                 </div>
                 <div class="row collapse" id="logup">
-                    <div class="row d-flex align-items-end m-auto border border-primary">
+                    <div class="row pt-1 d-flex align-items-end justify-content-center border border-primary">
                         <div class="col-3">
                             <label for="pseudoUp" class="form-label">Pseudo : </label>
                             <input type="text" class="form-control" id="pseudoUp" placeholder="">
@@ -464,6 +473,8 @@
                 
             </form>
         </section> <!--souvenirs visuels-->
+    </div>
+    
 
 <!--! *********************************************************************************************************** -->
         <!-- <div id="fleche">

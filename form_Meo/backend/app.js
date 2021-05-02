@@ -7,8 +7,8 @@ const Form = require('./models/form');
 const fs = require('fs');
 const mongoose = require('mongoose');
 const PASS = require('./PASS'); //! a supprimer ensuite
-// mongoose.connect(`mongodb+srv://NobleHeather:${PASS}@cluster0.bfskp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
-// mongoose.connect('mongodb+srv://NH:<pass>@aphantasiqueform.tlab4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect(`mongodb+srv://NobleHeather:${PASS}@cluster0.bfskp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
+// mongoose.connect('mongodb+srv://NH:aphantform@aphantasiqueform.tlab4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
@@ -66,7 +66,7 @@ app.post('/api/user/logup', (req, res, next) => {
                 password : hash,
             });
             user.save()
-            .then(() => res.status(201).json({ message: 'User added !', user: user}))
+            .then(() => res.status(201).json({ message: 'User added !', user: user, pseudo : user.pseudo}))
             .catch(error => res.status(400).json({ error }));
         })
         .catch(error => res.status(500).json({ error }));
@@ -95,7 +95,8 @@ app.post('/api/user/login', (req, res, next) => { //? api.get & api/pass/:id
             }
             res.status(200).json({
                 userId: user._id,
-                token: 'TOKEN'
+                token: 'TOKEN',
+                pseudo: req.body.pseudo
             });
         })
         .catch(error => res.status(500).json({ error }));
