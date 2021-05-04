@@ -176,7 +176,7 @@ function CreateRatioQuestionInfo(fieldset) {
         console.log("BOUTON SHOW_GRAPH");
         e.preventDefault();
 
-        fieldset.setAttribute("class", "texte col-6");
+        fieldset.setAttribute("class", "texte col-12 col-md-6 d-flex flex-column justify-content-between pb-3 mb-3");
     });
 }
 

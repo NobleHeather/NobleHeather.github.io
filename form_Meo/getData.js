@@ -35,9 +35,11 @@ const GetData = async function() {
 GetData();
 
 //* Classer par question
-function DisplayQuestion(data) {
+let dataGraph = [[], [], [], [], [], [], []];
+async function DisplayQuestion(data) {
     
-    let dataGraph = [[], [], [], [], [], [], []];
+    // let dataGraph = [[], [], [], [], [], [], []];
+    // let dataGraph = [['Q1'], ['Q2'], ['Q3'], ['Q4'], ['Q5'], ['Q6'], ['Q7']];
     
 //* On parcourt l'ensemble des form
 for (let x = 0; x < data.length; x++) {
@@ -64,5 +66,8 @@ for (let x = 0; x < data.length; x++) {
 }
     
     console.log(dataGraph);
+    console.log(dataGraph[0]);
+
+    return dataGraph;
 
 }

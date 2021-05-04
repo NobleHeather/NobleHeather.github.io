@@ -4,6 +4,7 @@
 
 //* Par défaut, on cache le questionnaire
 let transparent = document.getElementById('transparent');
+transparent.style.display = 'none'; //! enlever ensuite
 
 // var styleElem = document.head.appendChild(document.createElement("style"));
 // questionnaire.innerHTML = ""

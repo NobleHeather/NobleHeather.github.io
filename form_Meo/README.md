@@ -8,6 +8,8 @@ A faire :
 
     Section 0 du questionnaire : souvenirs visuels
 
+    btn show graph en opacity 0 et pas display none : on peut cliquer dessus même si invisible
+
     Empêcher le form de s'envoyer 2 fois quand on reclick sur le bouton
     Empêcher le form de s'envoyer si tout n'est pas répondu
 
