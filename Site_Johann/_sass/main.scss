@@ -1,4 +1,5 @@
 // Customization
+//! npm start pour lancer compilation (pré-built avec Bulma)
 
 // You can easily customize Bulma with your own variables.
 // Just uncomment the following block to see the result.
@@ -17,10 +18,12 @@
 
 // 3. Set the derived variables
 // Use the new pink as the primary color
-$blue : rgb(167, 12, 12); // link
+$blue : rgb(129, 16, 16); // link
 // $primary: rgb(167, 12, 12);
 $primary: rgb(167, 12, 12);
 $warning : rgba(167, 12, 12, 0.5);
+$navbar-dropdown-arrow : white;
+// $success : -webkit-linear-gradient(right, black 85%, red 100%);
 // $primary-invert: $pink-invert;
 
 // 4. Import the rest of Bulma
@@ -33,13 +36,52 @@ $color : (
     primary : $primary,
 );
 
-strong {
+
+strong { //maj en couleur
     position: relative;
     bottom: 3px;
 }
 
-.outline {
+.outline { //img
     outline: 2px solid map-get($color, primary);
     outline-offset: 1px;
+}
+
+#degrade { //pas utilisé pour le moment
+    border: 1px solid #000;
+    background:-webkit-linear-gradient(right, black 85%, red 100%);
+    background-clip:text;
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+#underline { //titre des parties (biographie...)
+    border-bottom: 3px solid map-get($color, primary);
+    padding-bottom: 5px;
+}
+
+#gradient {
+    background: linear-gradient(-120DEG, #C72C2C,#D62121, #3A1111, #3A1111);
+    // background: linear-gradient(-120DEG, #3A1111, #D62121, #C72C2C);
+    // background: linear-gradient(-120DEG, #C72C2C,#D62121, #3A1111, #3A1111, #D62121, #C72C2C);
+    // background: linear-gradient(-120DEG, #3A1111, #C72C2C,#D62121, #3A1111);
+    // color: white;
+}
+#gradient-light { //pour menu déroulant nav
+    // background: linear-gradient(-120DEG, #C72C2C,#D62121, #3A1111, #3A1111);
+    // background: linear-gradient(-120DEG, rgba(199, 44, 44, 0.6), rgba(214, 33, 33, 0.6), rgba(58, 17, 17, 0.6), rgba(58, 17, 17, 0.6));
+    border-left: 4px solid $primary;
+    // border-bottom: 3px solid $primary;
+    // border-right: 3px solid $primary;
+    > a:hover {
+        font-style: italic;
+    }
+}
+
+i {
+    transition: 300ms;
+    &:hover {
+    transform: scale(1.3);
+    }
 }
 

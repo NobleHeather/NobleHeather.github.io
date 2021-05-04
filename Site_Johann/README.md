@@ -52,6 +52,7 @@ nav se déplie pas correctement, idem pour tabs
 
 A faire : 
 - pagination
+- voir s'il y a pas une partie du css qu'on peut faire avec Bulma
 - voir détails de ça : https://bulma.io/bulma-start/
 
 *******************************************************************
