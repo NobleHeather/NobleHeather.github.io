@@ -24,6 +24,19 @@ app.use((req, res, next) => {
     next();
 });
 
+// //* Code Méo
+// app.use(function(req, res, next) {
+//     res.header('Access-Control-Allow-Origin', '*');
+//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
+//     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+//     // allow preflight
+//     if (req.method === 'OPTIONS') {
+//         res.send(200);
+//     } else {
+//         next();
+//     }
+// });
+
 app.use(express.json());
 
 //* post question ok !
@@ -84,12 +97,12 @@ app.post('/api/user/logup', (req, res, next) => {
     }, 1000);
 });
     
-// GET only one
-app.get('/api/article/:id', (req, res, next) => {
-    Thing.findOne({ _id: req.params.id })
-      .then(thing => res.status(200).json(thing))
-      .catch(error => res.status(404).json({ error }));
-  });
+// // GET only one
+// app.get('/api/article/:id', (req, res, next) => {
+//     Thing.findOne({ _id: req.params.id })
+//       .then(thing => res.status(200).json(thing))
+//       .catch(error => res.status(404).json({ error }));
+//   });
 
 //* User login ok !
 app.post('/api/user/login', (req, res, next) => { //? api.get & api/pass/:id
@@ -121,11 +134,11 @@ app.post('/api/user/login', (req, res, next) => { //? api.get & api/pass/:id
 
 // MODIFIER
 //* Possible de trouver via nom ?
-app.put('/api/article/:id', (req, res, next) => {
-Article.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
-    .then(() => res.status(200).json({ message: 'Article modifié !'}))
-    .catch(error => res.status(400).json({ error }));
-});
+// app.put('/api/article/:id', (req, res, next) => {
+// Article.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
+//     .then(() => res.status(200).json({ message: 'Article modifié !'}))
+//     .catch(error => res.status(400).json({ error }));
+// });
 
 app.delete('/api/form/:id', (req, res, next) => {
     Form.deleteOne({ _id: req.params.id })

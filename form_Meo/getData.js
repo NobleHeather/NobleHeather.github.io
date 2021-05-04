@@ -1,9 +1,30 @@
 //* Afficher les données
 // localStorage.clear();
+// const GetData = async function() {
+//     // return await fetch('http://localhost:3000/api/question')
+//     return await fetch(`${thisUrl}/api/form`)
+//     // return await fetch('https://aphantasique-form.herokuapp.com/api/question')
+//     .then(response => response.json())
+//     .then(json => {
+//         console.log('Données en vrac (Form 0): ', json);
+//         DisplayQuestion(json);
+//     })
+//     .catch((e) => console.log(e))
+// }
+
+
+
+// return await fetch(`${thisUrl}/api/form`, {
+// return await fetch('http://localhost:3000/api/question')
 const GetData = async function() {
-    // return await fetch('http://localhost:3000/api/question')
-    return await fetch(`${thisUrl}/api/form`)
-    // return await fetch('https://aphantasique-form.herokuapp.com/api/question')
+        return await fetch('https://aphantasique-form.herokuapp.com/api/question', {
+        method: "GET", 
+        headers: {
+          "Content-Type": "application/json", 
+          'Accept': "application/json"
+        },
+        body: undefined,
+    })
     .then(response => response.json())
     .then(json => {
         console.log('Données en vrac (Form 0): ', json);
@@ -12,6 +33,14 @@ const GetData = async function() {
     .catch((e) => console.log(e))
 }
 GetData();
+
+let promise = fetch(`${thisUrl}/api/form`, {
+    method: "GET", //ou POST, PUT, DELETE, etc.
+    headers: {
+      "Content-Type": "text/plain;charset=UTF-8" //pour un corps de type chaine
+    },
+    body: undefined,
+});
 
 function DisplayQuestion(data) {
 
@@ -22,7 +51,7 @@ function DisplayQuestion(data) {
     let question4 = [];
     let question5 = [];
     let question6 = [];
-    
+
     console.log(data[4])
     console.log(data[4].Num_Data[0])
     console.log(data[4].Num_Data[1])
