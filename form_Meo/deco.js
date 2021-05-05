@@ -1,3 +1,4 @@
+
 //* Pour range : affiche la valeur choisie à côté
 function get_tickmarks() {
     // remplacer .replaceWith avec un équivalent de textContent omg - -"

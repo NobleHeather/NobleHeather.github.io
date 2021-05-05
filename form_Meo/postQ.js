@@ -47,6 +47,7 @@ const PostForm = async function(formInfo) {
     .then(response => response.json())
     .then(json => {
         console.log('Données renvoyées par la DB : ', json);
+        localStorage.clear(); //! temporaire
     })
     .catch((e) => {
         console.log(e);
@@ -61,11 +62,11 @@ function PostQuestion(questionInfo) {
     let questionInfoTab = JSON.parse(localStorage.getItem("questionInfoTab")) || [];
     //* Si c'est un textarea
     if (questionInfo.somethingElse) {
-        questionInfoTab.push([questionInfo.section, {num : questionInfo.num, data : questionInfo.somethingElse}]);
+        questionInfoTab.push([questionInfo.section, [questionInfo.num, questionInfo.somethingElse]]);
         localStorage.setItem("questionInfoTab", JSON.stringify(questionInfoTab));
 
     } else {
-        questionInfoTab.push([questionInfo.section, {num : questionInfo.num, data : questionInfo.data}]);
+        questionInfoTab.push([questionInfo.section, [questionInfo.num, questionInfo.data]]);
         localStorage.setItem("questionInfoTab", JSON.stringify(questionInfoTab));
     }
     questionInfoTab = JSON.parse(localStorage.getItem("questionInfoTab"));

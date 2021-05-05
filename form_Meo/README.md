@@ -2,11 +2,16 @@
 <!-- !! changer mongoose.connect avant commit Heroku ! -->
 <!-- ?ça marche pas : est-ce le bon compte heroku ? les bonnes adresses fetch ? la bonne base de donnée ? -->
 
+
 A faire : 
 
-    dans get data : la première case du 1er tableau est toujours écrasé par une suite de 0 ??? Quand ça part à la base de donnée et dans la réponse, les données sont exactes
+<!--!!! postQuestion -> postForm : localstorage.clear temp -->
+
+    <!--* MSG : 05/05/21 test pour manip data : dataset x -->
 
     Section 0 du questionnaire : souvenirs visuels
+
+    lier pseudo à form avant envoi
 
     btn show graph en opacity 0 et pas display none : on peut cliquer dessus même si invisible
 
