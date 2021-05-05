@@ -66,7 +66,7 @@ function GetLabels() {
 // GetLabels();
 
 //* choix des couleurs pour les graphs
-let colors = ['blue', 'green', 'red', 'purple', 'orange', 'pink', 'yellow', 'black', 'grey', 'brown']
+let colors = ['rgb(65, 63, 189)', 'rgb(21, 224, 157)', '#ffc107', 'rgb(241, 141, 11)', 'rgb(5, 221, 70)', 'rgb(9, 110, 22)', 'rgb(129, 9, 9)', 'rgb(184, 6, 6)', 'rgb(117, 2, 112)', 'rgb(196, 11, 186)']
 
 //* Fabrique un tableau de couleur en fonction du nombre de couleur qu'on veut
 function SetColors() {
@@ -214,7 +214,11 @@ setTimeout(function(){
     for (let i = 0; i < 6; i++) { // < nb total de pie
         if (i != 1) {
             console.log(namesAll[i], ctxAll[i], infosGraph.titlesTab[i], infosGraph.labelsAll[i], infosGraph.colorTab[i], dataCompiled[i]);
-            DrawPie(namesAll[i], ctxAll[i], infosGraph.titlesTab[i], infosGraph.labelsAll[i], infosGraph.colorTab[i], dataCompiled[i]);
+            if (i % 2 == 0) {
+                DrawPie(namesAll[i], ctxAll[i], infosGraph.titlesTab[i], infosGraph.labelsAll[i], infosGraph.colorTab[i], dataCompiled[i], 'pie');
+            } else {
+                DrawPie(namesAll[i], ctxAll[i], infosGraph.titlesTab[i], infosGraph.labelsAll[i], infosGraph.colorTab[i], dataCompiled[i], 'doughnut');
+            }
         } else {
             console.log('draw me a bar ?')
             console.log(namesAll[i], ctxAll[i], infosGraph.titlesTab[i], infosGraph.labelsAll[i], infosGraph.colorTab[i], dataCompiled[i]);
@@ -225,10 +229,10 @@ setTimeout(function(){
 }, 3000)
 
 //* Crée graph avec données rentrées en paramètres
-function DrawPie(name, ctx, title, labels, colors, data) {
+function DrawPie(name, ctx, title, labels, colors, data, type) {
 
     name = new Chart(ctx, { //graphF0Q1
-        type: 'pie',
+        type: type,
         data: {
             labels: labels, // data-legend
             datasets: [{
