@@ -122,17 +122,32 @@ setTimeout(function(){
     let ctxAll = document.querySelectorAll('canvas');
     console.log(ctxAll);
 
+    // console.log(fieldsets.querySelector('legend strong').textContent);
+    console.log(fieldsets[0].querySelector('legend strong').textContent.replace(' ', ''));
+    let namesAll = []
+    for (let i = 0; i < fieldsets.length; i++) {
+        console.log(fieldsets[i].querySelector('legend strong').textContent.replace(' ', ''));
+        namesAll.push(fieldsets[i].querySelector('legend strong').textContent.replace(' ', ''));
+    }
+    console.log(namesAll);
+
     const dataCompiled = formateDataForGraph()
     console.log(dataCompiled);
     console.log(ctxAll[0], infosGraph.titlesTab[0], infosGraph.labelsAll[0], infosGraph.colorTab[0], dataCompiled[0]);
-    DrawPie(ctxAll[0], infosGraph.titlesTab[0], infosGraph.labelsAll[0], infosGraph.colorTab[0], dataCompiled[0]);
-    
+    for (let i = 0; i < 6; i++) { // < nb total de pie
+        if (i != 1) {
+            DrawPie(namesAll[i], ctxAll[i], infosGraph.titlesTab[i], infosGraph.labelsAll[i], infosGraph.colorTab[i], dataCompiled[i]);
+        } else {
+            // range
+        }
+    }
+
 }, 3000)
 
 //* Crée graph avec données rentrées en paramètres
-function DrawPie(ctx, title, labels, colors, data) {
+function DrawPie(name, ctx, title, labels, colors, data) {
 
-    let x = new Chart(ctx, { //graphF0Q1
+    name = new Chart(ctx, { //graphF0Q1
         type: 'pie',
         data: {
             labels: labels, // data-legend

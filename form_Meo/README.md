@@ -9,6 +9,8 @@ A faire :
 
     <!--* MSG : 05/05/21 test pour manip data : dataset x -->
 
+    nommer les canvas avec 'pie' ou 'line' ou 'barre' pour pouvoir faire de boucles en fonction du nb de ces noms là
+
     range n'a pas de label, recalculer organisation des données pour graph à partir de input
 
     dans partie nommage : faire aussi les id des graph et a + div graph si pas déjà fait
