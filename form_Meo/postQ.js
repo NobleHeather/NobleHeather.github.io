@@ -14,6 +14,8 @@ function NameQuestion() {
         //todo NB : c'est une class et pas un id car on a des id "hidden" pour les toggle btn //Du coup j'ai mis les truc toggle dans des div
         $(`#SouvenirsVisuels fieldset:eq(${x})`).attr('id', `question${x}`);
         $(`#SouvenirsVisuels fieldset:eq(${x}) button`).attr('id', `validerQ${x}`);
+        $(`#SouvenirsVisuels fieldset:eq(${x}) button + a`).attr('href', `#collapse${x}`);
+        $(`#SouvenirsVisuels fieldset:eq(${x}) + .graph .collapse`).attr('id', `collapse${x}`);
         $(`#SouvenirsVisuels fieldset:eq(${x}) + .graph canvas`).attr('id', `canevas${x}`);
     
         //* On nomme les inputs et les labels de ce fieldset en fonction du numéro de question
