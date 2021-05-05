@@ -9,6 +9,11 @@ A faire :
 
     <!--* MSG : 05/05/21 test pour manip data : dataset x -->
 
+    capture de range en fonction de si fieldset "avis" a une classe "avis col-12" :
+    si on vire text-area pour questionnaire final, remplacer ça (graph.js -> GetLabels)
+
+    range : ajouter option value 0 dans le html et voir comment ça réagit dans le JS
+
     nommer les canvas avec 'pie' ou 'line' ou 'barre' pour pouvoir faire de boucles en fonction du nb de ces noms là
 
     range n'a pas de label, recalculer organisation des données pour graph à partir de input

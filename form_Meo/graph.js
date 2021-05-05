@@ -11,50 +11,97 @@
 function GetLabels() {
     
     let labelsTab = []
+    let inputsTab = [] //pour range
     let titlesTab = []
     for (let i = 0; i < fieldsets.length; i++) {
 
-        let labels = []
+        let labels = [];
+        let inputs = []; //pour range
+        console.log(fieldsets[i]);
         for (let y = 0; y < fieldsets[i].querySelectorAll('label').length; y++) {
-            labels.push(fieldsets[i].querySelectorAll('label')[y].textContent.trim())
+
+            // console.log(fieldsets[i].getAttribute('class') == 'avis col-12');
+            if (fieldsets[i].querySelectorAll('label').length <= 1 && fieldsets[i].getAttribute('class') != 'avis col-12') { // range
+
+                // console.log(fieldsets[i].querySelector('input').getAttribute('class') == 'form-range')
+                // if (fieldsets[i].querySelector('input').getAttribute('class')) {
+                    console.log(fieldsets[i].querySelectorAll('option'))
+                    let nbOptionsRange = fieldsets[i].querySelectorAll('option')
+                     inputs.push(nbOptionsRange);
+                     console.log(inputs)
+                    //  labels.push(fieldsets[i].querySelectorAll('label')[y].textContent.trim())
+                // }
+
+            } else {
+                labels.push(fieldsets[i].querySelectorAll('label')[y].textContent.trim())
+            }
         }
 
         titlesTab.push(fieldsets[i].querySelector('legend').textContent)
 
         console.log(labels)
+        console.log(inputs)
         labelsTab.push(labels);
+        inputsTab.push(inputs);
         
     }
     console.log(labelsTab);
-    return {labelsTab : labelsTab, titlesTab : titlesTab};
+    console.log(inputsTab);
+    // // const onlyNumbers = things.filter(thing => {
+    // //       return typeof thing === 'number';
+    // //     });
+    // //     console.log(onlyNumbers);
+    // let inputRange = inputsTab.filter(input => {
+    //     console.log(input);
+    //     // return input[0].getAttribute('class') == 'form-range';
+    //     // if (input.length <= 1 && input.length != undefined) {
+
+    //     // }
+    //     return input.length <= 1 && input[0] != undefined
+
+    // });
+    // console.log(inputRange);
+    return {labelsTab : labelsTab, titlesTab : titlesTab, inputsTab : inputsTab};
 }
 // GetLabels();
 
 //* choix des couleurs pour les graphs
-let colors = ['blue', 'green', 'red', 'purple', 'orange', 'pink', 'yellow', 'black', 'grey']
+let colors = ['blue', 'green', 'red', 'purple', 'orange', 'pink', 'yellow', 'black', 'grey', 'brown']
 
 //* Fabrique un tableau de couleur en fonction du nombre de couleur qu'on veut
 function SetColors() {
     console.log(GetLabels());
     let labelsAll = GetLabels();
     console.log(labelsAll.labelsTab);
+    console.log(labelsAll.inputsTab);
     console.log(labelsAll.titlesTab);
     // console.log(labelsAll[0]);
     // console.log(labelsAll[0][0]);
     // console.log(labelsAll[0].length);
     
     let colorTab = [[], [], [], [], [], [], []];
+    // console.log(labelsAll.labelsTab[i].length);
+    
     for (let i = 0; i < labelsAll.labelsTab.length; i++) {
-            // console.log(labelListe);
-            
-        for (let y = 0; y < labelsAll.labelsTab[i].length; y++) {
-            colorTab[i].push(colors[y]);
+            console.log(labelsAll.labelsTab[i]);
+        if (labelsAll.labelsTab[i].length < 1) { // range
+            //? pourquoi pas la même structure labelsAll.inputsTab / labelsAll.labelsTab ?
+            for (let y = 0; y < (labelsAll.inputsTab[i][0].length + 1); y++) { 
+                console.log(i)
+                console.log(labelsAll.inputsTab[i][0])
+                console.log(labelsAll.inputsTab[i][0].length)
+                colorTab[i].push(colors[y]);
+            }
+        } else { // pie
+            for (let y = 0; y < labelsAll.labelsTab[i].length; y++) {
+                colorTab[i].push(colors[y]);
+            }
         }
         
     }
     console.log(colorTab);
     console.log(labelsAll);
-    return {colorTab : colorTab, labelsAll : labelsAll.labelsTab, titlesTab : labelsAll.titlesTab};
+    return {colorTab : colorTab, labelsAll : labelsAll.labelsTab, inputsAll : labelsAll.inputsTab,  titlesTab : labelsAll.titlesTab, };
 }
 // SetColors();
 
@@ -62,6 +109,8 @@ let infosGraph = SetColors();
 console.log(infosGraph);
 console.log(infosGraph.colorTab);
 console.log(infosGraph.labelsAll);
+console.log(infosGraph.inputsAll[1]);
+console.log(infosGraph.inputsAll[1][0].length);
 console.log(infosGraph.titlesTab);
 
 //* camembert
@@ -86,23 +135,51 @@ function formateDataForGraph() {
         //* dans lequel data[0] = nombre de '0' dans le tableau de toutes les réponses
         //* en fonction du nombre de label dans la question courante
         //! range n'a pas de labels ! faire en fonction de input
-        for (let i = 0; i <  infosGraph.labelsAll[y].length; i++) {
-            console.log('i -> nb de label', i)
-            // console.log(`nb de ${i} :`, dataGraph[0].filter(x => x==i).length);
-            // console.log('allo ?')
-            //* On filtre par label
-            dataGraph[y].filter(x => {
-                //* Si pas de réponse pour ce label -> -1
-                if (x!=i) {
-                    return -1;
-                //* Sinon: nb de réponses pour ce label
-                } else {
-                    return x==i
-                }
-            }).length //* filter crée un tableau de toutes les réponses donc [1, 1, 1, 1...] pour réponse 1, .length permet d'avoir nb de case dans le tableau donc nb de 1
-
-            //* On crée un tableau avec tous les nb de réponses/label [4, 5, 2] = 4 rep 1, 5 rep 2, 2 rep 3...
-            dataGraphCompliled.push(dataGraph[y].filter(x => x==i).length);
+        if (infosGraph.labelsAll[y].length < 1) {
+            console.log('graph RANGE');
+            console.log(y);
+            // if range
+            //* + 1 car option 0 pas dans la liste des values, peut-être à changer
+            for (let i = 0; i <  (infosGraph.inputsAll[y][0].length + 1); i++) {
+                console.log(infosGraph.inputsAll[y].length)
+                console.log('i -> nb de input', i)
+                // console.log(`nb de ${i} :`, dataGraph[0].filter(x => x==i).length);
+                // console.log('allo ?')
+                //* On filtre par label
+                dataGraph[y].filter(x => {
+                    //* Si pas de réponse pour ce label -> -1
+                    if (x!=i) {
+                        return -1;
+                    //* Sinon: nb de réponses pour ce label
+                    } else {
+                        return x==i
+                    }
+                }).length //* filter crée un tableau de toutes les réponses donc [1, 1, 1, 1...] pour réponse 1, .length permet d'avoir nb de case dans le tableau donc nb de 1
+    
+                //* On crée un tableau avec tous les nb de réponses/label [4, 5, 2] = 4 rep 1, 5 rep 2, 2 rep 3...
+                dataGraphCompliled.push(dataGraph[y].filter(x => x==i).length);
+            }
+        } else {
+            // if pie
+            console.log('graph PIE')
+            for (let i = 0; i <  infosGraph.labelsAll[y].length; i++) {
+                console.log('i -> nb de label', i)
+                // console.log(`nb de ${i} :`, dataGraph[0].filter(x => x==i).length);
+                // console.log('allo ?')
+                //* On filtre par label
+                dataGraph[y].filter(x => {
+                    //* Si pas de réponse pour ce label -> -1
+                    if (x!=i) {
+                        return -1;
+                    //* Sinon: nb de réponses pour ce label
+                    } else {
+                        return x==i
+                    }
+                }).length //* filter crée un tableau de toutes les réponses donc [1, 1, 1, 1...] pour réponse 1, .length permet d'avoir nb de case dans le tableau donc nb de 1
+    
+                //* On crée un tableau avec tous les nb de réponses/label [4, 5, 2] = 4 rep 1, 5 rep 2, 2 rep 3...
+                dataGraphCompliled.push(dataGraph[y].filter(x => x==i).length);
+            }
         }
         console.log(`all data for Q${y}`,dataGraphCompliled);
         //* On crée un tableau avec tous les tableaux précédents : nb de réponses/label/question
@@ -136,9 +213,12 @@ setTimeout(function(){
     console.log(ctxAll[0], infosGraph.titlesTab[0], infosGraph.labelsAll[0], infosGraph.colorTab[0], dataCompiled[0]);
     for (let i = 0; i < 6; i++) { // < nb total de pie
         if (i != 1) {
+            console.log(namesAll[i], ctxAll[i], infosGraph.titlesTab[i], infosGraph.labelsAll[i], infosGraph.colorTab[i], dataCompiled[i]);
             DrawPie(namesAll[i], ctxAll[i], infosGraph.titlesTab[i], infosGraph.labelsAll[i], infosGraph.colorTab[i], dataCompiled[i]);
         } else {
-            // range
+            console.log('draw me a bar ?')
+            console.log(namesAll[i], ctxAll[i], infosGraph.titlesTab[i], infosGraph.labelsAll[i], infosGraph.colorTab[i], dataCompiled[i]);
+            DrawBar(namesAll[i], ctxAll[i], infosGraph.titlesTab[i], infosGraph.labelsAll[i], infosGraph.colorTab[i], dataCompiled[i]);
         }
     }
 
@@ -182,4 +262,47 @@ function DrawPie(name, ctx, title, labels, colors, data) {
     })
 }
 
+function DrawBar(name, ctx, title, labels, colors, data) {
+console.log(name, ctx, title, labels, colors, data);
+labels = data;
+console.log(labels);
+    name = new Chart(ctx, { //graphF0Q1
+        type: 'bar',
+        data: {
+            labels: labels, // data-legend
+            datasets: [{
+                label: 'Nombre de réponses ?', // titre ?
+                data: data, // data
+                backgroundColor: colors //colors
+            }]
+        },
+        options : {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    position: 'top',
+                    fullSize : false,
+                    text: title, // titre du graph
+                    align: 'start'
+                },
+                legend: {
+                    title: {
+                        display: true,
+                        text: 'Legende'
+                    },
+                    display: true,
+                    labels: {
+                        color: 'black'
+                    },
+                    position: 'bottom'
+                }
+            }
+        }
+    })
+}
 
