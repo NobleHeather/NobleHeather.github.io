@@ -4,10 +4,14 @@
 
 
 A faire : 
-
+<!--!  NB : remettre transparent sur loginInUp l7 -->
 <!--!!! postQuestion -> postForm : localstorage.clear temp -->
 
     <!--* MSG : 05/05/21 test pour manip data : dataset x -->
+
+    range n'a pas de label, recalculer organisation des données pour graph à partir de input
+
+    dans partie nommage : faire aussi les id des graph et a + div graph si pas déjà fait
 
     Section 0 du questionnaire : souvenirs visuels
 

@@ -10,10 +10,11 @@ function NameQuestion() {
 
     for (let x = 0; x < $('#SouvenirsVisuels fieldset').length; x++) {
     
-        //* On nomme chaque fieldset avec un numéro de question
+        //* On nomme chaque fieldset avec un numéro de question, idem pour button & canvas
         //todo NB : c'est une class et pas un id car on a des id "hidden" pour les toggle btn //Du coup j'ai mis les truc toggle dans des div
         $(`#SouvenirsVisuels fieldset:eq(${x})`).attr('id', `question${x}`);
         $(`#SouvenirsVisuels fieldset:eq(${x}) button`).attr('id', `validerQ${x}`);
+        $(`#SouvenirsVisuels fieldset:eq(${x}) canvas`).attr('id', `canevas${x}`);
     
         //* On nomme les inputs et les labels de ce fieldset en fonction du numéro de question
         for (let i = 0; i < $(`#question${x} input`).length; i++) {
@@ -47,7 +48,7 @@ const PostForm = async function(formInfo) {
     .then(response => response.json())
     .then(json => {
         console.log('Données renvoyées par la DB : ', json);
-        localStorage.clear(); //! temporaire
+        
     })
     .catch((e) => {
         console.log(e);
