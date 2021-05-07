@@ -37,7 +37,7 @@ GetData();
 //* Classer par question
 let dataGraph = [[], [], [], [], [], [], []];
 async function DisplayQuestion(data) {
-    console.log('%c DISPLAY DATA', fct);
+    console.log('%c DISPLAY DATA ', fct);
     console.log('%cAffiche les data et les trie', exp)
     // let dataGraph = [[], [], [], [], [], [], []];
     // let dataGraph = [['Q1'], ['Q2'], ['Q3'], ['Q4'], ['Q5'], ['Q6'], ['Q7']];
@@ -67,7 +67,7 @@ async function DisplayQuestion(data) {
         }
     }
     
-    console.log('%tab dataGraph (data triées)', vrb, dataGraph);
+    console.log('%ctab dataGraph (data triées)', vrb, dataGraph);
     // console.log(dataGraph[0]);
 
     return dataGraph; // pas utilisé

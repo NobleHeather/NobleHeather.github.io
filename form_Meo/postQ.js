@@ -5,6 +5,8 @@
 // nommés un par un dans le html donc je suis même pas sûre que ça soit rentable,
 // t'as intérêt à faire un formulaire 2.0 et même un 3.0)
 
+let errForm = document.getElementById('formErr');
+errForm.style.display = 'none';
 //* Dans la section 0 souvenirs visuels, en fonction du nombre de fieldset
 function NameQuestion() {
     console.log('%c NAME QUESTION ', fct);
@@ -35,8 +37,8 @@ NameQuestion();
 //*Envoyer data de Q à la DB
 const PostForm = async function(formInfo) {
     console.log('%c POST FORM ', fct);
-    console.log('%cEnvoie l\'ensemble des questions à la DB')
-    console.log('var thisUrl', vrb, thisUrl);
+    console.log('%cEnvoie l\'ensemble des questions à la DB', exp)
+    console.log('%cvar thisUrl', vrb, thisUrl);
     
     // console.log(formInfo);
     // fetch('http://localhost:3000/api/question', {
@@ -102,12 +104,9 @@ function PostQuestion(questionInfo) {
 
 
 //*Formate un objet formInfo à envoyer à la DB
-function CreateFormInfo() {
+function CreateFormInfo(formInfoTab) {
     console.log('%c FONCTION CREATE FORM INFO ', fct);
     console.log('%cFormate les infos avant envoie à la DB : récup sur local storage, pré-tri', exp);
-    
-    //// On récupère le tableau de toutes les questions sur local storage
-    let formInfoTab = JSON.parse(localStorage.getItem("questionInfoTab"));
     
     console.log('%cvar formInfoTab :', vrb, formInfoTab);
 
@@ -127,21 +126,44 @@ function CreateFormInfo() {
         pseudo : pseudo
     }
 
-    console.log('var formInfo', vrb, formInfo);
+    console.log('%cvar formInfo', vrb, formInfo);
 
     return formInfo;
 }
 // CreateFormInfo();
+function verifForm () {
+    console.log('%c VERIF FORM ', fct);
+    console.log('%cVerifie que le nombre de question répondues == nombre total de Q', exp);
+
+    //// On récupère le tableau de toutes les questions sur local storage
+    let formInfoTab = JSON.parse(localStorage.getItem("questionInfoTab"));
+
+    if (formInfoTab.length == fieldsets.length) {
+        return formInfoTab;
+    } else {
+        errForm.style.display = 'block';
+        setTimeout(function() {
+            errForm.style.display = 'none';
+        }, 5000)
+        return false;
+    }
+}
 
 $('#ValiderForm').on('click', function(e) {
     console.log('%c btn valider form ', btn);
 
     e.preventDefault();
 
-    //* On désactive le bouton
-    $('#ValiderForm').attr('class', 'btn btn-secondary col-3 m-auto')
     
-    PostForm(CreateFormInfo());
+    
+    let formInfoTab = verifForm();
+    
+    if (formInfoTab) {
+        //* On désactive le bouton
+        $('#ValiderForm').attr('class', 'btn btn-secondary col-3 m-auto')
+        PostForm(CreateFormInfo(formInfoTab));
+    }
+    
 
 });
 
@@ -229,7 +251,7 @@ function CreateAvisQuestionInfo(fieldset) {
 
 //* Crée un objet à envoyer à DB pour range
 function CreateRangeQuestionInfo(fieldset) {
-    console.log('%c CREATE RANGE QUESTION INFO', fct);
+    console.log('%c CREATE RANGE QUESTION INFO ', fct);
     console.log('%cPour chaque question, crée 2 event listener : pour récupérer infos (btn valider) & pour montrer le graph (btn show graph)', exp);
    
     let btnValider = fieldset.querySelector("button");

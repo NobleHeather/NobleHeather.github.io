@@ -11,7 +11,13 @@ A faire :
 
     log up vérifie juste que tous les champs sont remplis
 
+    revoir design des msg d'err
+
     pb : textarea info récup on change : update progression à chaque fois + plusieurs fois dans local storage
+
+    pb : si peu de data => pas de graph
+
+    montrer les btn show graph si l'utilisateur se reconnecte + tard (dans disable Q ?)
 
     capture de range en fonction de si fieldset "avis" a une classe "avis col-12" :
     si on vire text-area pour questionnaire final, remplacer ça (graph.js -> GetLabels)
