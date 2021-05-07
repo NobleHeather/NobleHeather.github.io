@@ -200,8 +200,8 @@ $('#WelcomeBack').on('click', function(e) {
 const PostNewUser = async function(userInfo) {
     console.log('allo ??');
 
-    fetch('http://localhost:3000/api/user/logup', {
-        // fetch(`${thisUrl}/api/user/logup`, {
+    // fetch('http://localhost:3000/api/user/logup', {
+        fetch(`${thisUrl}/api/user/logup`, {
         // fetch('https://aphantasique-form.herokuapp.com/api/user/logup', {
         method: "POST",
         headers : {
