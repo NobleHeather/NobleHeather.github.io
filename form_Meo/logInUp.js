@@ -6,35 +6,35 @@
 let transparent = document.getElementById('transparent');
 // transparent.style.display = 'none'; //! enlever ensuite
 
-// var styleElem = document.head.appendChild(document.createElement("style"));
-// questionnaire.innerHTML = ""
-// styleElem.innerHTML = "#SouvenirsVisuels:before {opacity: 0;}";
+let msgErr = document.getElementById('msgErr');
+msgErr.style.display = 'none';
 
-// questionnaire.style.display = 'none';
     //* Quand on clique sur un bouton, ça replie la div de l'autre bouton
-$('.loginBtn').on('click', function() {
+$('.loginBtn').on('click', function(e) {
+    console.log('%c btn connexion ', btn);
     $('#logup').removeClass('show');
 })   
 
-$('.logupBtn').on('click', function() {
+$('.logupBtn').on('click', function(e) {
+    console.log('%c btn inscription ', btn);
     $('#login').removeClass('show');
 })   
 
     //* ACTION : UTILISATEURS
-// localStorage.clear();
-// let pseudo = JSON.parse(localStorage.getItem("pseudo")) || '';
-// console.log('pseudo', pseudo);
+
 //* Update affichage progression
 function UpdateProgression(progression) {
+    console.log('%c UPDATE PROGRESSION ', fct);
+    console.log('%cRécupère et affiche la barre de progression', exp)
 
-    //* Si la fonction a été lancée avec sans argument
-    console.log(progression);
+    //* Si la fonction a été lancée sans argument
+    console.log('%cvar progression :', vrb, progression);
     if (!progression) {        
         progression = JSON.parse(localStorage.getItem("progression"));
-        console.log(progression);
+        console.log('%cvar progression au retour de local storage :', vrb, progression);
     }
     // progression = Math.round(progression * 10 / 7);
-    console.log((progression/7).toFixed(2));
+    // console.log((progression/7).toFixed(2));
     //* On divise par le nombre total de Q + toFixed pour choisir nb de chiffre après la virgule
     progression = (progression/7).toFixed(2)
 
@@ -49,20 +49,23 @@ function UpdateProgression(progression) {
 }
 
 function SayHello(pseudo) {
+    console.log('%c SAY HELLO ', fct);
+    console.log('%cRécupère et affiche le pseudo', exp)
 
-    console.log(pseudo);
+    console.log('%cvar pseudo :', vrb, pseudo);
     
     //* Si fonction lancée sans arg
     if (pseudo == undefined) {
+        console.log('IF pseudo undefined')
         let pseudo = JSON.parse(localStorage.getItem("pseudo")) || '';
-        console.log('pseudo : ', pseudo);  
+        console.log('%cvar pseudo', vrb, 'au retour de local storage :', pseudo);  
         //* Si il y a pas de pseudo dans local storage (1ère connexion)
         if (!pseudo) {
-            console.log('pseudo null');
+            console.log('IF pas de pseudo dans local storage');
         //* S'il y a un pseudo dans local storage (reconnexion)
         } else {
         
-            console.log('allo');
+            console.log('ELSE affiche le pseudo');
             let persoDiv = document.querySelector('.perso');
             persoDiv.style.opacity = '1';
     
@@ -76,7 +79,7 @@ function SayHello(pseudo) {
         }
     //* Si fonction lancée avec argument   
     } else {
-        console.log('allo');
+        console.log('ELSE fonction lancée avec pseudo en arg, affiche le pseudo');
         let persoDiv = document.querySelector('.perso');
         persoDiv.style.opacity = '1';
 
@@ -91,24 +94,26 @@ function SayHello(pseudo) {
 }
 
 // localStorage.clear();
-let pseudo = JSON.parse(localStorage.getItem("pseudo"))
-console.log(pseudo);
-SayHello();
-if (JSON.parse(localStorage.getItem("pseudo"))) {
-    console.log('allo ?');
-    SayHello();
-}
+
+// if (JSON.parse(localStorage.getItem("pseudo"))) {
+    
+//     console.log('IF il y a un pseudo dans local storage');
+//     SayHello();
+// }
 
 ////Save User in local storage
 function LocalStoreUser(pseudo) {
+    console.log('%c LOCAL STORE USER ', fct);
+    console.log('%cstock le pseudo dans local storage', exp)
 
-    console.log(pseudo);
+    console.log('%cvar pseudo :', vrb, pseudo);
     //// On enregistre l'id de l'utilisateur
     // localStorage.setItem("id", JSON.stringify(id));
     localStorage.setItem("pseudo", JSON.stringify(pseudo));
     
     //// Après 1h, efface l'utilisateur de local storage
     setTimeout(function() {
+        console.log('SET TIMEOUT efface pseudo de local storage')
         localStorage.setItem("pseudo", JSON.stringify(''));
     }, 60000)
 
@@ -118,21 +123,20 @@ function LocalStoreUser(pseudo) {
     SayHello(pseudo);
 }
 
-let msgErr = document.getElementById('msgErr');
-msgErr.style.display = 'none';
-
 //* Au retour de la base de données, on fait un feedback utilisateur
 function verifInfo(e) {
+    console.log('%c VERIF INFO ', fct);
+    console.log('%cverifie les infos du formulaire d\'inscription/connexion', exp)
     // console.log(e);
-    console.log('VERIF INFO');
     if (e.error == 'Utilisateur non trouvé !') {
-        console.log('IF');
+        console.log('IF utilisateur non trouvé');
         msgErr.style.display = 'block';
         msgErr.innerHTML = 'Erreur :<br/>Pas d\'utilisateur à ce nom';
         // $(msgErr).addClass('border border-danger');
         return false;
         
     } else if (e.error == 'Mot de passe incorrect !') {
+        console.log('ELSE IF mot de passe incorrect')
         msgErr.style.display = 'block';
         msgErr.innerHTML = 'Erreur :<br/>Mot de pass incorrect';
         // $(msgErr).addClass('border border-danger');
@@ -141,7 +145,7 @@ function verifInfo(e) {
     // } else if (err 500) { //server
     //* Si tout est ok on vide les champs, on cache la div et on enchaîne
     } else {
-        console.log('else');
+        console.log('ELSE infos rentrées ok');
         msgErr.style.display = 'none';
         msgErr.innerHTML = '';
         $('#pseudoIn').val('')
@@ -155,6 +159,9 @@ function verifInfo(e) {
 
 //* Envoie infos connexion à DB
 const PostLogin = async function(userInfo) {
+    console.log('%c POST LOGIN ', fct);
+    console.log('%cenvoie les infos LOGIN utilisateur à la base de données', exp);
+
 
     // fetch('http://localhost:3000/api/user/login', {
         fetch(`${thisUrl}/api/user/login`, {
@@ -168,9 +175,12 @@ const PostLogin = async function(userInfo) {
     })
     .then(response => response.json())
     .then(json => {
-        console.log('Réponse de la DB (connexion): ', json);
-        verifInfo(json);
-        LocalStoreUser(json.pseudo);
+        console.log('%cRéponse de la DB (connexion): ', DB, json);
+
+        if (verifInfo(json)) {
+            LocalStoreUser(json.pseudo);
+        }
+       
     })
     .catch((e) => {
         console.log(e);
@@ -179,6 +189,8 @@ const PostLogin = async function(userInfo) {
 
 //* captation info connexion
 $('#WelcomeBack').on('click', function(e) {
+    console.log('%c btn valider connexion ', btn);
+
     e.preventDefault();
     // $('#email').css('opacity', '0');
     // console.log($('#email').val());
@@ -187,10 +199,26 @@ $('#WelcomeBack').on('click', function(e) {
         password : $('#passwordIn').val()
     }
     console.log('Connexion utilisateur déjà inscrit : ', userInfo);
-    
-    // verifInfo(userInfo);
-    // $('#login').removeClass('show');
-    PostLogin(userInfo);
+
+    //* Par défaut les inputs sont en gris, ils restent en gris si cette fonction tourne plusieurs fois
+    let inputs = document.querySelectorAll('#login input');
+    Array.from(inputs, input => input.style.border = '1px solid #ced4da');
+
+    //* Si un des champs est vide
+    if ($('#pseudoIn').val() == '' || $('#passwordIn').val() == '') {
+        console.log('IF input vide');
+        //* On l'encadre en rouge
+        for (let i = 0; i < inputs.length; i++) {
+
+            if (inputs[i].value == '') {
+                inputs[i].style.border = '1px solid red';
+            }
+        }
+    //* Sinon on envoie infos à la DB
+    } else {
+        console.log('ELSE infos rentrées ok')
+        PostLogin(userInfo);
+    }
     
 });
 
@@ -198,7 +226,9 @@ $('#WelcomeBack').on('click', function(e) {
     
 //* Envoie info inscription à DB
 const PostNewUser = async function(userInfo) {
-    console.log('allo ??');
+    console.log('%c POST NEW USER ', fct);
+    console.log('%cenvoie les infos LOGUP utilisateur à la DB', exp)
+
 
     // fetch('http://localhost:3000/api/user/logup', {
         fetch(`${thisUrl}/api/user/logup`, {
@@ -212,31 +242,47 @@ const PostNewUser = async function(userInfo) {
     })
     .then(response => response.json())
     .then(json => {
-        console.log('Réponse de la DB (inscription): ', json);
+        console.log('%cRéponse de la DB (inscription): ', DB, json);
         LocalStoreUser(json.pseudo); 
-        // if (response.ok) {
-        //     console.log('allo ?');
-            //* On renvoie sur fonction login pour connexion automatique après inscription
-            PostLogin({password : userInfo.password, pseudo : userInfo.pseudo});
-        // }
+ 
+        //* On renvoie sur fonction login pour connexion automatique après inscription
+        PostLogin({password : userInfo.password, pseudo : userInfo.pseudo});
+       
     })
     .catch((e) => {
         console.log(e);
     })
 } 
-// let userInfo = {
-//     pseudo : 'Test2',
-//     password : 'Test2',
-//     mail : 'Test2'
-// }
-// PostNewUser(userInfo);
+
+function verifInput(userInfo) { // arg pas utilisé pour l'instant
+    console.log('%c VERIF INPUT ', fct);
+    console.log('%cverifie les infos d\'inscription', exp);
+
+    //* Par défaut les inputs sont en gris, ils restent en gris si cette fonction tourne plusieurs fois
+    let inputs = document.querySelectorAll('#logup input');
+    Array.from(inputs, input => input.style.border = '1px solid #ced4da')
+
+    //* Si un des champs est vide
+    if ($('#pseudoUp').val() == '' || $('#email').val() == '' || $('#passwordUp').val() == '') {
+        console.log('IF input vide');
+        //* On l'encadre en rouge
+        for (let i = 0; i < inputs.length; i++) {
+
+            if (inputs[i].value == '') {
+                inputs[i].style.border = '1px solid red';
+            }
+        }
+        return false;
+    } else {
+        return true;
+    }
+}
 
 //* captation info inscription
-//! réactualise la page ??
 $('#WhoAreYou').on('click', function(e) {
+    console.log('%c btn valider inscription ', btn);
     e.preventDefault();
-    // $('#email').css('opacity', '0');
-    // console.log($('#email').val());
+
     let userInfo = {
         pseudo : $('#pseudoUp').val(),
         mail : $('#email').val(),
@@ -245,6 +291,15 @@ $('#WhoAreYou').on('click', function(e) {
 
     console.log('Inscription utilisateur : ', userInfo);
     
-    // $('#logup').removeClass('show');
-    PostNewUser(userInfo);  
+    // console.log(verifInput(userInfo));
+    if (verifInput(userInfo)) {
+        console.log('IF verif info == true, on envoie infos à la DB')
+        PostNewUser(userInfo);  
+    }
 });
+
+//* En dernier car si local storage vide, erreur parse anonymous
+console.warn('Si pas de pseudo dans local storage, err [parse anonymous]')
+let pseudo = JSON.parse(localStorage.getItem("pseudo"))
+console.log('Au lancement de la page ' + '%cpseudo :', vrb, pseudo);
+SayHello();

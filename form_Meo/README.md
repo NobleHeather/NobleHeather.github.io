@@ -9,6 +9,8 @@ A faire :
 
     <!--* MSG : 05/05/21 test pour manip data : dataset x -->
 
+    log up vérifie juste que tous les champs sont remplis
+
     capture de range en fonction de si fieldset "avis" a une classe "avis col-12" :
     si on vire text-area pour questionnaire final, remplacer ça (graph.js -> GetLabels)
 
@@ -36,6 +38,8 @@ A faire :
     si on appuie sur entrée ça capte pas les inputs du form connexion
     ajouter genre & age dans form
     centrer les div charts
+
+    déconnexion après 1h fonctionne pas (quand on ferme l'onglet)
 
     TRANSITIONS : barre de progression, apparition charts
 

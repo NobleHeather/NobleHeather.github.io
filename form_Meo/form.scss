@@ -17,8 +17,10 @@ $color : (
     "danger" : red
 );
 
-#test {
-    color: rgb(241, 141, 11)
+#test  { // color for console
+    color: rgb(17, 150, 0);
+    color: rgb(19, 250, 219);
+    color: rgb(0, 0, 0);
 }
 //* Barre de progression
 .perso {

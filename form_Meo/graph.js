@@ -309,4 +309,3 @@ console.log(labels);
         }
     })
 }
-
