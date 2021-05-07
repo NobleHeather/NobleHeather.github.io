@@ -4,10 +4,14 @@
 
 
 A faire : 
-<!--!  NB : remettre transparent sur loginInUp l7 -->
+
+    08/05/21 : fonctionne seulement en local, tempVarFetch = localhost
+<!--!  NB : remettre/enlever transparent sur loginInUp l7 -->
 <!--!!! postQuestion -> postForm : localstorage.clear temp -->
 
     <!--* MSG : 05/05/21 test pour manip data : dataset x -->
+
+    mettre msg d'err en console sur fond noir
 
     log up vérifie juste que tous les champs sont remplis
 
@@ -24,13 +28,13 @@ A faire :
 
     revoir tout le circuit pour graph range
 
-    ça fait bcp de camemberts, alterner avec pie
+    <!-- ça fait bcp de camemberts, alterner avec pie -->
 
     range : ajouter option value 0 dans le html et voir comment ça réagit dans le JS
 
     nommer les canvas avec 'pie' ou 'line' ou 'barre' pour pouvoir faire de boucles en fonction du nb de ces noms là
 
-    range n'a pas de label, recalculer organisation des données pour graph à partir de input
+    <!-- range n'a pas de label, recalculer organisation des données pour graph à partir de input -->
 
     dans partie nommage : faire aussi les id des graph et a + div graph si pas déjà fait
 
@@ -41,7 +45,7 @@ A faire :
     btn show graph en opacity 0 et pas display none : on peut cliquer dessus même si invisible
 
     Empêcher le form de s'envoyer 2 fois quand on reclick sur le bouton
-    Empêcher le form de s'envoyer si tout n'est pas répondu
+    <!-- Empêcher le form de s'envoyer si tout n'est pas répondu -->
 
     si on appuie sur entrée ça capte pas les inputs du form connexion
     ajouter genre & age dans form
