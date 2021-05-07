@@ -7,6 +7,8 @@
 
 //* Dans la section 0 souvenirs visuels, en fonction du nombre de fieldset
 function NameQuestion() {
+    console.log('%c NAME QUESTION ', fct);
+    console.log('%cAttribue des id à tous les éléments du form', exp)
 
     for (let x = 0; x < $('#SouvenirsVisuels fieldset').length; x++) {
     
@@ -32,8 +34,9 @@ NameQuestion();
 
 //*Envoyer data de Q à la DB
 const PostForm = async function(formInfo) {
-    console.log('POST_FORM');
-    console.log(thisUrl);
+    console.log('%c POST FORM ', fct);
+    console.log('%cEnvoie l\'ensemble des questions à la DB')
+    console.log('var thisUrl', vrb, thisUrl);
     
     // console.log(formInfo);
     // fetch('http://localhost:3000/api/question', {
@@ -49,7 +52,7 @@ const PostForm = async function(formInfo) {
     })
     .then(response => response.json())
     .then(json => {
-        console.log('Données renvoyées par la DB : ', json);
+        console.log('%cDonnées renvoyées par la DB : ', DB, json);
         
     })
     .catch((e) => {
@@ -59,16 +62,24 @@ const PostForm = async function(formInfo) {
 
 //// Stock les questions sur local storage
 function PostQuestion(questionInfo) {
-    console.log('POST_QUESTION_LOCAL_STORAGE');
-    console.log(questionInfo)
+    console.log('%c POST QUESTION LOCAL STORAGE ', fct);
+    console.log('%cEnregistre les infos de la question dans local storage et le num de la Q à part pour la désactiver + incrémente progression', exp);
 
+    console.log('%cobj questionInfo', vrb, questionInfo)
+
+    //* S'il y a déjà des questions répondues dans local storage, on récupère le tableau
+    //* Sinon tableau vide
     let questionInfoTab = JSON.parse(localStorage.getItem("questionInfoTab")) || [];
+
     //* Si c'est un textarea
     if (questionInfo.somethingElse) {
+        console.log('IF textarea');
         questionInfoTab.push([questionInfo.section, [questionInfo.num, questionInfo.somethingElse]]);
         localStorage.setItem("questionInfoTab", JSON.stringify(questionInfoTab));
 
+    //* Si c'est un ratio
     } else {
+        console.log('ELSE ratio')
         questionInfoTab.push([questionInfo.section, [questionInfo.num, questionInfo.data]]);
         localStorage.setItem("questionInfoTab", JSON.stringify(questionInfoTab));
     }
@@ -79,7 +90,7 @@ function PostQuestion(questionInfo) {
     let progression = JSON.parse(localStorage.getItem("progression")) || 0;
     progression += 1
     localStorage.setItem("progression", JSON.stringify(progression));
-    console.log(progression);
+    console.log('%cvar progression', vrb, progression);
     UpdateProgression(progression);
 
     //// Stock le num de Q sur localStorage
@@ -92,11 +103,13 @@ function PostQuestion(questionInfo) {
 
 //*Formate un objet formInfo à envoyer à la DB
 function CreateFormInfo() {
-    console.log('FONCTION CREATE_FORM_INFO');
-    //// On récupère le tableau de toutes les questions sur locat storage
+    console.log('%c FONCTION CREATE FORM INFO ', fct);
+    console.log('%cFormate les infos avant envoie à la DB : récup sur local storage, pré-tri', exp);
+    
+    //// On récupère le tableau de toutes les questions sur local storage
     let formInfoTab = JSON.parse(localStorage.getItem("questionInfoTab"));
     
-    console.log(formInfoTab);
+    console.log('%cvar formInfoTab :', vrb, formInfoTab);
 
     const formInfoPropre = formInfoTab.map(item => {
         // console.log(item);
@@ -106,7 +119,7 @@ function CreateFormInfo() {
     });
 
     let pseudo = JSON.parse(localStorage.getItem("pseudo"));
-    console.log(pseudo);
+    console.log('%cvar pseudo', vrb, pseudo);
 
     let formInfo = {
         section : formInfoTab[0][0],
@@ -114,17 +127,18 @@ function CreateFormInfo() {
         pseudo : pseudo
     }
 
-    console.log(formInfo);
+    console.log('var formInfo', vrb, formInfo);
 
     return formInfo;
 }
 // CreateFormInfo();
 
 $('#ValiderForm').on('click', function(e) {
-    console.log('BOUTON VALIDER_FORM');
+    console.log('%c btn valider form ', btn);
+
     e.preventDefault();
 
-    // btn btn-warning col-3 m-auto
+    //* On désactive le bouton
     $('#ValiderForm').attr('class', 'btn btn-secondary col-3 m-auto')
     
     PostForm(CreateFormInfo());
@@ -136,6 +150,9 @@ let fieldsets = document.querySelectorAll('fieldset');
 
 //* Crée un objet à envoyer à DB pour ratio
 function CreateRatioQuestionInfo(fieldset) {
+    console.log('%c CREATE RATIO QUESTION INFO ', fct);
+    console.log('%cPour chaque question, crée 2 event listener : pour récupérer infos (btn valider) & pour montrer le graph (btn show graph)', exp);
+
     let inputs = fieldset.querySelectorAll("input");
     let btnValider = fieldset.querySelector("button");
     let btnShowGraph = fieldset.querySelector("a");
@@ -150,7 +167,7 @@ function CreateRatioQuestionInfo(fieldset) {
     //* Quand on clique sur valider on montre le btn showGraph
     //* Et on disable la question + capture les données
     btnValider.addEventListener("click", function (e) {
-        console.log("BOUTON VALIDER");
+        console.log('%c btn valider ', btn);
         e.preventDefault();
 
         // console.log(inputs);
@@ -159,26 +176,27 @@ function CreateRatioQuestionInfo(fieldset) {
         // console.log(fieldset);
 
         btnShowGraph.style.opacity = "1";
-        console.log( fieldset.querySelector('input:checked').getAttribute('id').charAt(3) );
+        // console.log( fieldset.querySelector('input:checked').getAttribute('id').charAt(3) );
 
-        console.log(JSON.parse($(fieldset).attr("id").charAt(8)));
+        // console.log(JSON.parse($(fieldset).attr("id").charAt(8)));
         // console.log($(`input:checked`).attr("id").charAt(3));
 
         // console.log('allo ?');
+        //* Récupère infos dans un obj
         let questionInfo = {
             num: JSON.parse($(fieldset).attr("id").charAt(8)), //num de question
             data: JSON.parse(fieldset.querySelector('input:checked').getAttribute('id').charAt(3)), //réponse user
             section: "Souvenirs Visuels", //sous-partie du questionnaire
         };
 
-        console.log("Données entrées par l'utilisateur : ", questionInfo);
+        console.log('%cobj données entrées par l\'utilisateur : ', vrb, questionInfo);
         PostQuestion(questionInfo);
         DisableQuestion(inputs);
     });
 
     //* Quand on clique sur btn showGraph... montre le graph (wow quelle surprise)
     btnShowGraph.addEventListener("click", function (e) {
-        console.log("BOUTON SHOW_GRAPH");
+        console.log('%c btn show graph ', btn);
         e.preventDefault();
 
         fieldset.setAttribute("class", "texte col-12 col-md-6 d-flex flex-column justify-content-between pb-3 mb-3");
@@ -187,19 +205,21 @@ function CreateRatioQuestionInfo(fieldset) {
 
 //* Crée un objet à envoyer à DB pour textarea
 function CreateAvisQuestionInfo(fieldset) {
+    console.log('%c CREATE AVIS QUESTION INFO ', fct);
+    console.log('%cRécupère les infos entrées par utilisateur dans le text area ON CHANGE (pas click)', exp)
 
-    //* Quand on clique sur le bouton pour l'ensemble du form
+    //* Quand l'utilisateur écrit dans le textarea
     $(fieldset.querySelector('textarea')).on('change', function() {
         // e.preventDefault();
 
         let questionInfo = {
             num: JSON.parse($(fieldset).attr("id").charAt(8)), //num de question
-            data: -1, //réponse user
+            data: -1, // pour pas que ça soit traité par erreur
             section: "Souvenirs Visuels", //sous-partie du questionnaire
-            somethingElse : $('textarea').val()
+            somethingElse : $('textarea').val() //réponse user
         };
     
-        console.log("Données entrées par l'utilisateur : ", questionInfo);
+        console.log("%cDonnées entrées par l'utilisateur : ", vrb, questionInfo);
     
         PostQuestion(questionInfo);
 
@@ -209,7 +229,8 @@ function CreateAvisQuestionInfo(fieldset) {
 
 //* Crée un objet à envoyer à DB pour range
 function CreateRangeQuestionInfo(fieldset) {
-
+    console.log('%c CREATE RANGE QUESTION INFO', fct);
+    console.log('%cPour chaque question, crée 2 event listener : pour récupérer infos (btn valider) & pour montrer le graph (btn show graph)', exp);
    
     let btnValider = fieldset.querySelector("button");
     let btnShowGraph = fieldset.querySelector("a");
@@ -224,11 +245,11 @@ function CreateRangeQuestionInfo(fieldset) {
     //* Quand on clique sur valider on montre le btn showGraph
     //* Et on disable la question + capture les données
     btnValider.addEventListener("click", function (e) {
-        console.log("BOUTON VALIDER");
+        console.log('%c btn valider ', btn);
         e.preventDefault();
 
         let rangeVal = fieldset.querySelector("input").value;
-        console.log(rangeVal);
+        // console.log(rangeVal);
 
         btnShowGraph.style.opacity = "1";
         //* disable range
@@ -241,14 +262,14 @@ function CreateRangeQuestionInfo(fieldset) {
             section: "Souvenirs Visuels", //sous-partie du questionnaire
         };
 
-        console.log("Données entrées par l'utilisateur : ", questionInfo);
+        console.log("%c obj données entrées par l'utilisateur : ", vrb, questionInfo);
 
         PostQuestion(questionInfo);
     });
 
     //* Quand on clique sur btn showGraph... montre le graph (wow quelle surprise)
     btnShowGraph.addEventListener("click", function (e) {
-        console.log("BOUTON SHOW_GRAPH");
+        console.log('%c btn show graph ', btn);
         e.preventDefault();
 
         fieldset.setAttribute("class", "texte col-6");
@@ -257,20 +278,21 @@ function CreateRangeQuestionInfo(fieldset) {
 }
 
 //* Capture les éléments dans chaque fieldset
+console.log('Au chargement de la page : on crée les questions')
 Array.from(fieldsets, fieldset => {
     
     //* Si c'est une partie textarea, on l'exclus
     if (fieldset.querySelector('legend').getAttribute('id') == 'avis') {
-        console.log('avis');
+        console.log('IF question style "avis"');
 
         CreateAvisQuestionInfo(fieldset);
     //* Sinon on continue
     } else if (fieldset.querySelector('input').getAttribute('type') == 'range') {
-        console.log('range');
+        console.log('ELSE IF question style "range"');
         CreateRangeQuestionInfo(fieldset);
     } else {
         CreateRatioQuestionInfo(fieldset);  
-        console.log('ratio');
+        console.log('ELSE question syle "ratio"');
     }
     
 });

@@ -27,7 +27,7 @@ const GetData = async function() {
     })
     .then(response => response.json())
     .then(json => {
-        console.log('Données en vrac (Form 0): ', json);
+        console.log('%cDonnées en vrac (Form 0): ', DB, json);
         DisplayQuestion(json);
     })
     .catch((e) => console.log(e))
@@ -37,11 +37,12 @@ GetData();
 //* Classer par question
 let dataGraph = [[], [], [], [], [], [], []];
 async function DisplayQuestion(data) {
-    
+    console.log('%c DISPLAY DATA', fct);
+    console.log('%cAffiche les data et les trie', exp)
     // let dataGraph = [[], [], [], [], [], [], []];
     // let dataGraph = [['Q1'], ['Q2'], ['Q3'], ['Q4'], ['Q5'], ['Q6'], ['Q7']];
     
-//* On parcourt l'ensemble des form
+    //* On parcourt l'ensemble des form
     for (let x = 0; x < data.length; x++) {
         // console.log('x', x)
 
@@ -53,7 +54,8 @@ async function DisplayQuestion(data) {
             // console.log(a, b)
             return a-b
         });
-        console.log(data[x].Num_Data);
+
+        // console.log(data[x].Num_Data);
 
         //* Pour chaque Q on push la data qui correspond
         for (let i = 0; i < data[x].Num_Data.length; i++) {
@@ -65,13 +67,13 @@ async function DisplayQuestion(data) {
         }
     }
     
-    console.log(dataGraph);
-    console.log(dataGraph[0]);
+    console.log('%tab dataGraph (data triées)', vrb, dataGraph);
+    // console.log(dataGraph[0]);
 
     return dataGraph; // pas utilisé
 }
 
-//? Temporaire : effacer form de DB
+//! Temporaire : effacer form de DB
 // const deleteForm = async function() {
 //     fetch(`${thisUrl}/api/form/[ID FORM ICI]`, {
 //         method: "DELETE"
