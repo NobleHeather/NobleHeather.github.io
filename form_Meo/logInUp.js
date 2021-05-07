@@ -91,6 +91,9 @@ function SayHello(pseudo) {
 }
 
 // localStorage.clear();
+let pseudo = JSON.parse(localStorage.getItem("pseudo"))
+console.log(pseudo);
+SayHello();
 if (JSON.parse(localStorage.getItem("pseudo"))) {
     console.log('allo ?');
     SayHello();

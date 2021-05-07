@@ -26,7 +26,7 @@ A faire :
 
     Section 0 du questionnaire : souvenirs visuels
 
-    lier pseudo à form avant envoi
+    <!-- lier pseudo à form avant envoi -->
 
     btn show graph en opacity 0 et pas display none : on peut cliquer dessus même si invisible
 
@@ -41,7 +41,10 @@ A faire :
 
     filtrer fichier mail pour doublons
 
-    <!-- function writeMail backend reload the page (et donc on perd le salut personnalisé) -->
+    <!-- (NB : ne pas laisser trainer de local storage clear :) -->
+    <!-- function writeMail backend reload the page (et donc on perd le salut personnalisé)
+    même avec un délai on n'enchaine pas inscription et connexion 
+    Si on actualise la page, on perd info de connexion -->
 
     faire un bouton déconnexion
 
