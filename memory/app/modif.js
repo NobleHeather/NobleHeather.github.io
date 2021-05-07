@@ -22,7 +22,7 @@ btnLoupe.addEventListener('click', function(e) {
 
 const fetchFiche = async function() {
     // return await fetch('http://localhost:3000/api/fiche')
-    return await fetch('https://memory-piafs.herokuapp.com/api/fiche')
+    return await fetch('https://memory-version-publique.herokuapp.com/api/fiche')
     .then(response => response.json())
     .then(json => {
         console.log(json);
@@ -45,7 +45,7 @@ function findFiche(arg) {
         if (arg[i].nom == inputs[1].value) {
             thisId = arg[i]._id;
             inputs[2].value = arg[i].indice;
-            inputs[3].value = arg[i].imgUrl;
+            inputs[3].value = arg[i].imgUrl.replace('./images/', '');
             for (let y = 0; y < options.length; y++) {
                 options[y].removeAttribute('selected', '');
 
@@ -89,7 +89,7 @@ btnModif.addEventListener('click', function(e) {
         nom: inputs[1].value,
         indice: inputs[2].value,
         categorie: categorie,
-        imgUrl: inputs[3].value
+        imgUrl: `./images/${inputs[3].value}`
     }
     console.log(fiche);
 
@@ -100,7 +100,7 @@ btnModif.addEventListener('click', function(e) {
 
 const postFiche = async function(arg) {
     // let thisUrl = `http://localhost:3000/api/fiche/${thisId}`;
-    let thisUrl = `https://memory-piafs.herokuapp.com/api/fiche/${thisId}`;
+    let thisUrl = `https://memory-version-publique.herokuapp.com/api/fiche/${thisId}`;
     console.log(thisUrl);
 
     fetch(thisUrl, {

@@ -22,7 +22,7 @@ btnLoupe.addEventListener('click', function(e) {
 
 const fetchFiche = async function() {
     // return await fetch('http://localhost:3000/api/fiche')
-    return await fetch('https://memory-piafs.herokuapp.com/api/fiche')
+    return await fetch('https://memory-version-publique.herokuapp.com/api/fiche')
     .then(response => response.json())
     .then(json => {
         console.log(json);
@@ -59,7 +59,7 @@ function findAndDisplay(arg) {
 
 const deleteFiche = async function() {
     // let thisUrl = `http://localhost:3000/api/fiche/${thisId}`;
-    let thisUrl = `https://memory-piafs.herokuapp.com/api/fiche/${thisId}`;
+    let thisUrl = `https://memory-version-publique.herokuapp.com/api/fiche/${thisId}`;
     fetch(thisUrl, {
         method: "DELETE"
     })

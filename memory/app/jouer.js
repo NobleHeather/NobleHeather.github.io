@@ -18,7 +18,7 @@ let pRatio = document.querySelector('.ratio');
 
 const fetchFiche = async function() {
     // return await fetch('http://localhost:3000/api/fiche')
-    return await fetch('https://memory-piafs.herokuapp.com/api/fiche')
+    return await fetch('https://memory-version-publique.herokuapp.com/api/fiche')
     .then(response => response.json())
     .then(json => {
         console.log(json);
