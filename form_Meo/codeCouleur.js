@@ -26,3 +26,8 @@ let pbLog = 'background: #000; color: #409DEF';
 let pbRecupData = 'background: #000; color: #F7FF00';
 let pbSortData = 'background: #000; color: #E851B6';
 let test = 'background: #000; color: #FFFFFF';
+
+let clearTemp = document.getElementById('clearTemp');
+clearTemp.addEventListener('click', function() {
+    localStorage.clear();
+});
