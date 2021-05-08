@@ -55,6 +55,10 @@ const PostForm = async function(formInfo) {
     .then(response => response.json())
     .then(json => {
         console.log('%cDonnées renvoyées par la DB : ', DB, json);
+
+        //* On vide local storage
+        localStorage.removeItem('questionInfoTab');
+        console.log('%clocal storage : questionInfoTab', vrb, JSON.parse(localStorage.getItem("questionInfoTab")));
         
     })
     .catch((e) => {

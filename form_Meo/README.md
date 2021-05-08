@@ -11,6 +11,8 @@ A faire :
 
     <!--* MSG : 05/05/21 test pour manip data : dataset x -->
 
+    A la fin du form, on vide local storage des questions, faire autrement quand il y aura plusieurs form
+
     mettre msg d'err en console sur fond noir
 
     log up vérifie juste que tous les champs sont remplis
