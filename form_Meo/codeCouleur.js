@@ -30,4 +30,5 @@ let test = 'background: #000; color: #FFFFFF';
 let clearTemp = document.getElementById('clearTemp');
 clearTemp.addEventListener('click', function() {
     localStorage.clear();
+    console.log('%c clear local storage', btn);
 });
