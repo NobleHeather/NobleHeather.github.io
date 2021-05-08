@@ -196,7 +196,7 @@ function formateDataForGraph() {
         //* On crée un tableau avec tous les tableaux précédents : nb de réponses/label/question
         dataGraphCompliledAll.push(dataGraphCompliled);
     }
-    console.log('%cZONE DE COMPARAISON', test);
+    console.log('%c ZONE DE COMPARAISON ', test);
     console.log('%cdonnées de départ :', vrb, dataGraph)
     console.log(`%cdonnées formatées pour graph:`, vrb, dataGraphCompliledAll);
     return dataGraphCompliledAll;

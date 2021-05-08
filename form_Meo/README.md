@@ -11,9 +11,19 @@ A faire :
 
     <!--* MSG : 05/05/21 test pour manip data : dataset x -->
 
+    parfois err manque pseudo, clear storage qq part ?
+
+    varier un peu les couleurs en inversant le tableau
+    
     A la fin du form, on vide local storage des questions, faire autrement quand il y aura plusieurs form
 
+    faire un feedback : déjà un mail/pseudo idem enregistré
+
+    replier div inscription après connexion [NB : piped together] (si successful) 
+
     mettre msg d'err en console sur fond noir
+
+    disable aussi textarea après envoie form
 
     log up vérifie juste que tous les champs sont remplis
 
