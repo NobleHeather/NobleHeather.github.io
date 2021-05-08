@@ -7,7 +7,7 @@ const Form = require('./models/form');
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
-const PASS = require('./PASS'); //! a supprimer ensuite !
+// const PASS = require('./PASS'); //! a supprimer ensuite ! fait crasher Heroku
 // mongoose.connect(`mongodb+srv://NobleHeather:${PASS}@cluster0.bfskp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
 mongoose.connect('mongodb+srv://NH:aphantForm@aphantasiqueform.tlab4.mongodb.net/AphantasiqueForm?retryWrites=true&w=majority',
   { useNewUrlParser: true,
