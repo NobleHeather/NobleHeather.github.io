@@ -33,7 +33,7 @@ inputs[2].addEventListener('focus', function() {
 //* Ici on récupère toutes les fiches
 const fetchFiche = async function() {
     // return await fetch('http://localhost:3000/api/fiche')
-    return await fetch('https://memory-version-publique.herokuapp.com/api/fiche')
+    return await fetch('https://memory-piafs.herokuapp.com/api/fiche')
     .then(response => response.json())
     .then(json => {
         console.log(json);
@@ -93,7 +93,7 @@ btnSubmit.addEventListener('click', function(e) {
 const postFiche = async function(arg) {
 
     // fetch('http://localhost:3000/api/fiche', {
-    fetch('https://memory-version-publique.herokuapp.com/api/fiche', {
+    fetch('https://memory-piafs.herokuapp.com/api/fiche', {
         method: "POST",
         headers : {
             'Accept' : 'application/json',
@@ -216,7 +216,9 @@ async function verifDoublon(fiche) {
             console.log('pas de doublon');
             console.log(i);
             msgAjout.innerHTML = "<strong>Validation en cours...</strong>";
-            postFiche(fiche);
+
+            //! désactivé sur la version publique
+            // postFiche(fiche);
             i++;
         } else if (fiche.nom != data[i].nom) {
             console.log('pas de doublon');

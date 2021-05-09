@@ -22,7 +22,7 @@ btnLoupe.addEventListener('click', function(e) {
 
 const fetchFiche = async function() {
     // return await fetch('http://localhost:3000/api/fiche')
-    return await fetch('https://memory-version-publique.herokuapp.com/api/fiche')
+    return await fetch('https://memory-piafs.herokuapp.com/api/fiche')
     .then(response => response.json())
     .then(json => {
         console.log(json);
@@ -93,14 +93,15 @@ btnModif.addEventListener('click', function(e) {
     }
     console.log(fiche);
 
-    postFiche(fiche);
+    //! désactivé sur la version publique
+    // postFiche(fiche);
     clear();
     afficheMsg();
 });
 
 const postFiche = async function(arg) {
     // let thisUrl = `http://localhost:3000/api/fiche/${thisId}`;
-    let thisUrl = `https://memory-version-publique.herokuapp.com/api/fiche/${thisId}`;
+    let thisUrl = `https://memory-piafs.herokuapp.com/api/fiche/${thisId}`;
     console.log(thisUrl);
 
     fetch(thisUrl, {

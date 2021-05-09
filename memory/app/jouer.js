@@ -18,7 +18,7 @@ let pRatio = document.querySelector('.ratio');
 
 const fetchFiche = async function() {
     // return await fetch('http://localhost:3000/api/fiche')
-    return await fetch('https://memory-version-publique.herokuapp.com/api/fiche')
+    return await fetch('https://memory-piafs.herokuapp.com/api/fiche')
     .then(response => response.json())
     .then(json => {
         console.log(json);
@@ -241,7 +241,7 @@ function displayQ(json) {
     //* Si ce n'est pas le 1er tour, on remet toutes les bordures à none
     // let labels = document.querySelectorAll('label');
     for (let i = 0; i < labels.length; i++) {
-        labels[i].setAttribute('class', 'list-group-item mx-2');
+        labels[i].setAttribute('class', 'list-group-item mx-4');
     }
 
 
@@ -449,7 +449,7 @@ btnValider.addEventListener('click', function(e) {
             if (inputs[i].id === "optionRand") {
                 console.log('bonne réponse');
                 //* On met une bordure verte
-                labels[i].setAttribute('class', 'list-group-item mx-2 border border-success');
+                labels[i].setAttribute('class', 'list-group-item mx-4 border border-success borderThick');
                 btnSuivant.style.display = 'inline';
 
                 //* On cache le bouton valider pour éviter que l'utilisateur enregistre 15f une bonne réponse
@@ -506,7 +506,7 @@ function showRep(inputs, labels) {
         if (inputs[i].id === "optionRand") {
             // <label class="list-group-item active mx-2"></label>
             //* On passe le <li> en active
-            labels[i].setAttribute('class', 'list-group-item active mx-2');
+            labels[i].setAttribute('class', 'list-group-item active mx-4');
             btnSuivant.style.display = 'inline';
         }
     }
