@@ -55,6 +55,16 @@ $color : (
             // transition : transform 2000ms cubic-bezier(.7,.19,.95,.73);
         }
     }
+    > a svg {
+        // border: 1px solid #000;
+        // font-size: 1.5em;
+        width: 30px;
+        height: 30px;
+        transition: 300ms;
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
 }
 .wrapper {
     position: relative;

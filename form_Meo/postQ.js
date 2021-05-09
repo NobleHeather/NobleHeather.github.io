@@ -7,30 +7,7 @@
 
 let errForm = document.getElementById('formErr');
 errForm.style.display = 'none';
-//* Dans la section 0 souvenirs visuels, en fonction du nombre de fieldset
-function NameQuestion() {
-    console.log('%c NAME QUESTION ', fct);
-    console.log('%cAttribue des id à tous les éléments du form', exp)
 
-    for (let x = 0; x < $('#SouvenirsVisuels fieldset').length; x++) {
-    
-        //* On nomme chaque fieldset avec un numéro de question, idem pour button & canvas
-        //todo NB : c'est une class et pas un id car on a des id "hidden" pour les toggle btn //Du coup j'ai mis les truc toggle dans des div
-        $(`#SouvenirsVisuels fieldset:eq(${x})`).attr('id', `question${x}`);
-        $(`#SouvenirsVisuels fieldset:eq(${x}) button`).attr('id', `validerQ${x}`);
-        $(`#SouvenirsVisuels fieldset:eq(${x}) button + a`).attr('href', `#collapse${x}`);
-        $(`#SouvenirsVisuels fieldset:eq(${x}) + .graph .collapse`).attr('id', `collapse${x}`);
-        $(`#SouvenirsVisuels fieldset:eq(${x}) + .graph canvas`).attr('id', `canevas${x}`);
-    
-        //* On nomme les inputs et les labels de ce fieldset en fonction du numéro de question
-        for (let i = 0; i < $(`#question${x} input`).length; i++) {
-            $(`#question${x} input:eq(${i})`).attr('id', `q${x}_${i}`);
-            $(`#question${x} input:eq(${i})`).attr('name', `q${x}`);
-            $(`#question${x} input:eq(${i}) + label`).attr('for', `q${x}.${i}`);
-        }
-    }
-}
-NameQuestion();
 
     //* CAPTAGE DE DATA (question 1, voir si généralisable)
 
@@ -73,36 +50,72 @@ function PostQuestion(questionInfo) {
 
     console.log('%cobj questionInfo', vrb, questionInfo)
 
+    console.log(pseudo);
+    // console.log(userInfo);
+
     //* S'il y a déjà des questions répondues dans local storage, on récupère le tableau
     //* Sinon tableau vide
-    let questionInfoTab = JSON.parse(localStorage.getItem("questionInfoTab")) || [];
+    // let questionInfoTab = JSON.parse(localStorage.getItem("questionInfoTab")) || [];
+    let userInfo;
+    if (pseudo) {
+        userInfo = SetUserObj(pseudo);
+    } else {
+        userInfo = SetUserObj(); //* lancé sans arg !
+    }
+    // let questionInfoTab = userInfo.questionTab;
+    console.log(userInfo);
 
+    let questionTab = userInfo.questionTab || [];
     //* Si c'est un textarea
     if (questionInfo.somethingElse) {
         console.log('IF textarea');
-        questionInfoTab.push([questionInfo.section, [questionInfo.num, questionInfo.somethingElse]]);
-        localStorage.setItem("questionInfoTab", JSON.stringify(questionInfoTab));
+        questionTab.push([questionInfo.section, [questionInfo.num, questionInfo.somethingElse]]);
+        // localStorage.setItem("questionInfoTab", JSON.stringify(questionInfoTab));
 
     //* Si c'est un ratio
     } else {
         console.log('ELSE ratio')
-        questionInfoTab.push([questionInfo.section, [questionInfo.num, questionInfo.data]]);
-        localStorage.setItem("questionInfoTab", JSON.stringify(questionInfoTab));
+        questionTab.push([questionInfo.section, [questionInfo.num, questionInfo.data]]);
+        // localStorage.setItem("questionInfoTab", JSON.stringify(questionInfoTab));
     }
-    questionInfoTab = JSON.parse(localStorage.getItem("questionInfoTab"));
+    userInfo.questionTab = questionTab;
+    // questionInfoTab = JSON.parse(localStorage.getItem("questionInfoTab"));
     // console.log(questionInfoTab);
 
     //* Update la progression
-    let progression = JSON.parse(localStorage.getItem("progression")) || 0;
-    progression += 1
-    localStorage.setItem("progression", JSON.stringify(progression));
+    // let progression = JSON.parse(localStorage.getItem("progression")) || 0;
+    let progression = userInfo.progression || 0;
     console.log('%cvar progression', vrb, progression);
+    progression += 1;
+    console.log('%cvar progression', vrb, progression);
+    userInfo.progression = progression;
+    // localStorage.setItem("progression", JSON.stringify(progression));
+    console.log('%cvar userInfo', vrb, userInfo);
     UpdateProgression(progression);
 
     //// Stock le num de Q sur localStorage
-    let disableTab = JSON.parse(localStorage.getItem("disableTab")) || [];
+    // let disableTab = JSON.parse(localStorage.getItem("disableTab")) || [];
+    let disableTab = userInfo.disableTab || [];
     disableTab.push(questionInfo.num);
-    localStorage.setItem("disableTab", JSON.stringify(disableTab));
+    userInfo.disableTab = disableTab;
+
+    let userObjAll = JSON.parse(localStorage.getItem("userObjAll")) || [];
+    console.log(userObjAll);
+    // let index = userObjAll.filter(obj => {return indexOf(obj.pseudo == userInfo.pseudo)})
+    // let index = userObjAll.indexOf(obj.pseudo == userInfo.pseudo)
+    for (let i = 0; i < userObjAll.length; i++) {
+        console.log(userObjAll[i]);
+        if (userObjAll[i].pseudo == userInfo.pseudo) {
+            console.log('IF splice');
+            userObjAll.splice(i, 1, userInfo);
+        } else {
+            console.log('ELSE push');
+            userObjAll.push(userInfo);
+        }
+    }
+    console.log('%cvarUserObjAll :', vrb, userObjAll);
+
+    localStorage.setItem("userObjAll", JSON.stringify(userObjAll));
     
 }
 

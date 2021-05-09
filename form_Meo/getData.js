@@ -14,6 +14,25 @@
 
 
 
+// const GetUsers = async function() {
+//     // return await fetch('http://localhost:3000/api/question')
+//     return await fetch(`${thisUrl}/api/user`, {
+//         // return await fetch('https://aphantasique-form.herokuapp.com/api/question', {
+//         method: "GET", 
+//         headers: {
+//           "Content-Type": "application/json", 
+//           'Accept': "application/json"
+//         },
+//         body: undefined,
+//     })
+//     .then(response => response.json())
+//     .then(json => {
+//         console.log('%cDonnées en vrac (users): ', DB, json);
+//     })
+//     .catch((e) => console.log(e))
+// }
+// GetUsers();
+
 const GetData = async function() {
     // return await fetch('http://localhost:3000/api/question')
     return await fetch(`${thisUrl}/api/form`, {

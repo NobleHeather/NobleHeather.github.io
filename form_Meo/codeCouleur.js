@@ -20,6 +20,7 @@ let vrb = 'font-weight : bold;';
 let exp = 'font-style : italic;';
 let btn = 'font-weight: bold; color : #12A505; border : 2px solid #12A505';
 let fct = 'font-weight: bold; border: 2px solid #00BEFF';
+let fctw = 'font-weight: bold; border: 2px solid #E851B6'; // work in progress
 let pbGraph = 'background: #000; color: #EF9940';
 let DB = 'background: #000; color: #40EF4B';
 let pbLog = 'background: #000; color: #409DEF';
@@ -27,6 +28,7 @@ let pbRecupData = 'background: #000; color: #F7FF00';
 let pbSortData = 'background: #000; color: #E851B6';
 let test = 'background: #000; color: #FFFFFF';
 
+// truc temp sur petit num 7 dans plan qcm
 let clearTemp = document.getElementById('clearTemp');
 clearTemp.addEventListener('click', function() {
     localStorage.clear();

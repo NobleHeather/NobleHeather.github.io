@@ -29,10 +29,12 @@ function UpdateProgression(progression) {
 
     //* Si la fonction a été lancée sans argument
     console.log('%cvar progression :', vrb, progression);
-    if (!progression) {        
-        progression = JSON.parse(localStorage.getItem("progression"));
-        console.log('%cvar progression au retour de local storage :', vrb, progression);
-    }
+    // if (progression == '' || progression == undefined) {        
+    //     // progression = JSON.parse(localStorage.getItem("progression"));
+    //     // progression = userInfo.progression
+    //     // console.log('%cvar progression au retour de local storage :', vrb, progression);
+    //     console.log('%c var progression manquante ', pbLog);
+    // }
     // progression = Math.round(progression * 10 / 7);
     // console.log((progression/7).toFixed(2));
     //* On divise par le nombre total de Q + toFixed pour choisir nb de chiffre après la virgule
@@ -73,8 +75,10 @@ function SayHello(pseudo) {
             persoParaf[0].textContent = `Bienvenue, ${pseudo}`;
             // persoParaf[1].textContent = `Votre progression : ${'110'}%`;
     
-            UpdateProgression();
-            DisableAnsweredQuestions();
+            let QInfoTab = SetUserObj(pseudo);
+            console.log(QInfoTab);
+            UpdateProgression(QInfoTab.progression);
+            DisableAnsweredQuestions(QInfoTab.disableTab);
             transparent.style.display = 'none';   
         }
     //* Si fonction lancée avec argument   
@@ -87,8 +91,9 @@ function SayHello(pseudo) {
         persoParaf[0].textContent = `Bienvenue, ${pseudo}`;
         // persoParaf[1].textContent = `Votre progression : ${'110'}%`;
 
-        UpdateProgression();
-        DisableAnsweredQuestions();
+        let QInfoTab = SetUserObj(pseudo);
+        UpdateProgression(QInfoTab.progression);
+        DisableAnsweredQuestions(QInfoTab.disableTab);
         transparent.style.display = 'none';   
     }
 }
@@ -115,7 +120,7 @@ function LocalStoreUser(pseudo) {
     setTimeout(function() {
         console.log('SET TIMEOUT efface pseudo de local storage')
         localStorage.setItem("pseudo", JSON.stringify(''));
-    }, 60000)
+    }, 3600000)
 
     //* On affiche questionnaire une fois que l'utilisateur est identifié
     transparent.style.display = 'none';
@@ -162,6 +167,8 @@ const PostLogin = async function(userInfo) {
     console.log('%c POST LOGIN ', fct);
     console.log('%cenvoie les infos LOGIN utilisateur à la base de données', exp);
 
+    //* Si on vient de PostNewUser, on replie div inscription
+    $('#logup').removeClass('show');
 
     // fetch('http://localhost:3000/api/user/login', {
         fetch(`${thisUrl}/api/user/login`, {
@@ -298,8 +305,76 @@ $('#WhoAreYou').on('click', function(e) {
     }
 });
 
+//* logout
+let logout = document.querySelector('.perso > a');
+logout.addEventListener('click', function() {
+    console.log('%c btn logout', btn);
+    console.log('%cVide le local storage du pseudo', exp);
+
+    localStorage.removeItem('pseudo');
+    let persoDiv = document.querySelector('.perso');
+    persoDiv.style.opacity = '0';
+    transparent.style.display = 'block';
+
+    console.log(pseudo);
+
+});
+
+
+// setTimeout(function() {
+    // let tab = [{pseudo : 'x', questionTab : [1, 2, 3], prog : 'progression', disableTab : [4, 5, 6]}, {pseudo : 'y', tab : [4, 5, 6]}];
+    // console.log('%cICI', test, tab);
+    // let pseudoTest = tab.filter(tab => {return tab.pseudo == 'x'})
+    // console.log(pseudoTest);
+    // console.log(pseudoTest[0].questionTab);
+    // // let tab2 = []
+    // // console.log(tab2);
+    // // let intermTab = pseudoTest.questionTab;
+    // // intermTab.push(4);
+    // pseudoTest[0].questionTab.push(4);
+    // // pseudoTest.questionTab = intermTab;
+    // console.log(pseudoTest);
+    
+// }, 3000)
+
+//* Récupère le tableau de questions répondues de l'utilisateur
+//* parmi les tableaux de questions répondues de tous les utilisateurs du même local storage
+function SetUserObj(pseudo) {
+    // let userInfo;
+    console.log('%c SET QUESTION TAB ', fctw);
+    console.log('%cRécupère userInfo dans storage : questions répondues de l\'utilisateur, progression', exp);
+
+    console.log('%cvar pseudo', vrb, pseudo);
+    if (pseudo) {
+        console.log('IF pseudo');
+        userObjAll = JSON.parse(localStorage.getItem("userObjAll")) || [];
+        console.log('%cvar userObjAll', vrb, userObjAll);
+        
+        // if (questionInfoTabAll != []) {
+            let userInfo = userObjAll.filter(obj => {return obj.pseudo == pseudo});
+            userInfo = userInfo[0] || {pseudo : pseudo, questionTab : [], progression : 0, disableTab : []};
+            console.log('%cvar userInfo', vrb, userInfo);
+            return userInfo;
+        // } else {
+        //     questionInfoTab = [];
+        //     console.log(questionInfoTab);
+        // }
+    //* si lancé sans arg ( dans PostQuestion )
+    } else {
+        let userInfo = userObjAll.filter(obj => {return obj.pseudo == pseudo});
+        console.log('%cvar userInfo', vrb, userInfo);
+        return userInfo[0];
+    }
+    // console.log('%cvar userInfo', vrb, userInfo);
+}
+
 //* En dernier car si local storage vide, erreur parse anonymous
 console.warn('Si pas de pseudo dans local storage, err [parse anonymous]')
 let pseudo = JSON.parse(localStorage.getItem("pseudo"))
 console.log('Au lancement de la page ' + '%cpseudo :', vrb, pseudo);
 SayHello();
+// let userInfo = SetQuestionTab(pseudo);
+// console.log(userInfo);
+
+
+
