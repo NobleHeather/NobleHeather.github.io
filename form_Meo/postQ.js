@@ -1,5 +1,6 @@
 //* QUESTIONS
 // localStorage.clear();
+
     //* NOMMAGE DES CHAMPS
 // (ça n'a l'air de rien là comme ça mais il m'a fallu autant de temps que si je les avais
 // nommés un par un dans le html donc je suis même pas sûre que ça soit rentable,
@@ -34,8 +35,16 @@ const PostForm = async function(formInfo) {
         console.log('%cDonnées renvoyées par la DB : ', DB, json);
 
         //* On vide local storage
-        localStorage.removeItem('questionInfoTab');
-        console.log('%clocal storage : questionInfoTab', vrb, JSON.parse(localStorage.getItem("questionInfoTab")));
+        localStorage.removeItem('userInfoLog');
+        console.log('%clocal storage : userInfoLog', vrb, JSON.parse(localStorage.getItem("userInfoLog")));
+        let userObjAll = JSON.parse(localStorage.getItem("userObjAll"))
+        for (let i = 0; i < userObjAll.length; i++) {
+            console.log(userObjAll[i]);
+            if (userObjAll[i].pseudo == formInfo.pseudo) {
+                console.log('IF user : splice')
+                userObjAll.splice(i, 1);
+            }
+        }
         
     })
     .catch((e) => {
