@@ -50,18 +50,18 @@ function PostQuestion(questionInfo) {
 
     console.log('%cobj questionInfo', vrb, questionInfo)
 
-    console.log(pseudo);
+    // console.log(pseudo);
     // console.log(userInfo);
 
     //* S'il y a déjà des questions répondues dans local storage, on récupère le tableau
     //* Sinon tableau vide
     // let questionInfoTab = JSON.parse(localStorage.getItem("questionInfoTab")) || [];
-    let userInfo;
-    if (pseudo) {
-        userInfo = SetUserObj(pseudo);
-    } else {
-        userInfo = SetUserObj(); //* lancé sans arg !
-    }
+    let userInfo = JSON.parse(localStorage.getItem("userInfoLog"))
+    // if (pseudo) {
+    //     userInfo = SetUserObj(pseudo);
+    // } else {
+    //     userInfo = SetUserObj(); //* lancé sans arg !
+    // }
     // let questionInfoTab = userInfo.questionTab;
     console.log(userInfo);
 
@@ -99,18 +99,29 @@ function PostQuestion(questionInfo) {
     disableTab.push(questionInfo.num);
     userInfo.disableTab = disableTab;
 
+    //* on met a jour l'obj temp de l'utilisateur
+    console.log(userInfo);
+    localStorage.setItem("userInfoLog", JSON.stringify(userInfo));
+
+    //* on met à jour le tableau des utilisateur locaux qui contient l'obj temp de l'utilisateur
     let userObjAll = JSON.parse(localStorage.getItem("userObjAll")) || [];
     console.log(userObjAll);
     // let index = userObjAll.filter(obj => {return indexOf(obj.pseudo == userInfo.pseudo)})
     // let index = userObjAll.indexOf(obj.pseudo == userInfo.pseudo)
-    for (let i = 0; i < userObjAll.length; i++) {
-        console.log(userObjAll[i]);
-        if (userObjAll[i].pseudo == userInfo.pseudo) {
-            console.log('IF splice');
-            userObjAll.splice(i, 1, userInfo);
-        } else {
-            console.log('ELSE push');
-            userObjAll.push(userInfo);
+    if (userObjAll.length == 0) {
+        console.log('IF rien dans tab des utilisateurs locaux');
+        userObjAll.push(userInfo);
+    } else {
+        console.log('ELSE on parcourt tab des utilisateurs locaux')
+        for (let i = 0; i < userObjAll.length; i++) {
+            console.log(userObjAll[i]);
+            if (userObjAll[i].pseudo == userInfo.pseudo) {
+                console.log('IF user : splice')
+                userObjAll.splice(i, 1, userInfo);
+            } else {
+                console.log('ELSE pas user : push');
+                userObjAll.push(userInfo);
+            }
         }
     }
     console.log('%cvarUserObjAll :', vrb, userObjAll);
@@ -121,31 +132,34 @@ function PostQuestion(questionInfo) {
 
 
 //*Formate un objet formInfo à envoyer à la DB
-function CreateFormInfo(formInfoTab) {
+function CreateFormInfo(userInfo) {
     console.log('%c FONCTION CREATE FORM INFO ', fct);
     console.log('%cFormate les infos avant envoie à la DB : récup sur local storage, pré-tri', exp);
     
-    console.log('%cvar formInfoTab :', vrb, formInfoTab);
+    // console.log('%cvar formInfoTab :', vrb, formInfoTab);
 
-    const formInfoPropre = formInfoTab.map(item => {
+    // let userInfo = JSON.parse(localStorage.getItem("UserInfoLog"));
+
+
+    console.log('%cvar userInfo', vrb, userInfo);
+
+    const formInfoPropre = userInfo.questionTab.map(item => {
         // console.log(item);
         // console.log(item[1]);
         // console.log(item[1]);
         return item = item[1];
     });
 
-    let pseudo = JSON.parse(localStorage.getItem("pseudo"));
-    console.log('%cvar pseudo', vrb, pseudo);
-
     let formInfo = {
-        section : formInfoTab[0][0],
+        section : userInfo.questionTab[0][0],
         Num_Data : formInfoPropre,
-        pseudo : pseudo
+        pseudo : userInfo.pseudo
     }
 
     console.log('%cvar formInfo', vrb, formInfo);
 
     return formInfo;
+
 }
 // CreateFormInfo();
 function verifForm () {
@@ -153,10 +167,11 @@ function verifForm () {
     console.log('%cVerifie que le nombre de question répondues == nombre total de Q', exp);
 
     //// On récupère le tableau de toutes les questions sur local storage
-    let formInfoTab = JSON.parse(localStorage.getItem("questionInfoTab"));
+    let userInfo = JSON.parse(localStorage.getItem("userInfoLog"));
+    let formInfoTab = userInfo.questionTab;
 
     if (formInfoTab.length == fieldsets.length) {
-        return formInfoTab;
+        return userInfo;
     } else {
         errForm.style.display = 'block';
         setTimeout(function() {
@@ -173,12 +188,12 @@ $('#ValiderForm').on('click', function(e) {
 
     
     
-    let formInfoTab = verifForm();
+    let userInfo = verifForm();
     
-    if (formInfoTab) {
+    if (userInfo) {
         //* On désactive le bouton
         $('#ValiderForm').attr('class', 'btn btn-secondary col-3 m-auto')
-        PostForm(CreateFormInfo(formInfoTab));
+        PostForm(CreateFormInfo(userInfo));
     }
     
 

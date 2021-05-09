@@ -9,7 +9,7 @@ A faire :
 <!--!  NB : remettre/enlever transparent sur loginInUp l7 -->
 <!--!!! postQuestion -> postForm : localstorage.clear temp -->
 
-    <!--* MSG : 05/05/21 test pour manip data : dataset x -->
+    <!--* MSG : 10/05/21 test pour manip data : dataset x -->
 
     parfois err manque pseudo, clear storage qq part ?
 
@@ -23,9 +23,11 @@ A faire :
 
     faire un feedback : déjà un mail/pseudo idem enregistré
 
-    replier div inscription après connexion [NB : piped together] (si successful) 
+    <!-- replier div inscription après connexion [NB : piped together] (si successful)  -->
 
     mettre msg d'err en console sur fond noir
+
+    set timeout pour déconnexion automatique fonctionne pas
 
     disable aussi textarea après envoie form
 

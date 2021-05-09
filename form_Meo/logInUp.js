@@ -50,51 +50,62 @@ function UpdateProgression(progression) {
     progParaf[1].textContent = `Votre progression : ${progression}%`;
 }
 
-function SayHello(pseudo) {
+function SayHello(userInfo) {
     console.log('%c SAY HELLO ', fct);
-    console.log('%cRécupère et affiche le pseudo', exp)
+    console.log('%cAffiche le pseudo et la barre de progression', exp)
 
-    console.log('%cvar pseudo :', vrb, pseudo);
+    console.log('%cvar userInfo :', vrb, userInfo);
     
-    //* Si fonction lancée sans arg
-    if (pseudo == undefined) {
-        console.log('IF pseudo undefined')
-        let pseudo = JSON.parse(localStorage.getItem("pseudo")) || '';
-        console.log('%cvar pseudo', vrb, 'au retour de local storage :', pseudo);  
-        //* Si il y a pas de pseudo dans local storage (1ère connexion)
-        if (!pseudo) {
-            console.log('IF pas de pseudo dans local storage');
-        //* S'il y a un pseudo dans local storage (reconnexion)
-        } else {
+    
+    // //* Si fonction lancée sans arg
+    // if (pseudo == undefined) {
+    //     console.log('IF pseudo undefined')
+    //     let pseudo = JSON.parse(localStorage.getItem("pseudo")) || '';
+    //     console.log('%cvar pseudo', vrb, 'au retour de local storage :', pseudo);  
+    //     //* Si il y a pas de pseudo dans local storage (1ère connexion)
+    //     if (!pseudo) {
+    //         console.log('IF pas de pseudo dans local storage');
+    //     //* S'il y a un pseudo dans local storage (reconnexion)
+    //     } else {
         
-            console.log('ELSE affiche le pseudo');
-            let persoDiv = document.querySelector('.perso');
-            persoDiv.style.opacity = '1';
+    //         console.log('ELSE affiche le pseudo');
+    //         let persoDiv = document.querySelector('.perso');
+    //         persoDiv.style.opacity = '1';
     
-            let persoParaf = persoDiv.querySelectorAll('p');
-            persoParaf[0].textContent = `Bienvenue, ${pseudo}`;
-            // persoParaf[1].textContent = `Votre progression : ${'110'}%`;
+    //         let persoParaf = persoDiv.querySelectorAll('p');
+    //         persoParaf[0].textContent = `Bienvenue, ${pseudo}`;
+    //         // persoParaf[1].textContent = `Votre progression : ${'110'}%`;
     
-            let QInfoTab = SetUserObj(pseudo);
-            console.log(QInfoTab);
-            UpdateProgression(QInfoTab.progression);
-            DisableAnsweredQuestions(QInfoTab.disableTab);
-            transparent.style.display = 'none';   
-        }
-    //* Si fonction lancée avec argument   
-    } else {
-        console.log('ELSE fonction lancée avec pseudo en arg, affiche le pseudo');
+    //         let QInfoTab = SetUserObj(pseudo);
+    //         console.log(QInfoTab);
+    //         UpdateProgression(QInfoTab.progression);
+    //         DisableAnsweredQuestions(QInfoTab.disableTab);
+    //         transparent.style.display = 'none';   
+    //     }
+    // //* Si fonction lancée avec argument   
+    // } else {
+        // console.log('fonction lancée avec pseudo en arg, affiche le pseudo');
+    if (userInfo != 'logout') {
+        console.log('IF != logout : on affiche')
         let persoDiv = document.querySelector('.perso');
-        persoDiv.style.opacity = '1';
-
         let persoParaf = persoDiv.querySelectorAll('p');
-        persoParaf[0].textContent = `Bienvenue, ${pseudo}`;
+
+        // if (userInfo == '') { //? dans quel cas ?
+        //     console.log('IF userInfo vide');
+        //     persoDiv.style.opacity = '0';
+        //     transparent.style.display = 'block';   
+        // } else {
+        persoDiv.style.opacity = '1';
+        persoParaf[0].textContent = `Bienvenue, ${userInfo.pseudo}`;
         // persoParaf[1].textContent = `Votre progression : ${'110'}%`;
 
-        let QInfoTab = SetUserObj(pseudo);
-        UpdateProgression(QInfoTab.progression);
-        DisableAnsweredQuestions(QInfoTab.disableTab);
+        // let QInfoTab = SetUserObj(pseudo);
+        UpdateProgression(userInfo.progression);
+        DisableAnsweredQuestions(userInfo.disableTab);
         transparent.style.display = 'none';   
+
+    } else {
+        console.log('ELSE logout');
     }
 }
 
@@ -112,20 +123,31 @@ function LocalStoreUser(pseudo) {
     console.log('%cstock le pseudo dans local storage', exp)
 
     console.log('%cvar pseudo :', vrb, pseudo);
+
+    let userInfo = SetUserObj(pseudo);
+    setTimeout(function() {
+
+        console.log('%cvar userInfo', vrb);
+        localStorage.setItem("userInfoLog", JSON.stringify(userInfo));
+
+        SayHello(userInfo);
+        
+
+    }, 200);
     //// On enregistre l'id de l'utilisateur
     // localStorage.setItem("id", JSON.stringify(id));
-    localStorage.setItem("pseudo", JSON.stringify(pseudo));
     
     //// Après 1h, efface l'utilisateur de local storage
+    //? ça fonctionne ça ? voir plutôt token
     setTimeout(function() {
         console.log('SET TIMEOUT efface pseudo de local storage')
         localStorage.setItem("pseudo", JSON.stringify(''));
     }, 3600000)
 
-    //* On affiche questionnaire une fois que l'utilisateur est identifié
-    transparent.style.display = 'none';
+    // //* On affiche questionnaire une fois que l'utilisateur est identifié
+    // transparent.style.display = 'none';
     //* Salutation personnalisées
-    SayHello(pseudo);
+    
 }
 
 //* Au retour de la base de données, on fait un feedback utilisateur
@@ -311,12 +333,13 @@ logout.addEventListener('click', function() {
     console.log('%c btn logout', btn);
     console.log('%cVide le local storage du pseudo', exp);
 
-    localStorage.removeItem('pseudo');
-    let persoDiv = document.querySelector('.perso');
-    persoDiv.style.opacity = '0';
-    transparent.style.display = 'block';
+    SayHello('logout');
+    // localStorage.removeItem('pseudo');
+    // let persoDiv = document.querySelector('.perso');
+    // persoDiv.style.opacity = '0';
+    // transparent.style.display = 'block';
 
-    console.log(pseudo);
+    // console.log(pseudo);
 
 });
 
@@ -341,38 +364,70 @@ logout.addEventListener('click', function() {
 //* parmi les tableaux de questions répondues de tous les utilisateurs du même local storage
 function SetUserObj(pseudo) {
     // let userInfo;
-    console.log('%c SET QUESTION TAB ', fctw);
+
+    // si au démarrage, si reconnexion, si update
+    console.log('%c SET USER OBJ ', fctw);
     console.log('%cRécupère userInfo dans storage : questions répondues de l\'utilisateur, progression', exp);
 
     console.log('%cvar pseudo', vrb, pseudo);
-    if (pseudo) {
-        console.log('IF pseudo');
-        userObjAll = JSON.parse(localStorage.getItem("userObjAll")) || [];
+
+    //* fonction lancée sans arg
+    if (!pseudo) {
+        console.log('IF pas de pseudo')
+        //* On vérifie si il y a déjà des utilisateurs dans la table de tous les utilisateurs de cet ordi
+        let userObjAll = JSON.parse(localStorage.getItem("userObjAll")) || [];
         console.log('%cvar userObjAll', vrb, userObjAll);
-        
-        // if (questionInfoTabAll != []) {
+        //* Si quelqu'un s'est déjà connecté sur cet ordi (il y a qqchose dans la table des utilisateurs locaux)
+        if (userObjAll.length != 0) {
+            console.log('IF userObjAll n\'est pas vide');
+            //* On vérifie si c'est notre utilisateur
             let userInfo = userObjAll.filter(obj => {return obj.pseudo == pseudo});
-            userInfo = userInfo[0] || {pseudo : pseudo, questionTab : [], progression : 0, disableTab : []};
+            console.log('%cvar userInfo', vrb, userInfo);
+            //* Si oui, on le retourne
+            if (userInfo) {
+                console.log('IF l\'utilisateur est dans le tableau des utilisateurs locaux');
+                return userInfo;
+            //* Si non, on arrête là en attendant qu'il s'inscrive
+            } else {
+                console.log('ELSE pas ce pseudo dans le tableau des utilisateurs locaux');
+                // userInfo = {pseudo : 'pseudo', questionTab : [], progression : 0, disableTab : []};
+            }
+        //* Si il n'y a pas de userInfo dans le tableau de tous les utilisateurs de cet ordi
+        } else {
+            console.log('ELSE le tableau des utilisateurs locaux est vide');
+        }
+    //* Si fonction lancée avec pseudo
+    } else {
+        console.log('ELSE on a un pseudo')
+        //* On vérifie s'il y a des utilisateurs est dans la table des utilisateur locaux
+        let userObjAll = JSON.parse(localStorage.getItem("userObjAll")) || [];
+        console.log('%cvar userObjAll', vrb, userObjAll);
+        //* S'il y a des utilisateurs, on vérifie s'il y a l'utilisateur courant
+        if (userObjAll.length != 0) {
+            console.log('IF tableau des utilisateur locaux n\'est pas vide')
+            //* Si oui, on récup ses infos, si non on initialise à vide
+            let userInfo = userObjAll.filter(obj => {return obj.pseudo == pseudo}) || {pseudo : pseudo, questionTab : [], progression : 0, disableTab : []};
             console.log('%cvar userInfo', vrb, userInfo);
             return userInfo;
-        // } else {
-        //     questionInfoTab = [];
-        //     console.log(questionInfoTab);
-        // }
-    //* si lancé sans arg ( dans PostQuestion )
-    } else {
-        let userInfo = userObjAll.filter(obj => {return obj.pseudo == pseudo});
-        console.log('%cvar userInfo', vrb, userInfo);
-        return userInfo[0];
+        //* S'il n'y a pas d'utilisateur locaux, on initialise à vide
+        } else {
+            console.log('ELSE : pas d\'utilisateurs locaux, userInfo initialisé vide, avec pseudo');
+            let userInfo = {pseudo : pseudo, questionTab : [], progression : 0, disableTab : []};
+            console.log('%cvar userInfo', vrb, userInfo);
+            return userInfo;
+        }
     }
-    // console.log('%cvar userInfo', vrb, userInfo);
 }
 
 //* En dernier car si local storage vide, erreur parse anonymous
 console.warn('Si pas de pseudo dans local storage, err [parse anonymous]')
-let pseudo = JSON.parse(localStorage.getItem("pseudo"))
-console.log('Au lancement de la page ' + '%cpseudo :', vrb, pseudo);
-SayHello();
+// let userInfo = JSON.parse(localStorage.getItem("pseudo"))
+let userInfo = JSON.parse(localStorage.getItem("UserInfoLog"))
+// let userInfo = SetUserObj(UserInfoLog);
+console.log('Au lancement de la page ' + '%cuserInfo :', vrb, UserInfo);
+if (userInfo) {
+    SayHello(userInfo);
+}
 // let userInfo = SetQuestionTab(pseudo);
 // console.log(userInfo);
 
