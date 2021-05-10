@@ -72,12 +72,12 @@ app.post('/api/form', (req, res, next) => {
       .catch(error => res.status(400).json({ error }));
     });
 
-// function WriteMail(mail) {
-//     //* Créer un ficher texte de toutes les adresses mail (qui ne sort pas du serveur)
-//     let mailStream = fs.createWriteStream('mails.txt', {flags : 'a'});
-//     mailStream.write(mail);
-//     mailStream.end(', ');
-// }
+function WriteMail(mail) {
+    //* Créer un ficher texte de toutes les adresses mail (qui ne sort pas du serveur)
+    let mailStream = fs.createWriteStream('mails.txt', {flags : 'a'});
+    mailStream.write(mail);
+    mailStream.end(', ');
+}
 //* User logup OK !
 app.post('/api/user/logup', (req, res, next) => {
 
@@ -103,9 +103,9 @@ app.post('/api/user/logup', (req, res, next) => {
 
     console.log(req.body.mail);
 
-    // setTimeout(function() {
-    //     WriteMail(req.body.mail);
-    // }, 1000);
+    setTimeout(function() {
+        WriteMail(req.body.mail);
+    }, 1000);
 });
     
 // // GET only one
