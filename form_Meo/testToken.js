@@ -1,11 +1,5 @@
 let tokenAccess = document.getElementById('token');
 
-// const Q = {
-//     num : 1,
-//     data : 5,
-//     section: 'string'
-// }
-
 tokenAccess.addEventListener('click', function() {
     console.log('%c Admin acces', btn);
     if (confirm('Are you admin ?')) {
@@ -45,30 +39,34 @@ const GetAuth = async function() {
 
 
 
+// const Q = {
+//     num : 1,
+//     data : 5,
+//     section: 'string'
+// }
 
+// const PostQ = async function(Q) {
+//     console.log('%c POST TOKEN ', fct);
 
-const PostQ = async function(Q) {
-    console.log('%c POST TOKEN ', fct);
+//     const token =  JSON.parse(localStorage.getItem("tokenLS"));
+//     console.log(token);
 
-    const token =  JSON.parse(localStorage.getItem("tokenLS"));
-    console.log(token);
-
-        fetch(`${thisUrl}/api/admin`, {
+//         fetch(`${thisUrl}/api/admin`, {
         
-        method: "POST",
-        headers : {
-            'Accept' : 'application/json',
-            'Content-type': 'application/json',
-            'Authorization': `bearer ${token}`
-        },
-        body: JSON.stringify(Q)
-    })
-    .then(response => response.json())
-    .then(json => {
-        console.log('%cDonnées renvoyées par la DB : ', DB, json, token);
+//         method: "POST",
+//         headers : {
+//             'Accept' : 'application/json',
+//             'Content-type': 'application/json',
+//             'Authorization': `bearer ${token}`
+//         },
+//         body: JSON.stringify(Q)
+//     })
+//     .then(response => response.json())
+//     .then(json => {
+//         console.log('%cDonnées renvoyées par la DB : ', DB, json, token);
         
-    })
-    .catch((e) => {
-        console.log(e);
-    })
-}
+//     })
+//     .catch((e) => {
+//         console.log(e);
+//     })
+// }

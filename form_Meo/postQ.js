@@ -1,5 +1,5 @@
 //* QUESTIONS
-localStorage.clear();
+// localStorage.clear();
 
     //* NOMMAGE DES CHAMPS
 // (ça n'a l'air de rien là comme ça mais il m'a fallu autant de temps que si je les avais

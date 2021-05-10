@@ -59,6 +59,10 @@
       opacity: 0.5;
       z-index: 1; }
 
+.log svg {
+  width: 30px;
+  height: 30px; }
+
 h1 > span {
   font-size: 0.7em; }
 

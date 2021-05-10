@@ -120,7 +120,7 @@
                 <div class="row collapse" id="hidden"> -->
                 <div class="collapse col-12" id="login">
                     <div class="row pt-1 pb-3 d-flex align-items-end justify-content-center border border-primary">
-                        <div class="col-3 text-center align-items-center border border-danger" id="msgErr"></div>
+                        <div class="col-3 text-center align-items-center text-danger" id="msgErr"></div>
                         <div class="col-3">
                             <label for="pseudoIn" class="form-label">Pseudo : </label>
                             <input type="text" class="form-control" id="pseudoIn" placeholder="">
@@ -137,19 +137,28 @@
                 </div>
                 <div class="row collapse" id="logup">
                     <div class="row pt-1 d-flex align-items-end justify-content-center border border-primary">
-                        <div class="col-3">
+                        <div class="col-3 text-center align-items-center text-danger" id="msgErrUp">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-octagon-fill mr-2" viewBox="0 0 16 16">
+                                <path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </svg>
+                            <p class="text-dark p-0 m-0">Il y a déjà un compte lié à ce pseudo ou cette adresse mail</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-octagon-fill ml-2" viewBox="0 0 16 16">
+                                <path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </svg>
+                        </div>
+                        <div class="col-2">
                             <label for="pseudoUp" class="form-label">Pseudo : </label>
                             <input type="text" class="form-control" id="pseudoUp" placeholder="">
                         </div>
-                        <div class="col-3">
+                        <div class="col-2">
                             <label for="email" class="form-label">Mail* : </label>
                             <input type="email" class="form-control" id="email" placeholder="name@example.com">
                         </div>
-                        <div class="col-3">
+                        <div class="col-2">
                             <label for="passwordUp" class="form-label" >Mot de passe : </label>
                             <input type="password" class="form-control" id="passwordUp">
                         </div>
-                        <button class="col-2 btn btn-primary" id="WhoAreYou">Valider</button>
+                        <button class="col-1 btn btn-primary" id="WhoAreYou">Valider</button>
                         <p class="text-muted mt-3 col-12">*pour finir le QCM plus tard ou le corriger ultérieurement. Cette adresse mail pourra également être confiée à un tiers selon votre consentement et uniquement dans le cadre de la recherche scientifique. Elle pourra aussi être utilisée dans le but d'améliorer ce questionnaire (si vous voulez bien répondre, aucun spam ne sera émis)</p>
                     </div>
                 </div>
@@ -479,7 +488,15 @@
                 </section>
                 <div class="row mt-3">
                     <button class="btn btn-warning col-3 m-auto" id="ValiderForm">Valider la première partie et continuer</button>
-                    <p id="formErr" class="col-5 m-auto text-center text-danger">Avez-vous bien répondu à toutes les questions ?</p>
+                    <p id="formErr" class="col-5 m-auto text-center text-danger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-octagon-fill mr-2" viewBox="0 0 16 16">
+                            <path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                        <p class="m-0 p-0">Avez-vous bien répondu à toutes les questions ?</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-octagon-fill ml-2" viewBox="0 0 16 16">
+                            <path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                    </p>
                     <!-- <a href="#representationVisuelle" class="btn btn-primary col-3 m-auto">Continuer le questionnaire</a> -->
                     <a href="#" class="btn border border-primary col-2 m-auto">Accueil</a>
                 </div>

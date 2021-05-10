@@ -8,6 +8,9 @@ let transparent = document.getElementById('transparent');
 
 let msgErr = document.getElementById('msgErr');
 msgErr.style.display = 'none';
+let msgErrUp = document.querySelector('#msgErrUp');
+msgErrUp.style.display = 'none';
+// msgErrUp.fadeOut();
 
     //* Quand on clique sur un bouton, ça replie la div de l'autre bouton
 $('.loginBtn').on('click', function(e) {
@@ -136,24 +139,26 @@ function LocalStoreUser(pseudo) {
     logDiv.style.display = 'none';
 
     let userInfo = SetUserObj(pseudo);
-    setTimeout(function() {
+    // setTimeout(function() {
 
-        console.log('%cvar userInfo', vrb);
+        console.log('%cvar userInfo', vrb, userInfo);
         localStorage.setItem("userInfoLog", JSON.stringify(userInfo));
+  
+        console.log(JSON.parse(localStorage.getItem("userInfoLog")));
 
         SayHello(userInfo);
         
 
-    }, 300);
+    // }, 300);
     //// On enregistre l'id de l'utilisateur
     // localStorage.setItem("id", JSON.stringify(id));
     
     //// Après 1h, efface l'utilisateur de local storage
     //? ça fonctionne ça ? voir plutôt token
-    setTimeout(function() {
-        console.log('SET TIMEOUT efface pseudo de local storage')
-        localStorage.setItem("pseudo", JSON.stringify(''));
-    }, 3600000)
+    // setTimeout(function() {
+    //     console.log('SET TIMEOUT efface pseudo de local storage')
+    //     localStorage.setItem("pseudo", JSON.stringify(''));
+    // }, 3600000)
 
     // //* On affiche questionnaire une fois que l'utilisateur est identifié
     // transparent.style.display = 'none';
@@ -168,15 +173,15 @@ function verifInfo(e) {
     // console.log(e);
     if (e.error == 'Utilisateur non trouvé !') {
         console.log('IF utilisateur non trouvé');
-        msgErr.style.display = 'block';
-        msgErr.innerHTML = 'Erreur :<br/>Pas d\'utilisateur à ce nom';
+        msgErr.style.display = 'flex';
+        msgErr.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-octagon-fill mr-2" viewBox="0 0 16 16"><path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg><p class="text-dark p-0 m-0">Il n\'y a pas d\'utilisateur enregistré à ce nom</p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-octagon-fill mr-2" viewBox="0 0 16 16"><path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>`;
         // $(msgErr).addClass('border border-danger');
         return false;
         
     } else if (e.error == 'Mot de passe incorrect !') {
         console.log('ELSE IF mot de passe incorrect')
-        msgErr.style.display = 'block';
-        msgErr.innerHTML = 'Erreur :<br/>Mot de pass incorrect';
+        msgErr.style.display = 'flex';
+        msgErr.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-octagon-fill mr-2" viewBox="0 0 16 16"><path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg><p class="text-dark p-0 m-0">Mot de passe incorrect</p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-octagon-fill mr-2" viewBox="0 0 16 16"><path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>`;
         // $(msgErr).addClass('border border-danger');
         return false;
 
@@ -291,10 +296,18 @@ const PostNewUser = async function(userInfo) {
     .then(response => response.json())
     .then(json => {
         console.log('%cRéponse de la DB (inscription): ', DB, json);
-        LocalStoreUser(json.pseudo); 
- 
-        //* On renvoie sur fonction login pour connexion automatique après inscription
-        PostLogin({password : userInfo.password, pseudo : userInfo.pseudo});
+
+        if (json.error.name == "ValidationError") {
+            console.log('IF réponse DB négative');
+            msgErrUp.style.display = 'flex';
+        } else {
+            // console.log('ELSE infos envoyées ok');
+            
+            LocalStoreUser(json.pseudo); 
+     
+            //* On renvoie sur fonction login pour connexion automatique après inscription
+            PostLogin({password : userInfo.password, pseudo : userInfo.pseudo});
+        }
        
     })
     .catch((e) => {
@@ -330,6 +343,8 @@ function verifInput(userInfo) { // arg pas utilisé pour l'instant
 $('#WhoAreYou').on('click', function(e) {
     console.log('%c btn valider inscription ', btn);
     e.preventDefault();
+
+    msgErrUp.style.display = 'none'; //* Si l'utilisateur a déjà fait une erreur
 
     let userInfo = {
         pseudo : $('#pseudoUp').val(),
@@ -433,7 +448,7 @@ function SetUserObj(pseudo) {
                 return userInfo;
             } else {
                 console.log('ELSE utilisateur dans le tableau')
-                console.log('%cvar userInfo', vrb, userInfo);
+                console.log('%cvar userInfo', vrb, userInfo[0]);
                 return userInfo[0];
             }
         //* S'il n'y a pas d'utilisateur locaux, on initialise à vide
@@ -446,21 +461,26 @@ function SetUserObj(pseudo) {
     }
 }
 
+// let chouette = {nom : 'Chouette'}
+// console.log(chouette);
+// localStorage.setItem("chouette", JSON.stringify(chouette));
+// let RetChouette = JSON.parse(localStorage.getItem('chouette'));
+// console.log('%c ICI ', fctw, RetChouette);
+
+
 //* En dernier car si local storage vide, erreur parse anonymous
 console.warn('Si pas de pseudo dans local storage, err [parse anonymous]')
-// let userInfo = JSON.parse(localStorage.getItem("pseudo"))
-let userInfo = JSON.parse(localStorage.getItem("UserInfoLog"))
-// let userInfo = SetUserObj(UserInfoLog);
-setTimeout(() => {
-    console.log('Au lancement de la page ' + '%cuserInfo :', vrb, UserInfo);
-    
-    if (userInfo) {
-        SayHello(userInfo);
-    }
 
-}, 300);
-// let userInfo = SetQuestionTab(pseudo);
-// console.log(userInfo);
+let userInfo = JSON.parse(localStorage.getItem("userInfoLog"));
+
+console.log('Au lancement de la page ' + '%cuserInfo :', vrb, userInfo);
+
+if (userInfo) {
+    console.log('IF');
+    SayHello(userInfo);
+}
+
+
 
 
 

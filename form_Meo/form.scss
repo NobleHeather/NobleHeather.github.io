@@ -93,7 +93,11 @@ $color : (
     }
 }
 
-
+.log svg {
+    // border: 1px solid #000;
+    width: 30px;
+    height: 30px;
+}
 
 // voir pour pop-up toast ou modal
 // spinner dans button submit

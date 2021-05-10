@@ -196,10 +196,10 @@ app.use('/api/admin', (req, res, next) => {
     // res.json({msg : 'token ok !'});
 });
 
-fs.readFile('mails.txt', 'utf8', function(err, data) {
-    data.replace(',', '-'); //nope
-    console.log(data.replace(',', '-'));
-    // data.replace(' ', '');
-})
+// fs.readFile('mails.txt', 'utf8', function(err, data) {
+//     data.replace(',', '-'); //nope
+//     console.log(data.replace(',', '-'));
+//     // data.replace(' ', '');
+// })
 
 module.exports = app;
