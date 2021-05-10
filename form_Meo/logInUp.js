@@ -217,6 +217,14 @@ const PostLogin = async function(userInfo) {
     .then(json => {
         console.log('%cRéponse de la DB (connexion): ', DB, json);
 
+        //! test token
+        if (json.msg == 'Bienvenue Votre Altesse') {
+            console.log(json.token);
+            localStorage.setItem("tokenLS", JSON.stringify(json.token));
+            LocalStoreUser(json.pseudo);
+        }
+        //! fin test token
+
         if (verifInfo(json)) {
             LocalStoreUser(json.pseudo);
         }

@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const Question = require('./models/question');
 const User = require('./models/user');
 const Form = require('./models/form');
+const Token = require('./token');
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
@@ -39,6 +40,16 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
+//* post token test
+// app.post('/api/admin', (req, res, next) => {
+//     delete req.body._id;
+//     const question = new Question({
+//       ...req.body
+//     });
+//     question.save()
+//       .then(() => res.status(201).json({ message: 'token ok !'}))
+//       .catch(error => res.status(400).json({ error }));
+// });
 //* post question ok !
 app.post('/api/question', (req, res, next) => {
     delete req.body._id;
@@ -61,12 +72,12 @@ app.post('/api/form', (req, res, next) => {
       .catch(error => res.status(400).json({ error }));
     });
 
-function WriteMail(mail) {
-    //* Créer un ficher texte de toutes les adresses mail (qui ne sort pas du serveur)
-    let mailStream = fs.createWriteStream('mails.txt', {flags : 'a'});
-    mailStream.write(mail);
-    mailStream.end(', ');
-}
+// function WriteMail(mail) {
+//     //* Créer un ficher texte de toutes les adresses mail (qui ne sort pas du serveur)
+//     let mailStream = fs.createWriteStream('mails.txt', {flags : 'a'});
+//     mailStream.write(mail);
+//     mailStream.end(', ');
+// }
 //* User logup OK !
 app.post('/api/user/logup', (req, res, next) => {
 
@@ -92,9 +103,9 @@ app.post('/api/user/logup', (req, res, next) => {
 
     console.log(req.body.mail);
 
-    setTimeout(function() {
-        WriteMail(req.body.mail);
-    }, 1000);
+    // setTimeout(function() {
+    //     WriteMail(req.body.mail);
+    // }, 1000);
 });
     
 // // GET only one
@@ -115,9 +126,20 @@ app.post('/api/user/login', (req, res, next) => { //? api.get & api/pass/:id
         .then(valid => {
             if(!valid) {
                 return res.status(401).json({ error: 'Mot de passe incorrect !'});
+            } else if (valid && user.pseudo == 'NH00000') {
+                return res.status(200).json({
+                    userId: user._id,
+                    token: jwt.sign(
+                        { userId : user._id },
+                        'ADMIN_KEY',
+                        { expiresIn : '1h' }
+                    ),
+                    msg: 'Bienvenue Votre Altesse'
+                })
             }
             res.status(200).json({
                 userId: user._id,
+                // token: Token.generateTokenForUser(req.body.pseudo),
                 token: jwt.sign(
                     { userId : user._id },
                     'RANDOM_TOKEN_SECRET',
@@ -158,5 +180,26 @@ app.use('/api/form', (req, res, next) => {
         .then(questions => res.status(200).json(questions))
         .catch(error => res.status(400).json({ error }));
 });
+
+app.use('/api/admin', (req, res, next) => {
+    // Form.find()
+    //     .then(questions => res.status(200).json(questions))
+    //     .catch(error => res.status(400).json({ error }));
+    // let mails = 'mails.txt'
+    fs.readFile('mails.txt', 'utf8', function(err, data) {
+        console.log(data);
+        res.status(200).json({msg : 'token ok !', mails : data})
+    })
+    // .then(mails => res.status(200).json({msg : 'token ok !', mails : mails})
+    // .catch(error => res.status(400).json({ error }))
+
+    // res.json({msg : 'token ok !'});
+});
+
+fs.readFile('mails.txt', 'utf8', function(err, data) {
+    data.replace(',', '-'); //nope
+    console.log(data.replace(',', '-'));
+    // data.replace(' ', '');
+})
 
 module.exports = app;

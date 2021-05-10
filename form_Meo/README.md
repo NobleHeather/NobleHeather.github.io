@@ -56,6 +56,8 @@ icone param : https://icons.getbootstrap.com/icons/gear-fill/
 
     revoir tout le circuit pour graph range
 
+    si erreur 500 ne pas afficher barre de progression
+
     <!-- ça fait bcp de camemberts, alterner avec pie -->
 
     range : ajouter option value 0 dans le html et voir comment ça réagit dans le JS
