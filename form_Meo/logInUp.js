@@ -85,10 +85,11 @@ function SayHello(userInfo) {
     // //* Si fonction lancée avec argument   
     // } else {
         // console.log('fonction lancée avec pseudo en arg, affiche le pseudo');
-    if (userInfo != 'logout') {
-        console.log('IF != logout : on affiche')
         let persoDiv = document.querySelector('.perso');
         let persoParaf = persoDiv.querySelectorAll('p');
+
+    if (userInfo != 'logout') {
+        console.log('IF != logout : on affiche')
 
         // if (userInfo == '') { //? dans quel cas ?
         //     console.log('IF userInfo vide');
@@ -106,6 +107,12 @@ function SayHello(userInfo) {
 
     } else {
         console.log('ELSE logout');
+        persoDiv.style.opacity = '0';
+        transparent.style.display = 'block';
+        document.location = 'form.html'
+
+        // let logDiv = document.querySelector('.log');
+        // logDiv.style.display = 'flex';
     }
 }
 
@@ -124,6 +131,10 @@ function LocalStoreUser(pseudo) {
 
     console.log('%cvar pseudo :', vrb, pseudo);
 
+    let logDiv = document.querySelector('.log');
+    logDiv.setAttribute('class', 'log row align-items-end mt-3 mb-4')
+    logDiv.style.display = 'none';
+
     let userInfo = SetUserObj(pseudo);
     setTimeout(function() {
 
@@ -133,7 +144,7 @@ function LocalStoreUser(pseudo) {
         SayHello(userInfo);
         
 
-    }, 200);
+    }, 300);
     //// On enregistre l'id de l'utilisateur
     // localStorage.setItem("id", JSON.stringify(id));
     
@@ -333,8 +344,8 @@ logout.addEventListener('click', function() {
     console.log('%c btn logout', btn);
     console.log('%cVide le local storage du pseudo', exp);
 
+    localStorage.removeItem('userInfoLog');
     SayHello('logout');
-    // localStorage.removeItem('pseudo');
     // let persoDiv = document.querySelector('.perso');
     // persoDiv.style.opacity = '0';
     // transparent.style.display = 'block';
@@ -406,9 +417,17 @@ function SetUserObj(pseudo) {
         if (userObjAll.length != 0) {
             console.log('IF tableau des utilisateur locaux n\'est pas vide')
             //* Si oui, on récup ses infos, si non on initialise à vide
-            let userInfo = userObjAll.filter(obj => {return obj.pseudo == pseudo}) || {pseudo : pseudo, questionTab : [], progression : 0, disableTab : []};
-            console.log('%cvar userInfo', vrb, userInfo);
-            return userInfo;
+            let userInfo = userObjAll.filter(obj => {return obj.pseudo == pseudo})
+            console.log(userInfo);
+            if (userInfo.length == 0) {
+                console.log('IF utilisateur pas dans le tableau');
+                userInfo = {pseudo : pseudo, questionTab : [], progression : 0, disableTab : []};
+                return userInfo;
+            } else {
+                console.log('ELSE utilisateur dans le tableau')
+                console.log('%cvar userInfo', vrb, userInfo);
+                return userInfo[0];
+            }
         //* S'il n'y a pas d'utilisateur locaux, on initialise à vide
         } else {
             console.log('ELSE : pas d\'utilisateurs locaux, userInfo initialisé vide, avec pseudo');
@@ -424,10 +443,14 @@ console.warn('Si pas de pseudo dans local storage, err [parse anonymous]')
 // let userInfo = JSON.parse(localStorage.getItem("pseudo"))
 let userInfo = JSON.parse(localStorage.getItem("UserInfoLog"))
 // let userInfo = SetUserObj(UserInfoLog);
-console.log('Au lancement de la page ' + '%cuserInfo :', vrb, UserInfo);
-if (userInfo) {
-    SayHello(userInfo);
-}
+setTimeout(() => {
+    console.log('Au lancement de la page ' + '%cuserInfo :', vrb, UserInfo);
+    
+    if (userInfo) {
+        SayHello(userInfo);
+    }
+
+}, 300);
 // let userInfo = SetQuestionTab(pseudo);
 // console.log(userInfo);
 
