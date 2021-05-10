@@ -13,6 +13,11 @@ A faire :
 
     parfois err manque pseudo, clear storage qq part ?
 
+    <!-- write mail qd post form -> prévoir délai pour changement de page vers form suivant -->
+    on perd la connexion quand on recharge la page
+
+    tout réécrire en async au lieu de mettre des settimeout partout
+
     supprimer dans app le User find (get all)
 
     possible de récup listes adresses mails depuis Heroku sans cloner tout le projet ?
